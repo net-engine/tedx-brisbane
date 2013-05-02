@@ -1,0 +1,8 @@
+Vagrant::Config.run do |config|
+  config.vm.box = "NetEngine OS"
+  config.vm.box_url = "http://vagrant-boxes.netengine.com.au/NE_OS_v0.1.box"
+  config.vm.network :hostonly, "192.168.0.10"
+  config.ssh.forward_agent = true
+  config.vm.customize ["modifyvm", :id, "--cpuexecutioncap", "90"]
+  config.vm.share_folder("v-root", "/vagrant", ".", :extra => 'uid=1010,gid=1000')
+end
