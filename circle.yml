@@ -1,0 +1,13 @@
+---
+deployment:
+  staging:
+    branch: master
+    commands:
+      - "echo $(ssh-agent) | cut -d \\; -f 1,2,3,4 >> ~/.circlerc"
+      - "ssh-add ~/.ssh/id_6467f30fd75d75a9fcd3228be1e77e3c"
+      - "bundle exec cap staging deploy:migrations":
+          timeout: 600
+machine:
+  ruby:
+    version: 1.9.3-p194
+  timezone: Australia/Brisbane
