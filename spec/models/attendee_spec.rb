@@ -1,10 +1,15 @@
 require 'spec_helper'
 
 describe Attendee do
+  let(:attendee) { create(:attendee) }
+
   it { should validate_presence_of(:email_address) }
   it { should validate_uniqueness_of(:email_address) }
 
-  let(:attendee) { create(:attendee) }
+  it "should reject invalid email addresses" do
+    attendee = build(:attendee, email_address: "doug")
+    attendee.should_not be_valid
+  end
 
   describe "round" do
     it "defaults to 1" do
