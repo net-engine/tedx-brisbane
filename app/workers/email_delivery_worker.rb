@@ -1,0 +1,2 @@
+class EmailDeliveryWorker
+end
