@@ -5,6 +5,8 @@ end
 
 describe Email do
   it { should belong_to(:attendee) }
+  it { should validate_presence_of(:attendee) }
+  it { should validate_presence_of(:event) }
 
   let(:email) { create(:email) }
 
