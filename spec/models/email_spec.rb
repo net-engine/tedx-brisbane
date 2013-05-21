@@ -1,8 +1,5 @@
 require 'spec_helper'
 
-class EmailContent
-end
-
 describe Email do
   it { should belong_to(:attendee) }
   it { should validate_presence_of(:attendee) }
