@@ -1,6 +1,8 @@
 class Email < ActiveRecord::Base
   belongs_to :attendee
 
+  validates :event, :attendee, presence: true
+
   def to_name
     attendee.fullname
   end
