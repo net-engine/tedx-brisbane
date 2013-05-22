@@ -7,6 +7,12 @@ gem 'httparty'
 gem 'pg'
 gem 'sidekiq'
 gem 'state_machine'
+gem 'formtastic', github: 'justinfrench/formtastic', branch: 'rails4beta'
+gem 'responders', github: 'plataformatec/responders'
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem 'ransack', github: 'ernie/ransack', branch: 'rails-4'
+gem 'activeadmin', github: 'akashkamboj/active_admin', branch: 'rails4'
+gem 'protected_attributes'
 
 group :staging, :production do
   gem 'unicorn'
