@@ -4,4 +4,15 @@ ActiveAdmin.register Attendee do
       params.permit(:attendee => [:email_address, :round])
     end
   end
+
+  batch_action :invite do |selection|
+    Attendee.find(selection).each do |attendee|
+      begin
+        attendee.invite!
+        attendee.emails.create(event: 'invite').deliver
+      rescue StateMachine::InvalidTransition
+      end
+    end
+    redirect_to collection_path, notice: "Successfully invited #{selection.size} attendees"
+  end
 end
