@@ -1,4 +1,6 @@
 class Attendee < ActiveRecord::Base
+  has_many :emails
+
   validates :email_address,
             presence: true,
             uniqueness: true,

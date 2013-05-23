@@ -5,6 +5,7 @@ describe Attendee do
 
   it { should validate_presence_of(:email_address) }
   it { should validate_uniqueness_of(:email_address) }
+  it { should have_many(:emails) }
 
   it "should reject invalid email addresses" do
     attendee = build(:attendee, email_address: "doug")
