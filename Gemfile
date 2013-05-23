@@ -34,6 +34,7 @@ end
 
 group :development, :test do
   gem 'awesome_print'
+  gem 'coveralls', require: false
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'guard-rspec'

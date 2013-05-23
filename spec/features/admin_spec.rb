@@ -11,6 +11,10 @@ describe "The admin interface", js: true do
     page.should have_content('Dashboard')
   end
 
+  it "shows existing admin users" do
+    visit '/admin/admin_users'
+  end
+
   it "allows creation of new attendees" do
     visit '/admin/attendees/new'
 
