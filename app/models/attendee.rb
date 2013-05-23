@@ -1,7 +1,10 @@
 class Attendee < ActiveRecord::Base
   has_many :emails
 
-  validates :email_address, presence: true, uniqueness: true
+  validates :email_address,
+            presence: true,
+            uniqueness: true,
+            format: { with: /\A[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,4}\z/i }
 
   state_machine initial: :awaiting_invitation do
     event :invite do
