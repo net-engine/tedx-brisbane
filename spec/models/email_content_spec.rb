@@ -56,6 +56,14 @@ describe EmailContent do
         end
       end
 
+      context "when the event is 'something_else'" do
+        it "returns the expected text" do
+          text = EmailContent.new(attendee: attendee, event: "something_else").content
+
+          text.should == "Sorry, jane@example.com. I don't know why I'm emailing you."
+        end
+      end
+
     end
   end
 end
