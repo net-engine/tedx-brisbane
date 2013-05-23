@@ -1,10 +1,15 @@
 require 'simplecov'
 SimpleCov.start
 
+require 'coveralls'
+Coveralls.wear!
+
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara/poltergeist'
+require 'sidekiq/testing'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
@@ -26,11 +31,16 @@ RSpec.configure do |config|
     end
 
     DatabaseCleaner.start
+    EmailDeliveryWorker.jobs.clear
   end
 
   config.after(:each) do
     DatabaseCleaner.clean
   end
 
-  Capybara.javascript_driver = :poltergeist
+  Capybara.register_driver :poltergeist_debug do |app|
+    Capybara::Poltergeist::Driver.new(app, inspector: true, js_errors: true)
+  end
+
+  Capybara.javascript_driver = :poltergeist_debug
 end
