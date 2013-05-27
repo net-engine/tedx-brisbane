@@ -19,12 +19,20 @@ describe EmailDeliverer do
     end
   end
 
-
-
   describe '#deliver' do
     it "calls POST on the EmailDeliverer class" do
+      url = "https://mandrillapp.com/api/1.0/messages/send.json"
+      email.stub(:to_json).and_return("the_json")
+      Email.stub(:find).with(email.id).and_return(email)
+
+      options = {
+        body: "the_json",
+        headers: { 'Accept' => 'application/json',
+                   'Content-type' => 'application/json' }
+      }
+
       EmailDeliverer.stub(:post)
-      EmailDeliverer.should_receive(:post)
+      EmailDeliverer.should_receive(:post).with(url, options)
 
       EmailDeliverer.new(email.id).deliver
     end
