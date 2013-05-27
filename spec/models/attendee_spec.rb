@@ -14,16 +14,23 @@ describe Attendee do
 
   describe "round" do
     it "defaults to 1" do
-      attendee.round == 1
+      attendee.round.should == 1
     end
   end
 
   describe "#increment_round!" do
     it "increments the round number" do
       attendee.increment_round!
-      attendee.round == 2
+      attendee.round.should == 2
     end
   end
+
+  describe "#fullname" do
+    it "returns a string" do
+      attendee.fullname.should == attendee.email_address
+    end
+  end
+
 
   describe "states" do
     context "when the Attendee is created" do
