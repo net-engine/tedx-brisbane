@@ -1,10 +1,13 @@
 require 'spec_helper'
 
 describe Attendee do
-  let(:attendee) { create(:attendee) }
+  let(:attendee) { create(:attendee, email_address: "jane@example.com") }
 
   it { should validate_presence_of(:email_address) }
   it { should validate_uniqueness_of(:email_address) }
+  it { should validate_uniqueness_of(:pay_token) }
+  it { should validate_uniqueness_of(:decline_token) }
+  it { should validate_uniqueness_of(:confirm_token) }
   it { should have_many(:emails) }
 
   it "should reject invalid email addresses" do
@@ -12,16 +15,22 @@ describe Attendee do
     attendee.should_not be_valid
   end
 
-  describe "pay_token" do
-    it "is built on creation"
+  describe "#pay_token" do
+    it "is built on creation" do
+      BCrypt::Password.new(attendee.pay_token).should == "jane@example.com-pay"
+    end
   end
 
-  describe "confirm_token" do
-    it "is built on creation"
+  describe "#confirm_token" do
+    it "is built on creation" do
+      BCrypt::Password.new(attendee.confirm_token).should == "jane@example.com-confirm"
+    end
   end
 
-  describe "decline_token" do
-    it "is built on creation"
+  describe "#decline_token" do
+    it "is built on creation" do
+      BCrypt::Password.new(attendee.decline_token).should == "jane@example.com-decline"
+    end
   end
 
   describe "round" do

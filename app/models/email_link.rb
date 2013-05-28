@@ -46,5 +46,4 @@ class EmailLink
   def decline_token
     attendee.decline_token
   end
-
 end
