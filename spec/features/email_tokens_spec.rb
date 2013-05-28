@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "Receiving links in emails" do
+  let(:attendee) { create(:attendee) }
+
   describe "the pay link" do
     context "when the invitation is still valid" do
       it "redirects to the payment page for the attendee"
@@ -34,7 +36,19 @@ describe "Receiving links in emails" do
 
   describe "the confirm link" do
     context "when the attendee has already been reminded" do
-      it "redirects home"
+      before(:each) do
+        attendee.invite!
+        attendee.pay!
+        attendee.remind!
+      end
+
+      it "redirects home" do
+        url = EmailLink.confirm(attendee)
+        visit(url)
+
+        current_path.should == '/'
+      end
+
       it "displays a message accepting the confirmation"
       it "updates the attendee to 'confirmed'"
     end

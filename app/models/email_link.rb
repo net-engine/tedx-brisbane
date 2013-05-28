@@ -18,15 +18,15 @@ class EmailLink
   end
 
   def confirm
-    "https://#{host_name}/confirm/#{confirm_token}"
+    Addressable::URI.escape("https://#{host_name}/confirm/#{confirm_token}")
   end
 
   def pay
-    "https://#{host_name}/pay/#{pay_token}"
+    Addressable::URI.escape("https://#{host_name}/pay/#{pay_token}")
   end
 
   def decline
-    "https://#{host_name}/decline/#{decline_token}"
+    Addressable::URI.escape("https://#{host_name}/decline/#{decline_token}")
   end
 
   private
@@ -36,14 +36,14 @@ class EmailLink
   end
 
   def confirm_token
-    attendee.confirm_token
+    Base64.urlsafe_encode64(attendee.confirm_token)
   end
 
   def pay_token
-    attendee.pay_token
+    Base64.urlsafe_encode64(attendee.pay_token)
   end
 
   def decline_token
-    attendee.decline_token
+    Base64.urlsafe_encode64(attendee.decline_token)
   end
 end
