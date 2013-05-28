@@ -10,6 +10,7 @@ ActiveAdmin.register Attendee do
       begin
         attendee.invite!
         attendee.emails.create(event: 'invite').deliver
+        InvitationRevokerWorker.perform_in(5.days, attendee.id)
       rescue StateMachine::InvalidTransition
       end
     end
