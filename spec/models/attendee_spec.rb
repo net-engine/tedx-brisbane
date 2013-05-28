@@ -12,6 +12,18 @@ describe Attendee do
     attendee.should_not be_valid
   end
 
+  describe "pay_token" do
+    it "is built on creation"
+  end
+
+  describe "confirm_token" do
+    it "is built on creation"
+  end
+
+  describe "decline_token" do
+    it "is built on creation"
+  end
+
   describe "round" do
     it "defaults to 1" do
       attendee.round == 1
