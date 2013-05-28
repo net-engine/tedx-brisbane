@@ -1,7 +1,8 @@
 require 'sidekiq/web'
 
 TedxBrisbane::Application.routes.draw do
-  root :to => "pages#index"
+  root :to => 'pages#index'
+  resources :payments
 
   get '/confirm/:token', to: "email_links#confirm"
   get '/decline/:token', to: "email_links#decline"

@@ -9,6 +9,7 @@ describe Attendee do
   it { should validate_uniqueness_of(:decline_token) }
   it { should validate_uniqueness_of(:confirm_token) }
   it { should have_many(:emails) }
+  it { should have_many(:payments) }
 
   it "should reject invalid email addresses" do
     attendee = build(:attendee, email_address: "doug")
