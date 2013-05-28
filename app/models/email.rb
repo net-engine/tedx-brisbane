@@ -18,4 +18,8 @@ class Email < ActiveRecord::Base
   def plain_text_content
     EmailContent.for attendee: attendee, event: event
   end
+
+  def to_json
+    EmailSerializer.new(self).to_json
+  end
 end

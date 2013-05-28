@@ -38,4 +38,8 @@ class Attendee < ActiveRecord::Base
     self.round += 1
     save!
   end
+
+  def fullname
+    email_address
+  end
 end

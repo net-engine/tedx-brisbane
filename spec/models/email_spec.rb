@@ -43,4 +43,32 @@ describe Email do
       email.plain_text_content
     end
   end
+
+  describe "#to_json" do
+    it "returns the expected string" do
+      EmailContent.stub(:for).and_return("stubbed plain text content goes here")
+
+      json = %{
+        {
+          "key": "mandrill_key",
+          "message": {
+              "text": "stubbed plain text content goes here",
+              "subject": "Message from TEDx",
+              "from_email": "noreply@tedxbrisbane.com",
+              "from_name": "TEDx Brisbane",
+              "to": [
+                  {
+                      "email": "#{email.to_address}",
+                      "name": "#{email.to_name}"
+                  }
+              ]
+          }
+        }
+      }
+
+      JSON.parse(email.to_json).should == JSON.parse(json)
+    end
+  end
 end
+
+
