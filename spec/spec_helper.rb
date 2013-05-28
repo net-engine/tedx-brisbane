@@ -32,6 +32,7 @@ RSpec.configure do |config|
 
     DatabaseCleaner.start
     EmailDeliveryWorker.jobs.clear
+    InvitationRevokerWorker.jobs.clear
   end
 
   config.after(:each) do

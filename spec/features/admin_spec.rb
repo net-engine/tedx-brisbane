@@ -61,6 +61,14 @@ describe "The admin interface", js: true do
       page.should have_content("Successfully invited 1 attendee")
       Attendee.where(state: 'received_invitation').count.should == 1
       EmailDeliveryWorker.jobs.size.should == 1
+      InvitationRevokerWorker.jobs.size.should == 1
+    end
+
+    it "schedules the invitaion to be revoked in 5 days" do
+      InvitationRevokerWorker.stub(:perform_in)
+      InvitationRevokerWorker.should_receive(:perform_in).with(5.days, attendee.id)
+
+      click_on 'Invite Selected'
     end
 
     it "doesn't fail on impossible state transitions" do
@@ -69,6 +77,7 @@ describe "The admin interface", js: true do
 
       page.should have_content("Successfully invited 1 attendee")
       EmailDeliveryWorker.jobs.size.should == 0
+      InvitationRevokerWorker.jobs.size.should == 0
     end
   end
 end
