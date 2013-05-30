@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Attendee do
-  let(:attendee) { create(:attendee, email_address: "jane@example.com") }
+  let(:attendee) { create(:attendee) }
 
   it { should validate_presence_of(:email_address) }
   it { should validate_uniqueness_of(:email_address) }
@@ -15,21 +15,31 @@ describe Attendee do
     attendee.should_not be_valid
   end
 
-  describe "#pay_token" do
-    it "is built on creation" do
-      BCrypt::Password.new(attendee.pay_token).should == "jane@example.com-pay"
-    end
-  end
+  context "email tokens" do
+    let(:attendee) { build(:attendee) }
+    let(:attributes) { attendee.attributes.inspect }
 
-  describe "#confirm_token" do
-    it "is built on creation" do
-      BCrypt::Password.new(attendee.confirm_token).should == "jane@example.com-confirm"
+    before(:each) do
+      attendee.save
+      Time.stub(:now).and_return(Time.parse("2013-05-30 17:35:24 +1000"))
     end
-  end
 
-  describe "#decline_token" do
-    it "is built on creation" do
-      BCrypt::Password.new(attendee.decline_token).should == "jane@example.com-decline"
+    describe "#pay_token" do
+      it "is built on creation" do
+        BCrypt::Password.new(attendee.pay_token).should == "2013-05-30 17:35:24 +1000-#{attributes}-pay"
+      end
+    end
+
+    describe "#confirm_token" do
+      it "is built on creation" do
+        BCrypt::Password.new(attendee.confirm_token).should == "2013-05-30 17:35:24 +1000-#{attributes}-confirm"
+      end
+    end
+
+    describe "#decline_token" do
+      it "is built on creation" do
+        BCrypt::Password.new(attendee.decline_token).should == "2013-05-30 17:35:24 +1000-#{attributes}-decline"
+      end
     end
   end
 

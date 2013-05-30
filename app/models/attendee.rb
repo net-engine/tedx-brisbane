@@ -49,8 +49,8 @@ class Attendee < ActiveRecord::Base
   private
 
   def build_tokens
-    self.pay_token = BCrypt::Password.create("#{self.email_address}-pay")
-    self.decline_token = BCrypt::Password.create("#{self.email_address}-decline")
-    self.confirm_token = BCrypt::Password.create("#{self.email_address}-confirm")
+    self.pay_token = BCrypt::Password.create("#{Time.now}-#{attributes.inspect}-pay")
+    self.decline_token = BCrypt::Password.create("#{Time.now}-#{attributes.inspect}-decline")
+    self.confirm_token = BCrypt::Password.create("#{Time.now}-#{attributes.inspect}-confirm")
   end
 end
