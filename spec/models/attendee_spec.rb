@@ -92,10 +92,9 @@ describe Attendee do
       end
 
       describe "#decline!" do
-        it "raises an error (invalid transition)" do
-          expect {
-            attendee.decline!
-          }.to raise_error(StateMachine::InvalidTransition)
+        it " set the state to decline" do
+          attendee.decline!
+          attendee.state.should == 'declined'
         end
       end
 
