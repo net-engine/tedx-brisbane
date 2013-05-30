@@ -20,4 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  controllers:
+    email_links:
+      confirm_confirmed: Your attendence has been confirmed.
+      confirm_declined: Sorry you have already declined this event.
+      decline_declined: Sorry you can't make it.
+      decline_paid: You've already paid
+      decline_received_reminder: Your payment has already been accepted

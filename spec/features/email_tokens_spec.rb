@@ -73,7 +73,7 @@ describe "Receiving links in emails" do
 
       it "displays a message explaining that confirmation has already been accepted" do
         visit(url)
-        page.should have_content("You have already confirmed your attendance.")
+        page.should have_content("Your attendence has been confirmed.")
       end
 
       it "doesn't change the state of the attendee" do

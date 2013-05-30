@@ -24,7 +24,6 @@ class Attendee < ActiveRecord::Base
 
     event :decline do
       transition received_invitation: :declined,
-                 received_reminder: :declined,
                  awaiting_invitation: :declined
     end
 
