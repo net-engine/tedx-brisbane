@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.0.rc1'
 gem 'active_model_serializers'
+gem 'bcrypt-ruby'
 gem 'haml-rails'
 gem 'httparty'
 gem 'pg'

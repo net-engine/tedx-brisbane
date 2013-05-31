@@ -1,23 +1,18 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  controllers:
+    email_links:
+      confirm_confirmed: "Your attendance has been confirmed."
+      confirm_declined: "Sorry, you have previously declined this event."
+      confirm_invalid: "Sorry, that doesn't appear to be a valid link."
+      decline_declined: "We're sorry that you can't attend. Thanks for letting us know."
+      decline_paid: "You've already paid."
+      decline_received_reminder: "You've already paid."
+      decline_confirmed: "You've already paid."
+      decline_invalid: "Sorry, that doesn't appear to be a valid link."
+      pay_awaiting_invitation: "Sorry, you didn't purchase your ticket in time. You have been returned to the queue."
+      pay_received_invitation: "Your wait is over. You may purchase your ticket now."
+      pay_declined: "Sorry, you have previously declined this event."
+      pay_paid: "You've already paid."
+      pay_received_reminder: "You've already paid."
+      pay_confirmed: "You've already paid."
+      pay_invalid: "Sorry, that doesn't appear to be a valid link."
