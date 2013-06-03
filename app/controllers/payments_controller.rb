@@ -1,6 +1,10 @@
 class PaymentsController < ApplicationController
   def new
     redirect_to('/', notice: I18n.t("controllers.email_links.pay_invalid")) unless attendee
+
+    @tr_data = Braintree::TransparentRedirect.transaction_data(
+      redirect_url: confirm_payment_url,
+      transaction: {type: "sale", amount: amount, options: { submit_for_settlement: true }})
   end
 
   def confirm
@@ -21,5 +25,9 @@ class PaymentsController < ApplicationController
 
   def decoded_token
     Base64.urlsafe_decode64(params[:token]) rescue "null_token"
+  end
+
+  def amount
+    TICKET_PRICE_IN_DOLLARS
   end
 end

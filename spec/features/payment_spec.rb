@@ -16,7 +16,10 @@ describe "The payment page" do
 
     it "builds an adequate payment form" do
       visit(url)
-      find("form")[:action].should match "https://sandbox.braintreegateway.com:443/"
+
+      find("form")[:action].should match("https://sandbox.braintreegateway.com:443/")
+      find("#tr_data").value.should match("redirect_url=http%3A%2F%2Fwww.example.com%2Fpayments%2Fconfirm")
+      find("#tr_data").value.should match("submit_for_settlement%5D=true")
       page.should have_content(attendee.email_address)
     end
 
