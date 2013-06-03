@@ -16,7 +16,11 @@ class EmailLinksController < ApplicationController
   end
 
   def pay
-    redirect_to '/', notice: message("pay")
+    if attendee.state == 'received_invitation'
+      redirect_to new_payment_path(params[:token])
+    else
+      redirect_to '/', notice: message("pay")
+    end
   end
 
   private

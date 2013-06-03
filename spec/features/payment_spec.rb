@@ -7,13 +7,18 @@ describe "The payment page" do
         a.invite!
       end
     end
+    let(:url) { new_payment_path(Base64.urlsafe_encode64(attendee.pay_token)) }
 
     it "doesn't redirect away from payments" do
-      visit payment_path(attendee)
-      current_path.should == payment_path(attendee)
+      visit(url)
+      current_path.should == url
     end
 
-    it "shows the payment form"
+    it "builds an adequate payment form" do
+      visit(url)
+      find("form")[:action].should match "https://sandbox.braintreegateway.com:443/"
+      page.should have_content(attendee.email_address)
+    end
 
     context "when submitting the form with a valid credit card" do
       it "shows a success message"
@@ -30,7 +35,14 @@ describe "The payment page" do
   end
 
   context "without an invited attendee" do
-    it "redirects home"
-    it "displays an error message"
+    it "redirects home" do
+      visit(new_payment_path('abc'))
+      current_path.should == '/'
+    end
+
+    it "displays an error message" do
+      visit(new_payment_path('abc'))
+      page.should have_content("Sorry, that doesn't appear to be a valid link.")
+    end
   end
 end

@@ -18,8 +18,8 @@ describe "Receiving links in emails" do
       end
 
       it "redirects to the payment page" do
-        pending
-        current_path.should == new_payment_path(attendee)
+        visit(url)
+        current_path.should == new_payment_path(Base64.urlsafe_encode64(attendee.pay_token))
       end
 
       it "doesn't change the state of the attendee" do
