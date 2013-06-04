@@ -1,4 +1,4 @@
-<h1>Purchasing a ticket for <%= @attendee.email_address %></h1>
+<h1>Purchasing a ticket for <%= attendee.email_address %></h1>
 
 <%= form_for :transaction,
      :url => Braintree::TransparentRedirect.url,
@@ -21,6 +21,6 @@
       <div><%= c.text_field :cvv %></div>
     <% end -%>
   <% end -%>
-  <%= hidden_field_tag :tr_data, @tr_data %>
+  <%= hidden_field_tag :tr_data, tr_data %>
   <%= f.submit "Submit" %>
 <% end -%>

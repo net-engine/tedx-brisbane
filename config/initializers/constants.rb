@@ -2,4 +2,6 @@ MANDRILL = OpenStruct.new(
   key: 'mandrill_key'
 )
 
-TICKET_PRICE_IN_DOLLARS = 100
+TICKET = OpenStruct.new(
+  price_in_dollars: 100
+)

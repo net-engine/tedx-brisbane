@@ -7,7 +7,7 @@ TedxBrisbane::Application.routes.draw do
   get '/decline/:token', to: "email_links#decline"
   get '/pay/:token', to: "email_links#pay"
   get '/payment/:token', to: 'payments#new', as: 'new_payment'
-  post '/payments/confirm' => 'payments#confirm', :as => :confirm_payment
+  get '/payments/confirm' => 'payments#confirm', :as => :confirm_payment
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
