@@ -1,9 +1,7 @@
 class PaymentsController < ApplicationController
-  def new
-    unless attendee && attendee.state == "received_invitation"
-      redirect_to('/', notice: I18n.t("controllers.payments.invalid")) and return
-    end
+  before_action :verify_attendee, only: :new
 
+  def new
     render :new, locals: { attendee: attendee, tr_data: tr_data }
   end
 
@@ -11,11 +9,17 @@ class PaymentsController < ApplicationController
     if result.success? && attendee_payment_created
       redirect_to('/', notice: I18n.t("controllers.payments.success"))
     else
-      redirect_to new_payment_path(pay_token), notice: "Sorry, your payment was declined."
+      redirect_to(new_payment_path(pay_token), notice: I18n.t("controllers.payments.failure"))
     end
   end
 
   private
+
+  def verify_attendee
+    unless attendee && attendee.received_invitation?
+      redirect_to('/', notice: I18n.t("controllers.payments.invalid")) and return
+    end
+  end
 
   def attendee_payment_created
     if attendee.payments.create! amount: result.transaction.amount,
