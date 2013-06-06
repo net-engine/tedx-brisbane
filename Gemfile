@@ -13,6 +13,7 @@ gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'ransack', github: 'ernie/ransack', branch: 'rails-4'
 gem 'activeadmin', github: 'akashkamboj/active_admin', branch: 'rails4'
 gem 'jbuilder', '1.0.2'
+gem 'rdoc', '3.12.2'
 
 group :staging, :production do
   gem 'unicorn'
