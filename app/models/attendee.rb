@@ -1,10 +1,14 @@
 class Attendee < ActiveRecord::Base
   has_many :emails
+  has_many :payments
 
+  validates :pay_token, :decline_token, :confirm_token, uniqueness: true
   validates :email_address,
             presence: true,
             uniqueness: true,
             format: { with: /\A[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,4}\z/i }
+
+  before_create :build_tokens
 
   state_machine initial: :awaiting_invitation do
     event :invite do
@@ -20,7 +24,8 @@ class Attendee < ActiveRecord::Base
     end
 
     event :decline do
-      transition received_invitation: :declined, received_reminder: :declined
+      transition awaiting_invitation: :declined,
+                 received_invitation: :declined
     end
 
     event :remind do
@@ -41,5 +46,13 @@ class Attendee < ActiveRecord::Base
 
   def fullname
     email_address
+  end
+
+  private
+
+  def build_tokens
+    self.pay_token = BCrypt::Password.create("#{self.email_address}-pay")
+    self.decline_token = BCrypt::Password.create("#{self.email_address}-decline")
+    self.confirm_token = BCrypt::Password.create("#{self.email_address}-confirm")
   end
 end

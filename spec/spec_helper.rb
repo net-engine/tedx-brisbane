@@ -40,8 +40,9 @@ RSpec.configure do |config|
   end
 
   Capybara.register_driver :poltergeist_debug do |app|
-    Capybara::Poltergeist::Driver.new(app, inspector: true, js_errors: true)
+    Capybara::Poltergeist::Driver.new(app, inspector: true, js_errors: true, timeout: 300)
   end
 
+  BCrypt::Engine::DEFAULT_COST = 1
   Capybara.javascript_driver = :poltergeist_debug
 end
