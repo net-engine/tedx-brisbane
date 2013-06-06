@@ -1,4 +1,9 @@
 en:
+  api:
+    error:
+      not_found: 'Not found'
+      access_denied: 'Access denied'
+      malformed_json: 'You have provided malformed json'
   controllers:
     payments:
       invalid: "Sorry, that doesn't appear to be a valid link."
