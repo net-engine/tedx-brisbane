@@ -46,6 +46,9 @@ describe EmailContent do
 
           text.should == "Hi, jane@example.com. You've been invited!!"
         end
+
+        it "should contain the pay link for this attendee"
+        it "should contain the decline link for this attendee"
       end
 
       context "when the event is 'revoke_invitation'" do
