@@ -1,5 +1,6 @@
 class Attendee < ActiveRecord::Base
   has_many :emails
+  has_many :payments
 
   validates :pay_token, :decline_token, :confirm_token, uniqueness: true
   validates :email_address,
@@ -23,7 +24,8 @@ class Attendee < ActiveRecord::Base
     end
 
     event :decline do
-      transition received_invitation: :declined, received_reminder: :declined
+      transition awaiting_invitation: :declined,
+                 received_invitation: :declined
     end
 
     event :remind do

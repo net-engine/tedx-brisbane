@@ -9,6 +9,7 @@ describe Attendee do
   it { should validate_uniqueness_of(:decline_token) }
   it { should validate_uniqueness_of(:confirm_token) }
   it { should have_many(:emails) }
+  it { should have_many(:payments) }
 
   it "should reject invalid email addresses" do
     attendee = build(:attendee, email_address: "doug")
@@ -102,10 +103,9 @@ describe Attendee do
       end
 
       describe "#decline!" do
-        it "raises an error (invalid transition)" do
-          expect {
-            attendee.decline!
-          }.to raise_error(StateMachine::InvalidTransition)
+        it " set the state to decline" do
+          attendee.decline!
+          attendee.state.should == 'declined'
         end
       end
 
@@ -333,9 +333,10 @@ describe Attendee do
       end
 
       describe "#decline!" do
-        it "promotes the attendee to the declined state" do
-          attendee.decline!
-          attendee.state.should == 'declined'
+        it "raises an error (invalid transition)" do
+          expect {
+            attendee.decline!
+          }.to raise_error(StateMachine::InvalidTransition)
         end
       end
 
