@@ -8,7 +8,17 @@ TedxBrisbane::Application.routes.draw do
   get "/pay/:token", to: "email_links#pay"
   get "/payment/:token", to: "payments#new", as: "new_payment"
   get "/payments/confirm" => "payments#confirm", as: "confirm_payment"
-  get "/api/v1/attendees/statistics" => "api/v1/attendees#statistics", as: "statistics_api_v1_attendees"
+
+  namespace :api do
+    namespace :v1 do
+      resources :attendees, only: [:create] do
+        collection do
+          get 'statistics'
+        end
+      end
+    end
+  end
+
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
