@@ -10,6 +10,8 @@ class Attendee < ActiveRecord::Base
 
   before_create :build_tokens
 
+  scope :by_token, lambda{|token| where(pay_token: self.decoded_token(token)) }
+
   state_machine initial: :awaiting_invitation do
     event :invite do
       transition awaiting_invitation: :received_invitation
@@ -46,6 +48,10 @@ class Attendee < ActiveRecord::Base
 
   def fullname
     email_address
+  end
+
+  def self.decoded_token pay_token
+    Base64.urlsafe_decode64(pay_token) rescue "null_token"
   end
 
   private
