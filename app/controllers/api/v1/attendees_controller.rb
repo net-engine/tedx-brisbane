@@ -9,6 +9,10 @@ class Api::V1::AttendeesController < Api::V1::BaseController
 
   private
 
+  def attendee_statistics
+    Attendee.statistics
+  end
+
   def created_attendees
     [].tap do |collection|
       supplied_attendees.each do |attendee_params|
@@ -19,13 +23,5 @@ class Api::V1::AttendeesController < Api::V1::BaseController
 
   def supplied_attendees
     params.require(:attendees)
-  end
-
-  def attendee_statistics
-    OpenStruct.new(attendee_state_count)
-  end
-
-  def attendee_state_count
-    Attendee.all.group("state").count
   end
 end

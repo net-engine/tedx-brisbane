@@ -14,7 +14,6 @@ describe AttendeeObserver, enable_observer: true do
 
   describe "#after_save" do
     it "should create a RealtimeStatisticsWorker" do
-      args = { publishable_resource: record, publishable_event: "updated" }
       RealtimeStatisticsWorker.should_receive(:perform_async)
 
       observer.after_save(record)
