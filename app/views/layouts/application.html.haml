@@ -9,3 +9,4 @@
     = flash[:notice]
     = yield
     %input{ type: 'hidden', data: { 'api-token' => 'abc123' } }
+    %input{ id: "pusher-key", type: 'hidden', data: { 'pusher-key' => ENV['TEDX_PUSHER_KEY'] } }

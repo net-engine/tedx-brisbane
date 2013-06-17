@@ -10,6 +10,10 @@ class Attendee < ActiveRecord::Base
 
   before_create :build_tokens
 
+  def self.statistics
+    OpenStruct.new(self.all.group("state").count)
+  end
+
   state_machine initial: :awaiting_invitation do
     event :invite do
       transition awaiting_invitation: :received_invitation

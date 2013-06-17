@@ -29,14 +29,7 @@ describe "Attendee statistics API" do
 
     context "given attendees in various states" do
       before(:each) do
-        10.times do
-          create(:attendee)
-        end
-
-        Attendee.last(8).map(&:invite!)
-        Attendee.last(3).map(&:pay!)
-        Attendee.last(2).map(&:remind!)
-        Attendee.last(1).map(&:confirm!)
+        create_attendees_in_various_states
       end
 
       it "returns a 200 :ok" do

@@ -16,6 +16,34 @@ describe Attendee do
     attendee.should_not be_valid
   end
 
+  describe ".statistics" do
+    it "returns an OpenStruct" do
+      Attendee.statistics.should be_a_kind_of(OpenStruct)
+    end
+
+    context "when there are attendees in various states" do
+      before(:each) do
+        create_attendees_in_various_states
+      end
+
+      it "returns the count of attendees in each state" do
+        Attendee.statistics.received_reminder.should == 1
+        Attendee.statistics.awaiting_invitation.should == 2
+        Attendee.statistics.paid.should == 1
+        Attendee.statistics.confirmed.should == 1
+        Attendee.statistics.received_invitation.should == 5
+      end
+    end
+
+    context "when there are no attendees" do
+      it "doesn't raise an error querying each state" do
+        expect {
+          Attendee.statistics.received_invitation
+        }.to_not raise_error
+      end
+    end
+  end
+
   describe "#pay_token" do
     it "is built on creation" do
       BCrypt::Password.new(attendee.pay_token).should == "jane@example.com-pay"

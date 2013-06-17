@@ -1,7 +1,22 @@
 $ ->
-  $.getJSON "/api/v1/attendees/statistics.json", (data) ->
-    append_statistics(data.attendee_statistics)
+  if $('#attendee-statistics').length > 0
+    subscribeToRealtimeStatistics()
+    $.getJSON "/api/v1/attendees/statistics.json", (data) ->
+      updateStatistics(data)
 
-append_statistics = (data) ->
-  html = HandlebarsTemplates['attendee_statistics'](data)
-  $('body').append(html)
+updateStatistics = (data) ->
+  html = HandlebarsTemplates['attendee_statistics'](data.attendee_statistics)
+  $('#attendee-statistics').html(html)
+
+subscribeToRealtimeStatistics = ->
+  pusher().subscribe(statisticsChannel()).bind 'update', (data) ->
+    updateStatistics(data)
+
+statisticsChannel = ->
+  $('#attendee-statistics').data('channel')
+
+pusherKey = ->
+  $('#pusher-key').data('pusher-key')
+
+pusher = ->
+  new Pusher(pusherKey())

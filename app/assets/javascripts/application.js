@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require handlebars
+//= require pusher.min
 //= require_tree .
