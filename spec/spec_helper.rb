@@ -30,9 +30,17 @@ RSpec.configure do |config|
       DatabaseCleaner.strategy = :transaction
     end
 
+    unless example.metadata[:enable_observer] == true
+      AttendeeObserver.any_instance.stub(:after_create)
+      AttendeeObserver.any_instance.stub(:after_save)
+      AttendeeObserver.any_instance.stub(:after_destroy)
+    end
+
     DatabaseCleaner.start
+
     EmailDeliveryWorker.jobs.clear
     InvitationRevokerWorker.jobs.clear
+    RealtimeStatisticsWorker.jobs.clear
   end
 
   config.after(:each) do
