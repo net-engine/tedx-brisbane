@@ -18,6 +18,8 @@ describe "The admin interface", js: true do
   it "allows creation of new attendees" do
     visit '/admin/attendees/new'
 
+    fill_in 'attendee_first_name',    with: 'some'
+    fill_in 'attendee_last_name',     with: 'guy'
     fill_in 'attendee_email_address', with: 'some_guy@example.com'
     click_on 'Create Attendee'
 
