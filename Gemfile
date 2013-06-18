@@ -47,6 +47,7 @@ group :development, :test do
   gem 'pry'
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'rspec-rails'
+  gem 'konacha'
 end
 
 group :test do

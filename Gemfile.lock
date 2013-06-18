@@ -117,6 +117,7 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     colorize (0.5.8)
+    columnize (0.3.6)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -131,6 +132,12 @@ GEM
       simplecov (>= 0.7)
       thor
     database_cleaner (1.0.1)
+    debugger (1.6.0)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.1)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.2)
     devise (1.5.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -190,6 +197,12 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.0)
+    konacha (3.0.0)
+      actionpack (>= 3.1, < 5)
+      capybara
+      colorize
+      railties (>= 3.1, < 5)
+      sprockets
     launchy (2.3.0)
       addressable (~> 2.3)
     listen (1.1.0)
@@ -354,6 +367,7 @@ DEPENDENCIES
   compass-rails
   coveralls
   database_cleaner
+  debugger
   factory_girl_rails
   faker
   formtastic!
@@ -362,6 +376,7 @@ DEPENDENCIES
   handlebars_assets
   httparty
   inherited_resources!
+  konacha
   launchy
   pg
   poltergeist
