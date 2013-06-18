@@ -51,7 +51,6 @@ RSpec.configure do |config|
     Capybara::Poltergeist::Driver.new(app, inspector: true, js_errors: true, timeout: 300)
   end
 
-  HandlebarsAssets::Config.path_prefix = 'spec/javascript/templates'
 
   BCrypt::Engine::DEFAULT_COST = 1
   Capybara.javascript_driver = :poltergeist_debug
