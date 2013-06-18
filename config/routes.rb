@@ -19,6 +19,7 @@ TedxBrisbane::Application.routes.draw do
     end
   end
 
+  resources :attendees, only: :create
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

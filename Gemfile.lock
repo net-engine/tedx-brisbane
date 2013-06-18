@@ -190,6 +190,12 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.0)
+    konacha (3.0.0)
+      actionpack (>= 3.1, < 5)
+      capybara
+      colorize
+      railties (>= 3.1, < 5)
+      sprockets
     launchy (2.3.0)
       addressable (~> 2.3)
     listen (1.1.0)
@@ -362,6 +368,7 @@ DEPENDENCIES
   handlebars_assets
   httparty
   inherited_resources!
+  konacha
   launchy
   pg
   poltergeist

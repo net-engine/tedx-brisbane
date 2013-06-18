@@ -8,11 +8,15 @@ describe "Creating a new attendee via the API" do
         "attendees": [
           {
             "email_address": "example@testingguy.com",
-            "hidden_horrible_param": "doug"
+            "hidden_horrible_param": "doug",
+            "first_name": "example",
+            "last_name":  "testingguy"
           },
           {
             "email_address": "otherguy@testing.com",
-            "hidden_horrible_param": "doug"
+            "hidden_horrible_param": "doug",
+            "first_name": "otherguy",
+            "last_name":  "testing"
           }
         ]
       }
@@ -34,16 +38,16 @@ describe "Creating a new attendee via the API" do
                 "email_address": "example@testingguy.com",
                 "state": "awaiting_invitation",
                 "round": 1,
-                "first_name": null,
-                "last_name": null
+                "first_name": "example",
+                "last_name": "testingguy"
               },
               {
                 "id": #{Attendee.where(email_address: "otherguy@testing.com").first.try(:id) || 0},
                 "email_address": "otherguy@testing.com",
                 "state": "awaiting_invitation",
                 "round": 1,
-                "first_name": null,
-                "last_name": null
+                "first_name": "otherguy",
+                "last_name":  "testing"
               }
             ]
           }
