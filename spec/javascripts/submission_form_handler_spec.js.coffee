@@ -87,4 +87,4 @@ describe "Submission Form Handler", ->
 
     it "displays the proper error message", ->
       $("#attendee_email_address").keyup()
-      $("#attendee_email_address").siblings(".error").text().should.equal("Please enter a valid email address2")
+      $("#attendee_email_address").siblings(".error").text().should.equal("Please enter a valid email address")
