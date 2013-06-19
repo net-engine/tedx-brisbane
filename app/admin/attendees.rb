@@ -1,7 +1,7 @@
 ActiveAdmin.register Attendee do
   controller do
     def permitted_params
-      params.permit(:attendee => [:email_address, :round])
+      params.permit(:attendee => [:email_address, :round, :first_name, :last_name])
     end
   end
 

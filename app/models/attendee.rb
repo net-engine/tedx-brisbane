@@ -7,6 +7,7 @@ class Attendee < ActiveRecord::Base
             presence: true,
             uniqueness: true,
             format: { with: /\A[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,4}\z/i }
+  validates :first_name, :last_name, presence: true
 
   before_create :build_tokens
 

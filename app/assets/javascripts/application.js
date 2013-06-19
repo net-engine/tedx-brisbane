@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require handlebars
 //= require pusher.min
+//= require jquery.validate
 //= require_tree .

@@ -1,0 +1,26 @@
+<button class="btn" id="toggle-button" name="button" type="submit">Attend!</button>
+<form accept-charset="UTF-8" action="/attendees" class="new_attendee" id="new_attendee" method="post" novalidate="novalidate"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="Q7me44JeOlyGNhsLg3koXhptobB0TdM81Izwmso45Ro="></div>  <section id="inputs">
+    <ol>
+      <li>
+        <label for="attendee_first_name">First name</label>
+        <input id="attendee_first_name" name="attendee[first_name]" type="text" value="{{ first_name }}">
+      </li>
+      <li>
+        <label for="attendee_last_name">Last name</label>
+        <input id="attendee_last_name" name="attendee[last_name]" type="text" value="{{ last_name }}">
+      </li>
+      <li>
+        <label for="attendee_email_address">Email address</label>
+        <input id="attendee_email_address" name="attendee[email_address]" type="email" value="{{ email_address }}">
+      </li>
+    </ol>
+  </section>
+  <section id="buttons">
+    <ol>
+      <li>
+        <a href="/">Cancel</a>
+        <input class="btn" id="submit" name="commit" type="submit" value="Attend!">
+      </li>
+    </ol>
+  </section>
+</form>

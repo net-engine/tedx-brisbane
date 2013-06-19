@@ -16,7 +16,7 @@ class Api::V1::AttendeesController < Api::V1::BaseController
   def created_attendees
     [].tap do |collection|
       supplied_attendees.each do |attendee_params|
-        collection << Attendee.create(attendee_params.slice("email_address"))
+        collection << Attendee.create(attendee_params.slice("email_address", "first_name", "last_name"))
       end
     end
   end
