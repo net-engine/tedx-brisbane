@@ -17,6 +17,8 @@ gem 'rdoc', '3.12.2'
 gem 'sdoc', '0.3.20'
 gem 'sass-rails', '~> 4.0.0.rc1'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'slim', ">= 1.3.0"
+gem 'sinatra', '>= 1.3.0', :require => nil
 
 group :staging, :production do
   gem 'unicorn'
