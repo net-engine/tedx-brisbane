@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '4.0.0.rc2'
 gem 'active_model_serializers'
 gem 'haml-rails'
 gem 'httparty'
@@ -15,10 +15,11 @@ gem 'activeadmin', github: 'akashkamboj/active_admin', branch: 'rails4'
 gem 'jbuilder', '1.0.2'
 gem 'rdoc', '3.12.2'
 gem 'sdoc', '0.3.20'
-gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'sass-rails', '~> 4.0.0.rc2'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'slim', ">= 1.3.0"
 gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'turbolinks'
 
 group :staging, :production do
   gem 'unicorn'
@@ -28,7 +29,6 @@ group :assets do
   gem 'coffee-rails'
   gem 'compass-rails'
   gem 'uglifier'
-  gem 'turbolinks'
 end
 
 group :development do
