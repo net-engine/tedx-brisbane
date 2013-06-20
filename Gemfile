@@ -15,13 +15,13 @@ gem 'activeadmin', github: 'akashkamboj/active_admin', branch: 'rails4'
 gem 'jbuilder', '1.0.2'
 gem 'rdoc', '3.12.2'
 gem 'sdoc', '0.3.20'
-gem 'sass-rails'
 
 group :staging, :production do
   gem 'unicorn'
 end
 
 group :assets do
+  gem 'sass-rails', '~> 4.0.0.rc1'
   gem 'coffee-rails'
   gem 'compass-rails'
   gem 'uglifier'
