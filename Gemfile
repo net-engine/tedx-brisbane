@@ -11,7 +11,7 @@ gem 'formtastic', github: 'justinfrench/formtastic', branch: 'rails4beta'
 gem 'responders', github: 'plataformatec/responders'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'ransack', github: 'ernie/ransack', branch: 'rails-4'
-gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
+gem 'activeadmin', github: 'akashkamboj/active_admin', branch: 'rails4'
 gem 'jbuilder', '1.0.2'
 gem 'rdoc', '3.12.2'
 gem 'sdoc', '0.3.20'
@@ -20,7 +20,7 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'slim', ">= 1.3.0"
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'turbolinks'
-gem "jquery-ui-rails"
+gem "jquery-rails", "2.3.0"
 
 group :staging, :production do
   gem 'unicorn'
