@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '4.0.0.rc2'
 gem 'rails-observers'
 gem 'active_model_serializers'
 gem 'bcrypt-ruby'
@@ -17,6 +17,15 @@ gem 'responders', github: 'plataformatec/responders'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'ransack', github: 'ernie/ransack', branch: 'rails-4'
 gem 'activeadmin', github: 'akashkamboj/active_admin', branch: 'rails4'
+gem 'jbuilder', '1.0.2'
+gem 'rdoc', '3.12.2'
+gem 'sdoc', '0.3.20'
+gem 'sass-rails', '~> 4.0.0.rc2'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'slim', ">= 1.3.0"
+gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'turbolinks'
+gem "jquery-rails", "2.3.0"
 
 group :staging, :production do
   gem 'unicorn'
@@ -25,16 +34,12 @@ end
 group :assets do
   gem 'coffee-rails'
   gem 'compass-rails'
-  gem 'sass-rails'
   gem 'uglifier'
-  gem 'turbolinks'
 end
 
 group :development do
   gem 'capistrano'
   gem 'capistrano-ext'
-  gem 'slim', ">= 1.3.0"
-  gem 'sinatra', '>= 1.3.0', :require => nil
 end
 
 group :development, :test do
