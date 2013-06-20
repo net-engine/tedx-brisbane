@@ -20,6 +20,7 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'slim', ">= 1.3.0"
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'turbolinks'
+gem "jquery-ui-rails"
 
 group :staging, :production do
   gem 'unicorn'
