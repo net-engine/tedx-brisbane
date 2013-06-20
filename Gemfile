@@ -1,17 +1,23 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.0.rc1'
+
 gem 'rails-observers'
 gem 'active_model_serializers'
 gem 'bcrypt-ruby'
 gem 'braintree'
+gem 'coffee-rails'
 gem 'haml-rails'
 gem 'handlebars_assets'
 gem 'httparty'
 gem 'pg'
 gem 'pusher'
+gem 'sass-rails'
 gem 'sidekiq'
 gem 'state_machine'
+gem 'turbolinks'
+gem 'uglifier'
+gem 'compass-rails', github: 'milgner/compass-rails', branch: 'rails4'
 gem 'formtastic', github: 'justinfrench/formtastic', branch: 'rails4beta'
 gem 'responders', github: 'plataformatec/responders'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
@@ -20,14 +26,6 @@ gem 'activeadmin', github: 'akashkamboj/active_admin', branch: 'rails4'
 
 group :staging, :production do
   gem 'unicorn'
-end
-
-group :assets do
-  gem 'coffee-rails'
-  gem 'compass-rails'
-  gem 'sass-rails'
-  gem 'uglifier'
-  gem 'turbolinks'
 end
 
 group :development do

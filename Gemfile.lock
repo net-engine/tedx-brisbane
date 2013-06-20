@@ -43,6 +43,14 @@ GIT
       actionpack (>= 3.0)
 
 GIT
+  remote: git://github.com/milgner/compass-rails.git
+  revision: 1749c06f15dc4b058427e7969810457213647fb8
+  branch: rails4
+  specs:
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
+
+GIT
   remote: git://github.com/plataformatec/responders.git
   revision: 7580276bd2d06684bcbc2b46ef123a90b117beb7
   specs:
@@ -121,8 +129,6 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    compass-rails (1.0.3)
-      compass (>= 0.12.2, < 0.14)
     connection_pool (1.0.0)
     coveralls (0.6.4)
       colorize
@@ -357,7 +363,7 @@ DEPENDENCIES
   capistrano-ext
   capybara
   coffee-rails
-  compass-rails
+  compass-rails!
   coveralls
   database_cleaner
   factory_girl_rails

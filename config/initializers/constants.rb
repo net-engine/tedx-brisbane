@@ -1,5 +1,5 @@
 MANDRILL = OpenStruct.new(
-  key: 'mandrill_key'
+  key: ENV['MANDRILL_SECRET']
 )
 
 TICKET = OpenStruct.new(
