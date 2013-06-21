@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'braintree'
 
 Braintree::Configuration.environment = :sandbox
