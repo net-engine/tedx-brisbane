@@ -1,4 +1,4 @@
-set :branch, "fix_active_admin_deploy"
+set :branch, "staging"
 set :rails_env, "staging"
 set :application, "tedx-brisbane-#{rails_env}"
 
