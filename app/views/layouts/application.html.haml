@@ -2,12 +2,22 @@
 %html
   %head
     %title TedxBrisbane
-    = stylesheet_link_tag    "application", media: "all"
-    = javascript_include_tag "application"
+    %meta{name: 'viewport', content: 'initial-scale=1'}
+    = favicon_link_tag "favicon.png"
+    = stylesheet_link_tag :application, media: "all"
+    = javascript_include_tag :application
     = csrf_meta_tags
   %body
-    = flash[:notice]
-    = flash[:error]
-    = yield
+    %header.header
+      .container
+        = render 'layouts/header'
+    
+    .container= yield
+
     %input{ type: 'hidden', data: { 'api-token' => 'abc123' } }
     %input{ id: "pusher-key", type: 'hidden', data: { 'pusher-key' => ENV['TEDX_PUSHER_KEY'] } }
+
+    - if flash[:notice]
+      .flash= flash[:notice]
+    - elsif flash[:error]  
+      .flash= flash[:error]

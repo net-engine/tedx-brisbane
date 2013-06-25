@@ -1,20 +1,21 @@
-= button_tag "Register", class: 'btn', id: "toggle-button"
+= button_tag "Register", class: 'btn btn-primary', id: "toggle-button"
 
 = form_for @attendee do |f|
-  %section#inputs
-    %ol
-      %li
-        = f.label :first_name
-        = f.text_field :first_name
-      %li
-        = f.label :last_name
-        = f.text_field :last_name
-      %li
-        = f.label :email_address
-        = f.email_field :email_address
+  .box
+    %section#inputs
+      %ol
+        %li
+          = f.label :first_name
+          = f.text_field :first_name
+        %li
+          = f.label :last_name
+          = f.text_field :last_name
+        %li
+          = f.label :email_address
+          = f.email_field :email_address
 
-  %section#buttons
-    %ol
-      %li
-        = link_to 'Cancel', "/"
-        = f.submit "Register!", class: 'btn', id: :submit
+    %section#buttons
+      %ol
+        %li
+          = f.submit "Register!", class: 'btn', id: :submit
+          = link_to 'Cancel', "/"

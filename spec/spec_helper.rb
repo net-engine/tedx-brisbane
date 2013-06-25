@@ -41,6 +41,8 @@ RSpec.configure do |config|
     EmailDeliveryWorker.jobs.clear
     InvitationRevokerWorker.jobs.clear
     RealtimeStatisticsWorker.jobs.clear
+
+    MANDRILL.stub(:key).and_return("mandrill_key")
   end
 
   config.after(:each) do
