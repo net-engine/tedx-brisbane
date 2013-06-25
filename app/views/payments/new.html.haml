@@ -5,38 +5,34 @@
   .box
 
     %section#inputs
-      
+
       %ol
         %legend Your details
-        
+
         = f.fields_for :customer do |c|
-        
-          %li
-            = f.label :first_name
-            = f.text_field :first_name
 
           %li
             = c.label :first_name, "First Name"
             = c.text_field :first_name
-        
+
           %li
             = c.label :last_name, "Last Name"
             = c.text_field :last_name
-      
+
       %ol
         %legend Credit Card
-          
+
         = f.fields_for :credit_card do |c|
-          
+
           %li
             = c.label :number, "Number"
             = c.text_field :number
-          
+
           %li
             = c.label :expiration_date, "Expiration Date (MM/YY)"
             = c.text_field :expiration_date
-          
-          %li  
+
+          %li
             = c.label :cvv, "CVV"
             = c.text_field :cvv
 
