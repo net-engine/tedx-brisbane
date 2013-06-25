@@ -1,0 +1,17 @@
+
+/* Background image from http://emeraldsugar-stock.deviantart.com/art/Brisbane-View-98008139 */
+
+html {
+  color: $color;
+  background: $background-color image-url('header.jpg') no-repeat center bottom;
+  @include background-size(cover);
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+
+  &:hover {
+    color: darken($background-color, 15%);
+  }
+}

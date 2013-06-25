@@ -1,0 +1,24 @@
+
+.header {
+  padding: ($padding / 2) 0;
+  background: $black;
+}
+
+.logo {
+  display: block;
+  background: image-url('logo.png') no-repeat top left;
+  background-size: 100%;
+  width: 42em;
+  height: 8em;
+  text-indent: -9999px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.date {
+  display: block;
+  margin: .5em 0 0;
+  font-weight: bold;
+  font-size: 4em;
+  line-height: 1em;
+}

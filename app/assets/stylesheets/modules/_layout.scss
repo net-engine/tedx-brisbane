@@ -1,0 +1,60 @@
+
+html, body {
+  min-height: 100%;
+}
+
+.container {
+  margin: auto;
+  padding: $padding;
+  max-width: $breakpoint-medium;
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+ul {
+
+  li {
+    float: left;
+    width: 16.6667%;
+
+    p {
+      font-size: 4em;
+      line-height: 1em;
+    }
+  }
+}
+
+.box {
+  background: $white;
+  margin: 2em 0;
+  max-width: 600px;
+  padding: 2em;
+  color: $black;
+}
+
+.btn {
+  border: 0;
+  padding: .25em .75em;
+  background: #ff2b06;
+  color: white;
+  font-family: Helvetica;
+  font-size: 100%;
+  font-weight: bold;
+  line-height: 1.5em;
+  border-radius: 2px;
+  -webkit-font-smoothing: antialiased;
+
+  &:hover {
+    cursor: pointer;
+    @include background-image(linear-gradient(45deg, transparent, rgba($black, .25)));
+  }
+}
+
+.btn-primary {
+  margin: 3em 0;
+  padding: .5em 1.5em;
+  font-size: 1.5em;
+  background: $black;
+}
