@@ -14,19 +14,20 @@ class EmailContent
   end
 
   def content
-    case event
-    when "invite"
-      "Hi, #{email_address}. You've been invited!!"
-    when "revoke_invitation"
-      "Sorry, #{email_address}. You took too long, so your invitation has been revoked. Better luck next time!!"
+    if recognised_events.include?(event)
+      render_html
     else
-      "Sorry, #{email_address}. I don't know why I'm emailing you."
+      raise Exceptions::EmailEventNotRecognised
     end
   end
 
   private
 
-  def email_address
-    attendee.email_address
+  def recognised_events
+    %w(register invite provide_complimentary_ticket revoke_invitation pay decline remind confirm)
+  end
+
+  def render_html
+    ActionController::Base.new.render_to_string('emails/content', locals: { event: event, attendee: attendee })
   end
 end

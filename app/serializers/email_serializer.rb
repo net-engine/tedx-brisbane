@@ -8,7 +8,8 @@ class EmailSerializer < ActiveModel::Serializer
 
   def message
     {
-      text: object.plain_text_content,
+      html: object.html,
+      auto_text: true,
       subject: "Message from TEDx",
       from_email: "noreply@tedxbrisbane.com",
       from_name: "TEDx Brisbane",
