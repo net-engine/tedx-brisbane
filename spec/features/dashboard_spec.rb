@@ -68,7 +68,6 @@ describe "The dashboard", js: true do
   context "when visiting the main page" do
     it "shows an empty for to create a new attendee" do
       visit '/'
-      click_on "toggle-button"
       find_by_id('attendee_first_name').tag_name    == "input"
       find_by_id('attendee_first_name').value       == ""
       find_by_id('attendee_last_name').tag_name     == "input"
@@ -80,7 +79,6 @@ describe "The dashboard", js: true do
     it "creates an attendee when submiting the form with proper value" do
       visit '/'
       expect do
-        click_on "toggle-button"
         fill_in "attendee_first_name",    with: "Dan"
         fill_in "attendee_last_name",     with: "Sowter"
         fill_in "attendee_email_address", with: "dan@netengine.com.au"

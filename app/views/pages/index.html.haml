@@ -1,6 +1,6 @@
-.clearfix{ id: "attendee-statistics", data: {channel: "attendee-statistics"} }
-
--# %iframe{src: 'http://www.bigsky.io/maps/28', frameborder: '0', width: '100%', height: '480px'}
+%figure.statistics
+  %h1 Attendees
+  #attendee-statistics.clearfix{ data: {channel: "attendee-statistics"} }
 
 = render "pages/submission_form", attendee: @attendee
 
