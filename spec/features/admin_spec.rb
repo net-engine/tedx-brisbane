@@ -8,7 +8,7 @@ describe "The admin interface", js: true do
 
   it "allows sign in" do
     current_path.should == '/admin'
-    page.should have_content('Dashboard')
+    page.should have_content('Attendees')
   end
 
   it "shows existing admin users" do
@@ -57,29 +57,140 @@ describe "The admin interface", js: true do
       Attendee.count.should == 0
     end
 
-    it "allows batch edit inviting" do
-      click_on 'Invite Selected'
+    context "when inviting" do
+      it "allows batch edit inviting" do
+        click_on 'Invite Selected'
 
-      page.should have_content("Successfully invited 1 attendee")
-      Attendee.where(state: 'received_invitation').count.should == 1
-      EmailDeliveryWorker.jobs.size.should == 1
-      InvitationRevokerWorker.jobs.size.should == 1
+        page.should have_content("Successfully invited 1 attendees")
+        Attendee.where(state: 'received_invitation').count.should == 1
+        EmailDeliveryWorker.jobs.size.should == 1
+        InvitationRevokerWorker.jobs.size.should == 1
+      end
+
+      it "schedules the invitaion to be revoked in 5 days" do
+        InvitationRevokerWorker.stub(:perform_in)
+        InvitationRevokerWorker.should_receive(:perform_in).with(5.days, attendee.id)
+
+        click_on 'Invite Selected'
+      end
+
+      it "doesn't fail on impossible state transitions" do
+        attendee.invite!
+        click_on 'Invite Selected'
+
+        page.should have_content("Successfully invited 1 attendees")
+        EmailDeliveryWorker.jobs.size.should == 0
+        InvitationRevokerWorker.jobs.size.should == 0
+      end
     end
 
-    it "schedules the invitaion to be revoked in 5 days" do
-      InvitationRevokerWorker.stub(:perform_in)
-      InvitationRevokerWorker.should_receive(:perform_in).with(5.days, attendee.id)
+    context "when reminding" do
+      before(:each) do
+        attendee.invite!
+        attendee.pay!
+      end
 
-      click_on 'Invite Selected'
+      it "allows batch edit reminding" do
+        click_on 'Remind Selected'
+
+        page.should have_content("Successfully reminded 1 attendees")
+        Attendee.where(state: 'received_reminder').count.should == 1
+        EmailDeliveryWorker.jobs.size.should == 1
+      end
+
+      it "doesn't fail on impossible state transitions" do
+        attendee.remind!
+        click_on 'Remind Selected'
+
+        page.should have_content("Successfully reminded 1 attendees")
+        EmailDeliveryWorker.jobs.size.should == 0
+      end
     end
 
-    it "doesn't fail on impossible state transitions" do
-      attendee.invite!
-      click_on 'Invite Selected'
+    context "when confirming" do
+      before(:each) do
+        attendee.invite!
+        attendee.pay!
+        attendee.remind!
+      end
 
-      page.should have_content("Successfully invited 1 attendee")
-      EmailDeliveryWorker.jobs.size.should == 0
-      InvitationRevokerWorker.jobs.size.should == 0
+      it "allows batch edit confirming" do
+        click_on 'Confirm Selected'
+
+        page.should have_content("Successfully confirmed 1 attendees")
+        Attendee.where(state: 'confirmed').count.should == 1
+        EmailDeliveryWorker.jobs.size.should == 1
+      end
+
+      it "doesn't fail on impossible state transitions" do
+        attendee.confirm!
+        click_on 'Confirm Selected'
+
+        page.should have_content("Successfully confirmed 1 attendees")
+        EmailDeliveryWorker.jobs.size.should == 0
+      end
+    end
+
+    context "when declining" do
+      before(:each) do
+        attendee.invite!
+      end
+
+      it "allows batch edit declining" do
+        click_on 'Decline Selected'
+
+        page.should have_content("Successfully declined 1 attendees")
+        Attendee.where(state: 'declined').count.should == 1
+        EmailDeliveryWorker.jobs.size.should == 1
+      end
+
+      it "doesn't fail on impossible state transitions" do
+        attendee.decline!
+        click_on 'Decline Selected'
+
+        page.should have_content("Successfully declined 1 attendees")
+        EmailDeliveryWorker.jobs.size.should == 0
+      end
+    end
+
+    context "when revoking invitations" do
+      before(:each) do
+        attendee.invite!
+      end
+
+      it "allows batch edit revoking" do
+        click_on 'Uninvite Selected'
+
+        page.should have_content("Successfully revoked invitations for 1 attendees")
+        Attendee.where(state: 'awaiting_invitation').count.should == 1
+        EmailDeliveryWorker.jobs.size.should == 1
+      end
+
+      it "doesn't fail on impossible state transitions" do
+        attendee.revoke_invitation!
+        click_on 'Uninvite Selected'
+
+        page.should have_content("Successfully revoked invitations for 1 attendees")
+        EmailDeliveryWorker.jobs.size.should == 0
+      end
+    end
+
+    context "when giving away free tickets" do
+      it "allows batch edit giving of free tickets" do
+        click_on 'Gift Selected'
+
+        page.should have_content("Successfully provided complimentary tickets for 1 attendees")
+        Attendee.where(state: 'received_complimentary_ticket').count.should == 1
+        EmailDeliveryWorker.jobs.size.should == 1
+      end
+
+      it "doesn't fail on impossible state transitions" do
+        attendee.provide_complimentary_ticket!
+        click_on 'Gift Selected'
+
+        page.should have_content("Successfully provided complimentary tickets for 1 attendees")
+        EmailDeliveryWorker.jobs.size.should == 0
+      end
     end
   end
 end

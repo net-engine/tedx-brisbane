@@ -112,6 +112,13 @@ describe Attendee do
         end
       end
 
+      describe "#provide_complimentary_ticket!" do
+        it "sets the state to received_complimentary_ticket" do
+          attendee.provide_complimentary_ticket!
+          attendee.state.should == 'received_complimentary_ticket'
+        end
+      end
+
       describe "#pay!" do
         it "raises an error (invalid transition)" do
           expect {
@@ -154,6 +161,13 @@ describe Attendee do
           expect {
             attendee.invite!
           }.to raise_error(StateMachine::InvalidTransition)
+        end
+      end
+
+      describe "#provide_complimentary_ticket!" do
+        it "sets the state to received_complimentary_ticket" do
+          attendee.provide_complimentary_ticket!
+          attendee.state.should == 'received_complimentary_ticket'
         end
       end
 
@@ -214,6 +228,14 @@ describe Attendee do
         end
       end
 
+      describe "#provide_complimentary_ticket!" do
+        it "raises an error (invalid transition)" do
+          expect {
+            attendee.provide_complimentary_ticket!
+          }.to raise_error(StateMachine::InvalidTransition)
+        end
+      end
+
       describe "#revoke_invitation!" do
         it "raises an error (invalid transition)" do
           expect {
@@ -235,6 +257,66 @@ describe Attendee do
           expect {
             attendee.decline!
           }.to raise_error(StateMachine::InvalidTransition)
+        end
+      end
+
+      describe "#confirm!" do
+        it "raises an error (invalid transition)" do
+          expect {
+            attendee.confirm!
+          }.to raise_error(StateMachine::InvalidTransition)
+        end
+      end
+
+      describe "#remind!" do
+        it "promotes the attendee to the received_reminder state" do
+          attendee.remind!
+          attendee.state.should == 'received_reminder'
+        end
+      end
+    end
+
+    context "when the Attendee has received_complimentary_ticket" do
+      before(:each) do
+        attendee.provide_complimentary_ticket!
+      end
+
+      describe "#invite!" do
+        it "raises an error (invalid transition)" do
+          expect {
+            attendee.invite!
+          }.to raise_error(StateMachine::InvalidTransition)
+        end
+      end
+
+      describe "#provide_complimentary_ticket!" do
+        it "raises an error (invalid transition)" do
+          expect {
+            attendee.provide_complimentary_ticket!
+          }.to raise_error(StateMachine::InvalidTransition)
+        end
+      end
+
+      describe "#revoke_invitation!" do
+        it "raises an error (invalid transition)" do
+          expect {
+            attendee.revoke_invitation!
+          }.to raise_error(StateMachine::InvalidTransition)
+        end
+      end
+
+      describe "#pay!" do
+        it "raises an error (invalid transition)" do
+          expect {
+            attendee.pay!
+          }.to raise_error(StateMachine::InvalidTransition)
+        end
+      end
+
+      describe "#decline!" do
+        it "promotes the attendee to the declined state" do
+          attendee.decline!
+          attendee.state.should == 'declined'
         end
       end
 
@@ -278,6 +360,14 @@ describe Attendee do
         end
       end
 
+      describe "#provide_complimentary_ticket!" do
+        it "raises an error (invalid transition)" do
+          expect {
+            attendee.provide_complimentary_ticket!
+          }.to raise_error(StateMachine::InvalidTransition)
+        end
+      end
+
       describe "#pay!" do
         it "raises an error (invalid transition)" do
           expect {
@@ -316,6 +406,14 @@ describe Attendee do
         attendee.invite!
         attendee.pay!
         attendee.remind!
+      end
+
+      describe "#provide_complimentary_ticket!" do
+        it "raises an error (invalid transition)" do
+          expect {
+            attendee.provide_complimentary_ticket!
+          }.to raise_error(StateMachine::InvalidTransition)
+        end
       end
 
       describe "#remind!" do
