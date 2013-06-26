@@ -19,7 +19,7 @@ PID=/var/www/unicorn/shared/pids/unicorn.pid
 CMD="$DAEMON -D -c $APP_ROOT/config/unicorn.rb -E $RAILS_ENV"
 
 TIMEOUT=${TIMEOUT-60}
-INIT_CONF=$APP_ROOT/config/init.conf
+INIT_CONF=/var/www/unicorn/shared/config/init.conf
 action="$1"
 set -u
 
