@@ -1,20 +1,28 @@
 class EmailLink
-  attr_reader :attendee
+  attr_reader :resource
 
-  def self.confirm(attendee)
-    new(attendee).confirm
+  def self.confirm(resource)
+    new(resource).confirm
   end
 
-  def self.pay(attendee)
-    new(attendee).pay
+  def self.pay(resource)
+    new(resource).pay
   end
 
-  def self.decline(attendee)
-    new(attendee).decline
+  def self.decline(resource)
+    new(resource).decline
   end
 
-  def initialize(attendee)
-    @attendee = attendee
+  def self.for(resource)
+    new(resource).for
+  end
+
+  def initialize(resource)
+    @resource = resource
+  end
+
+  def for
+    Addressable::URI.escape("#{protocol}://#{host_name}/#{route}/#{token}")
   end
 
   def confirm
@@ -38,15 +46,23 @@ class EmailLink
     HOSTNAME.public_send(Rails.env)
   end
 
+  def route
+    resource.class.to_s.downcase.pluralize
+  end
+
+  def token
+    Base64.urlsafe_encode64(resource.token)
+  end
+
   def confirm_token
-    Base64.urlsafe_encode64(attendee.confirm_token)
+    Base64.urlsafe_encode64(resource.confirm_token)
   end
 
   def pay_token
-    Base64.urlsafe_encode64(attendee.pay_token)
+    Base64.urlsafe_encode64(resource.pay_token)
   end
 
   def decline_token
-    Base64.urlsafe_encode64(attendee.decline_token)
+    Base64.urlsafe_encode64(resource.decline_token)
   end
 end

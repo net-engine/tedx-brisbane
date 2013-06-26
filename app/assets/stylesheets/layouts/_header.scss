@@ -1,24 +1,26 @@
 
-.header {
-  padding: ($padding / 2) 0;
-  background: $black;
-}
-
 .logo {
   display: block;
-  background: image-url('logo.png') no-repeat top left;
-  background-size: 100%;
-  width: 42em;
-  height: 8em;
-  text-indent: -9999px;
-  overflow: hidden;
-  white-space: nowrap;
+  max-width: 450px;
+
+  img {
+    display: block;
+    max-width: 100%;
+    border: 0;
+  }
 }
 
 .date {
-  display: block;
-  margin: .5em 0 0;
   font-weight: bold;
-  font-size: 4em;
+  font-size: 2em;
   line-height: 1em;
+  margin: 1.5em 0;
+
+  @media only screen and (max-width: $breakpoint-medium) {
+    opacity: .25;
+    position: absolute;
+    bottom: 0;
+    right: 1em;
+    font-size: 1.25em;
+  }
 }

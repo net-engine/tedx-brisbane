@@ -1,1 +1,5 @@
-= render "emails/#{event}", attendee: attendee
+%p
+  View this in your
+  %a{ href: EmailLink.for(email) } browser
+
+= render "emails/#{email.event}", attendee: attendee
