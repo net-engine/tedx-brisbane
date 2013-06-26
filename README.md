@@ -10,19 +10,8 @@ Generally, the system will allow people to learn about the event, and register t
 ## Roadmap
 ### Design
 - add static content to public page
-- email content
-- html emails (IN PROGRESS)
-- update invitation email to include links to pay / decline
-- rails controller for emails (display this in a browser etc)
+- email content and design
 
 ### Development
-- send emails on registration
-- update admin batch actions to include missing events
-  - invite (DONE)
-  - remind (DONE)
-  - revoke (manual, not via the timer) (DONE)
-  - pay (for giving away free tickets) (DONE)
-  - confirm (manual by an admin, not via email link) (DONE)
-  - decline (manual by an admin, not via email link) (DONE)
-- ditch unnecessary fields from active_admin (tokens, for example) (DONE)
-- update active_admin for rails 4
+- rails controller for emails (display this in a browser etc)
+- update active_admin for rails 4 (currently quite hacky)
