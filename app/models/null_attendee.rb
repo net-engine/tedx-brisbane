@@ -1,11 +1,7 @@
-class NullAttendee
+NullAttendee = Naught.build do |config|
+  config.black_hole
+
   def state
     "invalid"
-  end
-
-  def confirm!
-  end
-
-  def decline!
   end
 end

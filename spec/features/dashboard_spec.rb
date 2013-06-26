@@ -79,13 +79,15 @@ describe "The dashboard", js: true do
 
     it "creates an attendee when submiting the form with proper value" do
       visit '/'
-      expect do
-        click_on "toggle-button"
-        fill_in "attendee_first_name",    with: "Dan"
-        fill_in "attendee_last_name",     with: "Sowter"
-        fill_in "attendee_email_address", with: "dan@netengine.com.au"
-        click_on "submit"
-      end.to change{Attendee.count}.by(1)
+
+      click_on "toggle-button"
+      fill_in "attendee_first_name",    with: "Dan"
+      fill_in "attendee_last_name",     with: "Sowter"
+      fill_in "attendee_email_address", with: "dan@netengine.com.au"
+      click_on "submit"
+
+      Attendee.count.should == 1
+      EmailDeliveryWorker.jobs.size.should == 1
     end
   end
 end

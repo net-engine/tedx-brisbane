@@ -163,6 +163,11 @@ describe "Receiving links in emails" do
       it "updates the attendee to 'confirmed'" do
         Attendee.find(attendee.id).state.should == "confirmed"
       end
+
+      it "sends a confirmation email" do
+        visit(url)
+        EmailDeliveryWorker.jobs.size.should == 1
+      end
     end
 
     context "when the attendee has already confirmed" do
@@ -186,6 +191,11 @@ describe "Receiving links in emails" do
       it "doesn't change the state of the attendee" do
         expect { visit(url) }.to_not change(Attendee.find(attendee.id), :state)
       end
+
+      it "doesn't send a confirmation email" do
+        visit(url)
+        EmailDeliveryWorker.jobs.size.should == 0
+      end
     end
 
     context "when the attendee has already declined" do
@@ -207,6 +217,11 @@ describe "Receiving links in emails" do
 
       it "doesn't change the state of the attendee" do
         expect { visit(url) }.to_not change(Attendee.find(attendee.id), :state)
+      end
+
+      it "doesn't send a confirmation email" do
+        visit(url)
+        EmailDeliveryWorker.jobs.size.should == 0
       end
     end
   end
@@ -238,6 +253,11 @@ describe "Receiving links in emails" do
         visit(url)
         Attendee.find(attendee.id).state.should == "declined"
       end
+
+      it "sends a confirmation email" do
+        visit(url)
+        EmailDeliveryWorker.jobs.size.should == 1
+      end
     end
 
     context "when the invitation has been revoked" do
@@ -260,6 +280,11 @@ describe "Receiving links in emails" do
         visit(url)
         Attendee.find(attendee.id).state.should == "declined"
       end
+
+      it "sends a confirmation email" do
+        visit(url)
+        EmailDeliveryWorker.jobs.size.should == 1
+      end
     end
 
     context "when the attendee has already paid" do
@@ -280,6 +305,11 @@ describe "Receiving links in emails" do
 
       it "doesn't change the state of the attendee" do
         expect { visit(url) }.to_not change(Attendee.find(attendee.id), :state)
+      end
+
+      it "doesn't send a confirmation email" do
+        visit(url)
+        EmailDeliveryWorker.jobs.size.should == 0
       end
     end
 
@@ -302,6 +332,11 @@ describe "Receiving links in emails" do
 
       it "doesn't change the state of the attendee" do
         expect { visit(url) }.to_not change(Attendee.find(attendee.id), :state)
+      end
+
+      it "doesn't send a confirmation email" do
+        visit(url)
+        EmailDeliveryWorker.jobs.size.should == 0
       end
     end
 
@@ -326,6 +361,11 @@ describe "Receiving links in emails" do
       it "doesn't change the state of the attendee" do
         expect { visit(url) }.to_not change(Attendee.find(attendee.id), :state)
       end
+
+      it "doesn't send a confirmation email" do
+        visit(url)
+        EmailDeliveryWorker.jobs.size.should == 0
+      end
     end
 
     context "when the attendee has already declined" do
@@ -346,6 +386,11 @@ describe "Receiving links in emails" do
 
       it "doesn't change the state of the attendee" do
         expect { visit(url) }.to_not change(Attendee.find(attendee.id), :state)
+      end
+
+      it "doesn't send a confirmation email" do
+        visit(url)
+        EmailDeliveryWorker.jobs.size.should == 0
       end
     end
   end

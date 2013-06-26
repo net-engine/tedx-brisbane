@@ -44,6 +44,7 @@ describe "The payment page", js: true do
         attendee.first_name.should == "Douglas"
         attendee.last_name.should == "Adams"
         attendee.state.should == "paid"
+        EmailDeliveryWorker.jobs.size.should == 1
       end
     end
 
@@ -67,6 +68,7 @@ describe "The payment page", js: true do
         attendee.first_name.should_not == "Douglas"
         attendee.last_name.should_not == "Adams"
         attendee.state.should_not == "paid"
+        EmailDeliveryWorker.jobs.size.should == 0
       end
     end
   end

@@ -7,7 +7,7 @@ describe EmailLink do
     describe ".pay" do
       it "returns the correct url" do
         attendee.stub(:pay_token).and_return('ABC123')
-        url = "https://www.example.com/pay/QUJDMTIz"
+        url = "http://www.example.com/pay/QUJDMTIz"
 
         EmailLink.pay(attendee).should eq(url)
       end
@@ -17,7 +17,7 @@ describe EmailLink do
     describe ".confirm" do
       it "returns the correct url" do
         attendee.stub(:confirm_token).and_return('ABC123')
-        url = "https://www.example.com/confirm/QUJDMTIz"
+        url = "http://www.example.com/confirm/QUJDMTIz"
 
         EmailLink.confirm(attendee).should eq(url)
       end
@@ -26,7 +26,7 @@ describe EmailLink do
     describe ".decline" do
       it "returns the correct url" do
         attendee.stub(:decline_token).and_return('ABC123')
-        url = "https://www.example.com/decline/QUJDMTIz"
+        url = "http://www.example.com/decline/QUJDMTIz"
 
         EmailLink.decline(attendee).should eq(url)
       end

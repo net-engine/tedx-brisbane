@@ -13,6 +13,7 @@ Bundler.require(:default, Rails.env)
 
 module TedxBrisbane
   class Application < Rails::Application
+    config.autoload_paths += %W(#{config.root}/lib)
     config.active_record.observers = :attendee_observer
   end
 end

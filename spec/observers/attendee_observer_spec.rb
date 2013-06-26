@@ -12,6 +12,14 @@ describe AttendeeObserver, enable_observer: true do
     end
   end
 
+  describe "#after_update" do
+    it "should create a RealtimeStatisticsWorker" do
+      RealtimeStatisticsWorker.should_receive(:perform_async)
+
+      observer.after_update(record)
+    end
+  end
+
   describe "#after_save" do
     it "should create a RealtimeStatisticsWorker" do
       RealtimeStatisticsWorker.should_receive(:perform_async)
