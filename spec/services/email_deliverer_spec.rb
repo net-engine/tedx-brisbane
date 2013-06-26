@@ -4,7 +4,7 @@ describe EmailDeliverer do
 
   describe '.post' do
     it "responds to .post" do
-      EmailDeliverer.post "http://google.com"
+      EmailDeliverer.respond_to?(:post)
     end
   end
 
@@ -38,4 +38,3 @@ describe EmailDeliverer do
     end
   end
 end
-
