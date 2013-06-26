@@ -15,12 +15,19 @@ $background-color: $red;
 $color: $white;
 $color-primary: $red;
 
+$header-color: $black;
+$footer-color: $black;
+
 // Dimensions
 
 $padding: 2em;
+$button-radius: 2px;
+
+$header-height: 12em;
+$footer-height: $padding;
 
 // Breakpoints
 
 $breakpoint-large:  1500px;
-$breakpoint-medium: 1000px;
-$breakpoint-small:   500px;
+$breakpoint-medium: 1024px;
+$breakpoint-small:   768px;
