@@ -1,5 +1,10 @@
-!!!
-%html
+!!! 5
+<!--[if lt IE 7]> <html lang="en" class="no-js oldie ie6"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="no-js oldie ie7"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="no-js oldie ie8"> <![endif]-->
+<!--[if gt IE 8]><!-->
+%html.no-js{ :lang => "en" }
+  <!--<![endif]-->
   %head
     %title TedxBrisbane
     %meta{name: 'viewport', content: 'initial-scale=1'}
@@ -7,12 +12,22 @@
     = stylesheet_link_tag :application, media: "all"
     = javascript_include_tag :application
     = csrf_meta_tags
+  
+    /[if lt IE 8]
+      <script src="https://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+
   %body
-    %header.header
-      .container
-        = render 'layouts/header'
-    
-    .container= yield
+    .wrapper
+      %header.header
+        .container
+          = render 'layouts/header'
+      
+      .main
+        .container
+          = yield
+
+          .sponsors
+            = render 'layouts/sponsors'
 
     %input{ type: 'hidden', data: { 'api-token' => 'abc123' } }
     %input{ id: "pusher-key", type: 'hidden', data: { 'pusher-key' => ENV['TEDX_PUSHER_KEY'] } }
