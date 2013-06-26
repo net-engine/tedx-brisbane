@@ -1,0 +1,10 @@
+%h1
+  = "You're invited!, #{attendee.first_name}"
+
+%p
+  Click here to
+  %a{ href: EmailLink.pay(attendee) } pay
+
+%p
+  Click here to
+  %a{ href: EmailLink.decline(attendee) } decline

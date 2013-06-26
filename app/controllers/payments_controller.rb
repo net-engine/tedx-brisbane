@@ -29,6 +29,7 @@ class PaymentsController < ApplicationController
       attendee.update_attributes first_name: result.transaction.customer_details.first_name,
                                  last_name: result.transaction.customer_details.last_name
       attendee.pay!
+      attendee.emails.create(event: 'pay').deliver
     end
   end
 

@@ -2,6 +2,7 @@ class EmailLinksController < ApplicationController
   def confirm
     begin
       attendee.confirm!
+      attendee.emails.create(event: 'confirm').deliver
     rescue StateMachine::InvalidTransition
     end
     redirect_to '/', notice: message("confirm")
@@ -10,6 +11,7 @@ class EmailLinksController < ApplicationController
   def decline
     begin
       attendee.decline!
+      attendee.emails.create(event: 'decline').deliver
     rescue StateMachine::InvalidTransition
     end
     redirect_to '/', notice: message("decline")
@@ -32,11 +34,11 @@ class EmailLinksController < ApplicationController
   def attendee
     case params[:action]
     when "confirm"
-      Attendee.where(confirm_token: decoded_token).first || NullAttendee.new
+      Attendee.where(confirm_token: decoded_token).first || NullAttendee.get
     when "decline"
-      Attendee.where(decline_token: decoded_token).first || NullAttendee.new
+      Attendee.where(decline_token: decoded_token).first || NullAttendee.get
     when "pay"
-      Attendee.where(pay_token: decoded_token).first || NullAttendee.new
+      Attendee.where(pay_token: decoded_token).first || NullAttendee.get
     end
   end
 

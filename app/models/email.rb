@@ -15,7 +15,7 @@ class Email < ActiveRecord::Base
     EmailDeliveryWorker.perform_async(id)
   end
 
-  def plain_text_content
+  def html
     EmailContent.for attendee: attendee, event: event
   end
 
