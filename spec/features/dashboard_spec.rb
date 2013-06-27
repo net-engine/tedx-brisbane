@@ -82,8 +82,7 @@ describe "The dashboard", js: true do
       fill_in "attendee_last_name",     with: "Sowter"
       fill_in "attendee_email_address", with: "dan@netengine.com.au"
       click_on "submit"
-      binding.pry
-      
+
       Attendee.count.should == 1
       EmailDeliveryWorker.jobs.size.should == 1
     end
