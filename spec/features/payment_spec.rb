@@ -23,6 +23,8 @@ describe "The payment page", js: true do
       find_by_id("tr_data").value.should match("submit_for_settlement%5D=true")
       find_by_id("tr_data").value.should match("attendee_pay_token")
       find_by_id("tr_data").value.should match("customer%5D%5Bemail%5D=")
+      find_by_id("transaction_customer_first_name").value.should == attendee.first_name
+      find_by_id("transaction_customer_last_name").value.should == attendee.last_name
       page.should have_content(attendee.email_address)
     end
 
@@ -42,6 +44,7 @@ describe "The payment page", js: true do
         attendee.first_name.should == "Douglas"
         attendee.last_name.should == "Adams"
         attendee.state.should == "paid"
+        EmailDeliveryWorker.jobs.size.should == 1
       end
     end
 
@@ -65,6 +68,7 @@ describe "The payment page", js: true do
         attendee.first_name.should_not == "Douglas"
         attendee.last_name.should_not == "Adams"
         attendee.state.should_not == "paid"
+        EmailDeliveryWorker.jobs.size.should == 0
       end
     end
   end

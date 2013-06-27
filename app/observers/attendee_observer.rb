@@ -5,6 +5,10 @@ class AttendeeObserver < ActiveRecord::Observer
     RealtimeStatisticsWorker.perform_async
   end
 
+  def after_update(resource)
+    RealtimeStatisticsWorker.perform_async
+  end
+
   def after_save(resource)
     RealtimeStatisticsWorker.perform_async
   end

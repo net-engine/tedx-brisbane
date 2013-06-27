@@ -1,0 +1,24 @@
+
+.btn {
+  border: 0;
+  padding: .25em .75em;
+  background: #ff2b06;
+  color: white;
+  font-family: Helvetica;
+  font-size: 100%;
+  font-weight: bold;
+  line-height: 1.5em;
+  border-radius: $button-radius;
+  -webkit-font-smoothing: antialiased;
+
+  &:hover {
+    cursor: pointer;
+    @include background-image(linear-gradient(45deg, transparent, rgba($black, .25)));
+  }
+}
+
+.btn-primary {
+  margin: 3em 0;
+  padding: .5em 1.5em;
+  font-size: 1.5em;
+}

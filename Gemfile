@@ -1,17 +1,24 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0.rc2'
+gem 'rails', '4.0.0'
+
 gem 'rails-observers'
 gem 'active_model_serializers'
 gem 'bcrypt-ruby'
 gem 'braintree'
+gem 'coffee-rails'
 gem 'haml-rails'
 gem 'handlebars_assets'
 gem 'httparty'
+gem 'naught'
 gem 'pg'
 gem 'pusher'
+gem 'sass-rails'
 gem 'sidekiq'
 gem 'state_machine'
+gem 'turbolinks'
+gem 'uglifier'
+gem 'compass-rails', github: 'milgner/compass-rails', branch: 'rails4'
 gem 'formtastic', github: 'justinfrench/formtastic', branch: 'rails4beta'
 gem 'responders', github: 'plataformatec/responders'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
@@ -20,7 +27,6 @@ gem 'activeadmin', github: 'akashkamboj/active_admin', branch: 'rails4'
 gem 'jbuilder', '1.0.2'
 gem 'rdoc', '3.12.2'
 gem 'sdoc', '0.3.20'
-gem 'sass-rails', '~> 4.0.0.rc2'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'slim', ">= 1.3.0"
 gem 'sinatra', '>= 1.3.0', :require => nil
@@ -29,12 +35,6 @@ gem "jquery-rails", "2.3.0"
 
 group :staging, :production do
   gem 'unicorn'
-end
-
-group :assets do
-  gem 'coffee-rails'
-  gem 'compass-rails'
-  gem 'uglifier'
 end
 
 group :development do

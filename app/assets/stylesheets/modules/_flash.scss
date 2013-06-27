@@ -1,0 +1,45 @@
+
+.flash {
+  position: fixed;
+  top: 2em;
+  left: 50%;
+  width: 50%;
+  margin-left: -25%;
+  font-size: 1.25em;
+  text-align: center;
+  line-height: 1.5em;
+  padding: .5em 1em;
+  background: $color-primary;
+  background: rgba($color-primary, .95);
+  z-index: 10;
+  @include border-radius(5px);
+  @include box-sizing(border-box);
+  -webkit-animation: fade-out-after-delay 4s 1 forwards;
+  -moz-animation:    fade-out-after-delay 4s 1 forwards;
+  -o-animation:      fade-out-after-delay 4s 1 forwards;
+  animation:         fade-out-after-delay 4s 1 forwards;
+
+  &:hover {
+    cursor: pointer;
+    opacity: .75;
+  }
+
+}
+
+@-webkit-keyframes fade-out-after-delay {
+    0% { opacity: 1; }
+   85% { opacity: 1; top: 2em; }
+  100% { opacity: 0; top: -4em; }
+}
+
+@-moz-keyframes fade-out-after-delay {
+    0% { opacity: 1; }
+   85% { opacity: 1; top: 2em; }
+  100% { opacity: 0; top: -4em; }
+}
+
+@keyframes fade-out-after-delay {
+    0% { opacity: 1; }
+   85% { opacity: 1; top: 2em; }
+  100% { opacity: 0; top: -4em; }
+}

@@ -14,6 +14,7 @@ describe "Attendee statistics API" do
         {
           "attendee_statistics": {
             "received_invitation": 0,
+            "received_complimentary_ticket": 0,
             "awaiting_invitation": 0,
             "declined": 0,
             "paid": 0,
@@ -39,6 +40,7 @@ describe "Attendee statistics API" do
           {
             "attendee_statistics": {
               "received_invitation": 5,
+              "received_complimentary_ticket": 0,
               "awaiting_invitation": 2,
               "declined": 0,
               "paid": 1,

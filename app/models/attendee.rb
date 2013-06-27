@@ -20,6 +20,11 @@ class Attendee < ActiveRecord::Base
       transition awaiting_invitation: :received_invitation
     end
 
+    event :provide_complimentary_ticket do
+      transition awaiting_invitation: :received_complimentary_ticket,
+                 received_invitation: :received_complimentary_ticket
+    end
+
     event :revoke_invitation do
       transition received_invitation: :awaiting_invitation
     end
@@ -30,11 +35,13 @@ class Attendee < ActiveRecord::Base
 
     event :decline do
       transition awaiting_invitation: :declined,
-                 received_invitation: :declined
+                 received_invitation: :declined,
+                 received_complimentary_ticket: :declined
     end
 
     event :remind do
-      transition paid: :received_reminder
+      transition paid: :received_reminder,
+                 received_complimentary_ticket: :received_reminder
     end
 
     event :confirm do

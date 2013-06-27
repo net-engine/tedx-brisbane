@@ -1,0 +1,26 @@
+
+.logo {
+  display: block;
+  max-width: 450px;
+
+  img {
+    display: block;
+    max-width: 100%;
+    border: 0;
+  }
+}
+
+.date {
+  font-weight: bold;
+  font-size: 2em;
+  line-height: 1em;
+  margin: 1.5em 0;
+
+  @media only screen and (max-width: $breakpoint-medium) {
+    opacity: .25;
+    position: absolute;
+    bottom: 0;
+    right: 1em;
+    font-size: 1.25em;
+  }
+}

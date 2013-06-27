@@ -11,5 +11,6 @@ class @AppUtil
   @apiToken = ->
     $('[data-api-token]').data('api-token')
 
+
 $(document).ready ->
   AppUtil.setupAjax()

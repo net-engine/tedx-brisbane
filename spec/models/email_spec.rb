@@ -34,28 +34,29 @@ describe Email do
     end
   end
 
-  describe "#plain_text_content" do
+  describe "#html" do
     it "retreives content for the given event" do
       EmailContent.stub(:for)
       args = {attendee: email.attendee, event: email.event}
       EmailContent.should_receive(:for).with(args)
 
-      email.plain_text_content
+      email.html
     end
   end
 
   describe "#to_json" do
     it "returns the expected string" do
-      EmailContent.stub(:for).and_return("stubbed plain text content goes here")
+      EmailContent.stub(:for).and_return("stubbed html content goes here")
 
       json = %{
         {
           "key": "mandrill_key",
           "message": {
-              "text": "stubbed plain text content goes here",
+              "html": "stubbed html content goes here",
               "subject": "Message from TEDx",
               "from_email": "noreply@tedxbrisbane.com",
               "from_name": "TEDx Brisbane",
+              "auto_text": true,
               "to": [
                   {
                       "email": "#{email.to_address}",

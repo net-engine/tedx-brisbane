@@ -1,0 +1,33 @@
+
+// Typography
+
+$font-size: 100%;
+$line-height: 1.5em;
+$font-family: 'Helvetica Neue', Helvetica, sans-serif;
+
+// Colours
+
+$white: white;
+$black: black;
+$red: #FF2B06;
+
+$background-color: $red;
+$color: $white;
+$color-primary: $red;
+
+$header-color: $black;
+$footer-color: $black;
+
+// Dimensions
+
+$padding: 2em;
+$button-radius: 2px;
+
+$header-height: 12em;
+$footer-height: $padding;
+
+// Breakpoints
+
+$breakpoint-large:  1500px;
+$breakpoint-medium: 1024px;
+$breakpoint-small:   768px;

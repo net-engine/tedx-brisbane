@@ -41,6 +41,8 @@ RSpec.configure do |config|
     EmailDeliveryWorker.jobs.clear
     InvitationRevokerWorker.jobs.clear
     RealtimeStatisticsWorker.jobs.clear
+
+    MANDRILL.stub(:key).and_return("mandrill_key")
   end
 
   config.after(:each) do
@@ -51,7 +53,9 @@ RSpec.configure do |config|
     Capybara::Poltergeist::Driver.new(app, inspector: true, js_errors: true, timeout: 300)
   end
 
+  silence_warnings do
+    BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
+  end
 
-  BCrypt::Engine::DEFAULT_COST = 1
   Capybara.javascript_driver = :poltergeist_debug
 end

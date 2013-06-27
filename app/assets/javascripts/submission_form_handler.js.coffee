@@ -1,20 +1,5 @@
 class @SubmissionFormHandler
-  constructor: (@$toggleButton, @$form) ->
-    @displayForm() if @needToDisplayForm()
-
-  bindClickOnToggle: ->
-    @$toggleButton.off('click');
-    @$toggleButton.on 'click', =>
-      @displayForm()
-
-  displayForm: ->
-    @$toggleButton.hide()
-    @$form.fadeIn()
-
-  needToDisplayForm: ->
-    @$form.find('#attendee_first_name').val() != "" ||
-      @$form.find('#attendee_last_name').val() != "" ||
-      @$form.find('#attendee_email_address').val() != ""
+  constructor: (@$form) ->
 
   validate: ->
     @$form.validate({
@@ -39,6 +24,5 @@ class @SubmissionFormHandler
 
 $ ->
   if ($("#new_attendee").length > 0)
-    form = new SubmissionFormHandler($("#toggle-button"), $("#new_attendee"))
-    form.bindClickOnToggle()
+    form = new SubmissionFormHandler($("#new_attendee"))
     form.validate()
