@@ -4,6 +4,12 @@ development:
   database: tedx-brisbane_development
   min_messages: warning
 
+staging:
+  adapter: postgresql
+  encoding: unicode
+  database: tedx-brisbane_development
+  min_messages: warning
+
 test:
   adapter: postgresql
   encoding: unicode
