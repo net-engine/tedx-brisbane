@@ -22,7 +22,7 @@ set :keep_releases, 5
 
 set :default_environment, {
   'RBENV_ROOT' => '/home/ubuntu/.rbenv',
-  'PATH' => "/var/www/unicorn/current/bin/:/home/ubuntu/.rbenv/shims:/home/ubuntu/.rbenv/bin:$PATH"
+  'PATH' => "/home/ubuntu/.rbenv/shims:/home/ubuntu/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/aws/ec2-ami-tools/bin"
 }
 
 after "deploy:setup", "db:setup", "setup:postgresql"
