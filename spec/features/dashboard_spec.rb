@@ -66,7 +66,7 @@ describe "The dashboard", js: true do
   end
 
   context "when visiting the main page" do
-    it "shows an empty for to create a new attendee" do
+    it "shows an empty form to create a new attendee" do
       visit '/'
       find_by_id('attendee_first_name').tag_name    == "input"
       find_by_id('attendee_first_name').value       == ""
@@ -76,15 +76,26 @@ describe "The dashboard", js: true do
       find_by_id('attendee_email_address').value    == ""
     end
 
-    it "creates an attendee when submiting the form with proper value" do
-      visit '/'
-      fill_in "attendee_first_name",    with: "Dan"
-      fill_in "attendee_last_name",     with: "Sowter"
-      fill_in "attendee_email_address", with: "dan@netengine.com.au"
-      click_on "submit"
+    context "when submiting the form with proper value" do
+      it "creates an attendee when submiting the form with proper value" do
+        expect {
+          visit '/'
+          fill_in "attendee_first_name",    with: "Dan"
+          fill_in "attendee_last_name",     with: "Sowter"
+          fill_in "attendee_email_address", with: "dan@netengine.com.au"
+          click_on "submit"
+        }.to change(Attendee, :count).by(1)
+      end
 
-      Attendee.count.should == 1
-      EmailDeliveryWorker.jobs.size.should == 1
+      it "sends a registration email" do
+        expect {
+          visit '/'
+          fill_in "attendee_first_name",    with: "Dan"
+          fill_in "attendee_last_name",     with: "Sowter"
+          fill_in "attendee_email_address", with: "dan@netengine.com.au"
+          click_on "submit"
+        }.to change(EmailDeliveryWorker.jobs, :size).by(1)
+      end      
     end
   end
 end
