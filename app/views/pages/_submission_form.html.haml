@@ -2,7 +2,7 @@
 
 %h1 Register your interest
 
-= form_for @attendee do |f|
+= form_for @attendee, remote: true do |f|
   .box
     %section#inputs
       %ol

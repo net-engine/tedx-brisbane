@@ -2,4 +2,4 @@ comp
 
 %p
   Click here to
-  %a{ href: EmailLink.decline(attendee) } decline
+  = email_anchor 'decline', EmailLink.decline(attendee)

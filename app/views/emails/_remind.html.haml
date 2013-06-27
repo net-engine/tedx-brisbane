@@ -2,4 +2,4 @@ remind
 
 %p
   Click here to
-  %a{ href: EmailLink.confirm(attendee) } confirm
+  = email_anchor "confirm", EmailLink.confirm(attendee)

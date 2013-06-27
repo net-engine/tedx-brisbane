@@ -2,4 +2,4 @@ register
 
 %p
   Click here to
-  %a{ href: EmailLink.decline(attendee) } decline
+  = email_button "decline", EmailLink.decline(attendee)

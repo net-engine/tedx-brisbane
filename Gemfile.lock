@@ -125,6 +125,7 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     colorize (0.5.8)
+    columnize (0.3.6)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -137,6 +138,12 @@ GEM
       simplecov (>= 0.7)
       thor
     database_cleaner (1.0.1)
+    debugger (1.6.0)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.1)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.2)
     devise (1.5.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -375,6 +382,7 @@ DEPENDENCIES
   compass-rails!
   coveralls
   database_cleaner
+  debugger
   factory_girl_rails
   faker
   formtastic!

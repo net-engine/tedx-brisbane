@@ -3,8 +3,8 @@
 
 %p
   Click here to
-  %a{ href: EmailLink.pay(attendee) } pay
+  = email_anchor 'pay', EmailLink.pay(attendee)
 
 %p
   Click here to
-  %a{ href: EmailLink.decline(attendee) } decline
+  = email_anchor 'decline', EmailLink.decline(attendee)

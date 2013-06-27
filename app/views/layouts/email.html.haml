@@ -1,0 +1,42 @@
+%html
+  %head
+    %title= "TEDxBrisbane: #{attendee.email_address} | #{email.event.capitalize}"
+    %meta{charset: 'utf8'}
+    %meta{name: 'viewport', content: "initial-scale=1.0"}
+    = favicon_link_tag "favicon.png"
+
+    :scss
+      a:hover {
+        color: darken(#FF2B06, 15%) !important;
+      }
+  %body{style: "margin: 0; padding: 0; background-color: #eee;"}
+
+    - font_size = "16px"
+
+    %table{align: 'center', cellpadding: 0, cellspacing: 0}
+      %tr
+        %td{style: "font: normal #{font_size}/1.5em 'Helvetica Neue', Helvetica, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; -webkit-text-size-adjust: none;"}
+          
+
+          %table{ style: "font-size: #{font_size}; line-height: 1.5em;", cellpadding: 0, cellspacing: 0}
+            %tr
+              %td{style: "padding: .5em 1em .75em; text-align: center; color: #888; font-size: .75em;"}
+                View this email in your
+                = email_anchor 'browser.', EmailLink.for(email)
+
+            %tr
+              %td{style: 'background: black; padding: 1.5em; width: 700px;'}
+                = image_tag 'logo.png', style: "display: block; max-width: 100%; width: 400px;", title: 'TEDxBrisbane', alt: 'TEDxBrisbane logo'
+
+            %tr
+              %td{style: 'background-color: white;'}= yield
+
+            %tr
+              %td
+                %table{style: "color: #888; font-size: .85em;" }
+                  %tr
+                    %td{style: "padding: 1em 1.5em 0;"} P: 1234 5678
+                  %tr
+                    %td{style: "padding: 1em 1.5em 0;"}
+                      E:
+                      = email_anchor 'contact@tedxbrisbane.com', 'mailto:contact@tedxbrisbane.com'

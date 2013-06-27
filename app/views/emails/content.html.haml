@@ -1,5 +1,4 @@
-%p
-  View this in your
-  %a{ href: EmailLink.for(email) } browser
-
-= render "emails/#{email.event}", attendee: attendee
+%table{ style: "font-size: 16px; line-height: 1.5em;" }
+  %tr
+    %td{style: "padding: 1.5em;"}
+      = render "emails/#{email.event}", attendee: attendee
