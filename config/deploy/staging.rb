@@ -1,4 +1,4 @@
-set :branch, "staging"
+set :branch, "master"
 set :rails_env, "staging"
 set :application, "tedx-brisbane-#{rails_env}"
 
