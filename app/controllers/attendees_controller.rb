@@ -14,7 +14,8 @@ class AttendeesController < ApplicationController
     else
       respond_to do |format|
         format.html do
-          redirect_to "/", error: @attendee.errors.full_messages.join(', ')
+          redirect_to "/"
+          flash[:error] = @attendee.errors.full_messages.join(', ')
         end
 
         format.js
