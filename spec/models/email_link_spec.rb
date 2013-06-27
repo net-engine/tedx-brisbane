@@ -1,6 +1,19 @@
 require 'spec_helper'
 
 describe EmailLink do
+  context "when initialized with an email" do
+    let(:email) { build_stubbed(:email) }
+
+    describe ".for" do
+      it "returns the correct url" do
+        email.stub(:token).and_return('ABC123')
+        url = "http://www.example.com/emails/QUJDMTIz"
+
+        EmailLink.for(email).should eq(url)
+      end
+    end
+  end
+
   context "when initialized with an attendee" do
     let(:attendee) { build_stubbed(:attendee) }
 

@@ -9,6 +9,8 @@ en:
       invalid: "Sorry, that doesn't appear to be a valid link."
       success: "Thank you, your payment was successful."
       failure: "Sorry, your payment was declined."
+    emails:
+      invalid: "Sorry, that doesn't appear to be a valid link."
     email_links:
       confirm_confirmed: "Your attendance has been confirmed."
       confirm_declined: "Sorry, you have previously declined this event."

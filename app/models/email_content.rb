@@ -1,20 +1,20 @@
 class EmailContent
-  attr_reader :event, :attendee
+  attr_reader :email, :attendee
 
   def self.for(args = {})
     raise ArgumentError, "Please supply an attendee" unless args[:attendee]
-    raise ArgumentError, "Please supply an event" unless args[:event]
+    raise ArgumentError, "Please supply an email" unless args[:email]
 
     self.new(args).content
   end
 
   def initialize(args)
-    @event = args[:event]
+    @email = args[:email]
     @attendee = args[:attendee]
   end
 
   def content
-    if recognised_events.include?(event)
+    if recognised_events.include?(email.event)
       render_html
     else
       raise Exceptions::EmailEventNotRecognised
@@ -28,6 +28,6 @@ class EmailContent
   end
 
   def render_html
-    ActionController::Base.new.render_to_string('emails/content', locals: { event: event, attendee: attendee })
+    ActionController::Base.new.render_to_string('emails/content', locals: { email: email, attendee: attendee })
   end
 end

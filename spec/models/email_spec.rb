@@ -5,7 +5,18 @@ describe Email do
   it { should validate_presence_of(:attendee) }
   it { should validate_presence_of(:event) }
 
-  let(:email) { create(:email) }
+  let(:attendee) { create(:attendee, email_address: "guy@example.com") }
+  let(:email) { create(:email, attendee: attendee) }
+
+  describe "#token" do
+    before(:each) do
+      Time.stub(:now).and_return Time.parse("2013-06-27T00:00:00+10:00")
+    end
+
+    it "is built on creation" do
+      BCrypt::Password.new(email.token).should == "1372255200.0_guy@example.com"
+    end
+  end
 
   describe "#deliver" do
     it "creates an EmailDeliveryWorker" do
@@ -37,7 +48,7 @@ describe Email do
   describe "#html" do
     it "retreives content for the given event" do
       EmailContent.stub(:for)
-      args = {attendee: email.attendee, event: email.event}
+      args = {attendee: email.attendee, email: email}
       EmailContent.should_receive(:for).with(args)
 
       email.html
