@@ -56,8 +56,8 @@ class Attendee < ActiveRecord::Base
     save!
   end
 
-  def fullname
-    email_address
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   private

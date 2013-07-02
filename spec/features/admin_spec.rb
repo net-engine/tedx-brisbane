@@ -15,6 +15,16 @@ describe "The admin interface", js: true do
     visit '/admin/admin_users'
   end
 
+  context "emails" do
+    let!(:email) { create(:email) }
+
+    it "shows links to allow browsing of emails" do
+      visit '/admin/emails'
+
+      page.body.should match(EmailLink.for(email))
+    end
+  end
+
   it "allows creation of new attendees" do
     visit '/admin/attendees/new'
 

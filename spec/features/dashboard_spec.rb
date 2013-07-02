@@ -77,25 +77,32 @@ describe "The dashboard", js: true do
     end
 
     context "when submiting the form with proper value" do
+      before(:each) do
+        create(:admin_user)
+
+        visit '/'
+        fill_in "attendee_first_name",    with: "Dan"
+        fill_in "attendee_last_name",     with: "Sowter"
+        fill_in "attendee_email_address", with: "dan@netengine.com.au"
+        click_on "submit"
+      end
+
       it "creates an attendee when submiting the form with proper value" do
-        expect {
-          visit '/'
-          fill_in "attendee_first_name",    with: "Dan"
-          fill_in "attendee_last_name",     with: "Sowter"
-          fill_in "attendee_email_address", with: "dan@netengine.com.au"
-          click_on "submit"
-        }.to change(Attendee, :count).by(1)
+        sign_in_as_admin
+
+        within "#attendee_1" do
+          find(".first_name").should have_content("Dan")
+          find(".last_name").should have_content("Sowter")
+          find(".email_address").should have_content("dan@netengine.com.au")
+        end
       end
 
       it "sends a registration email" do
-        expect {
-          visit '/'
-          fill_in "attendee_first_name",    with: "Dan"
-          fill_in "attendee_last_name",     with: "Sowter"
-          fill_in "attendee_email_address", with: "dan@netengine.com.au"
-          click_on "submit"
-        }.to change(EmailDeliveryWorker.jobs, :size).by(1)
-      end      
+        sign_in_as_admin
+        visit('/admin/emails')
+
+        page.should have_content("dan@netengine.com.au")
+      end
     end
   end
 end

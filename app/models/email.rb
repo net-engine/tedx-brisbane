@@ -7,7 +7,7 @@ class Email < ActiveRecord::Base
   before_create :build_token
 
   def to_name
-    attendee.fullname
+    attendee.full_name
   end
 
   def to_address

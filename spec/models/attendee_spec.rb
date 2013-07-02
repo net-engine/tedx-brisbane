@@ -75,9 +75,11 @@ describe Attendee do
     end
   end
 
-  describe "#fullname" do
+  describe "#full_name" do
+    let(:attendee) { build_stubbed(:attendee, first_name: "Donald", last_name: "Duck") }
+
     it "returns a string" do
-      attendee.fullname.should == attendee.email_address
+      attendee.full_name.should == "Donald Duck"
     end
   end
 

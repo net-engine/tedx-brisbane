@@ -29,8 +29,8 @@ describe Email do
 
   describe "#to_name" do
     it "retrieve name" do
-      email.attendee.stub(:fullname)
-      email.attendee.should_receive(:fullname)
+      email.attendee.stub(:full_name)
+      email.attendee.should_receive(:full_name)
 
       email.to_name
     end
