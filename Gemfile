@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 gem 'rails-observers'
+gem 'debugger'
 gem 'active_model_serializers'
 gem 'bcrypt-ruby'
 gem 'braintree'

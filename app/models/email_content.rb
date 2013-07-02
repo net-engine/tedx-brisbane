@@ -28,6 +28,6 @@ class EmailContent
   end
 
   def render_html
-    ActionController::Base.new.render_to_string('emails/content', locals: { email: email, attendee: attendee })
+    EmailContentController.new.render_to_string('emails/content', layout: 'email', locals: { email: email, attendee: attendee })
   end
 end

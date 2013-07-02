@@ -1,5 +1,6 @@
-revoke
+%p Your invitation has been revoked
 
 %p
-  Click here to
-  %a{ href: EmailLink.decline(attendee) } decline
+  Click
+  = email_anchor 'here', EmailLink.decline(attendee)
+  to remove yourself from the queue (and stop receiving emails from TEDxBrisbane).
