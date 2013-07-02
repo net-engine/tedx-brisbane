@@ -1,10 +1,14 @@
-%h1
-  = "You're invited!, #{attendee.first_name}"
+%strong{style: 'font-size: 1.5em;'}= "You're invited, #{attendee.first_name}."
 
 %p
-  Click here to
-  = email_anchor 'pay', EmailLink.pay(attendee)
+  You've been invited to TEDxBrisbane 2013.
+
+%p Buy a ticket for $0.00 and join other people like you etc.
+
+%p= email_button 'Buy ticket', EmailLink.pay(attendee)
 
 %p
-  Click here to
-  = email_anchor 'decline', EmailLink.decline(attendee)
+  If you wish to cancel your registation, click
+  = email_anchor "here.", EmailLink.decline(attendee)
+
+= render 'emails/email_footer'

@@ -9,6 +9,12 @@
       a:hover {
         color: darken(#FF2B06, 15%) !important;
       }
+
+      .email-button:hover {
+        background-color: darken(#FF2B06, 5%) !important;
+        color: white !important;
+      }
+
   %body{style: "margin: 0; padding: 0; background-color: #eee;"}
 
     - font_size = "16px"
@@ -25,11 +31,11 @@
                 = email_anchor 'browser.', EmailLink.for(email)
 
             %tr
-              %td{style: 'background: black; padding: 1.5em; width: 700px;'}
+              %td{style: 'background: black; padding: 1.5em; width: 600px;'}
                 = image_tag 'logo.png', style: "display: block; max-width: 100%; width: 400px;", title: 'TEDxBrisbane', alt: 'TEDxBrisbane logo'
 
             %tr
-              %td{style: 'background-color: white;'}= yield
+              %td{style: 'background-color: white; width: 600px;'}= yield
 
             %tr
               %td

@@ -1,5 +1,7 @@
-remind
+%p= "Hi #{attendee.first_name},"
 
-%p
-  Click here to
-  = email_anchor "confirm", EmailLink.confirm(attendee)
+%p TEDxBrisbane 2013 is happening soon. Click the button below to confirm your attendence at the event.
+
+%p= email_button "Confirm", EmailLink.confirm(attendee)
+
+= render 'emails/email_footer'

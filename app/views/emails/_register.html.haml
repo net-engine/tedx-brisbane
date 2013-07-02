@@ -1,5 +1,11 @@
-register
+%p= "Hi #{attendee.first_name},"
+
+%p You have successfully registered your interest for TEDxBrisbane 2013!
+
+= render 'emails/blurb'
 
 %p
-  Click here to
-  = email_button "decline", EmailLink.decline(attendee)
+  Thank you for your interest. If you receive an invitation for the event, we'll send you another email. If you wish to cancel your registation, click
+  = email_anchor "here.", EmailLink.decline(attendee)
+
+= render 'emails/email_footer'
