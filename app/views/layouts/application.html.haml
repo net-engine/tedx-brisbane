@@ -33,6 +33,6 @@
     %input{ id: "pusher-key", type: 'hidden', data: { 'pusher-key' => ENV['TEDX_PUSHER_KEY'] } }
 
     - if flash[:notice]
-      .flash= flash[:notice]
+      .flash.flash-notice= flash[:notice]
     - elsif flash[:error]  
-      .flash= flash[:error]
+      .flash.flash-error= flash[:error]

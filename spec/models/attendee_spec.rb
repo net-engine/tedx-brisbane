@@ -8,8 +8,8 @@ describe Attendee do
   it { should validate_uniqueness_of(:pay_token) }
   it { should validate_uniqueness_of(:decline_token) }
   it { should validate_uniqueness_of(:confirm_token) }
-  it { should have_many(:emails) }
-  it { should have_many(:payments) }
+  it { should have_many(:emails).dependent(:destroy) }
+  it { should have_many(:payments).dependent(:destroy) }
 
   it "should reject invalid email addresses" do
     attendee = build(:attendee, email_address: "doug")
@@ -75,9 +75,11 @@ describe Attendee do
     end
   end
 
-  describe "#fullname" do
+  describe "#full_name" do
+    let(:attendee) { build_stubbed(:attendee, first_name: "Donald", last_name: "Duck") }
+
     it "returns a string" do
-      attendee.fullname.should == attendee.email_address
+      attendee.full_name.should == "Donald Duck"
     end
   end
 

@@ -1,5 +1,5 @@
 class EmailsController < ApplicationController
-  layout false
+  layout "email"
 
   def content
     if email

@@ -1,1 +1,7 @@
-pay
+%p
+  %strong{style: 'font-size: 1.5em;'}= "Your payment was successful."
+
+%p
+  = "Thanks, #{attendee.first_name}. We'll send a reminder closer to the event."
+
+= render 'emails/email_footer'

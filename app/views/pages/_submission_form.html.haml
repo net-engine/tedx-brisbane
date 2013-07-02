@@ -1,8 +1,8 @@
--# = button_tag "Register", class: 'btn btn-primary', id: "toggle-button"
-
 %h1 Register your interest
 
-= form_for @attendee do |f|
+= form_for @attendee, remote: true do |f|
+  %input{ name: 'authenticity_token', value: form_authenticity_token, type: 'hidden' }
+
   .box
     %section#inputs
       %ol

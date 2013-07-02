@@ -1,14 +1,15 @@
 html, body {
-  height: 100%;
+  min-height: 100%;
 }
 
 html {
   color: $white;
   background: $background-color image-url('bg.jpg') no-repeat center bottom;
+  @include background-size(cover);
 
   &:before {
     content: '1';
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
     font-weight: bold;
@@ -60,23 +61,20 @@ html {
     float: none;
     width: auto;
     height: auto;
+    min-height: 0 !important;
   }
 
 }
 
 @media only screen and (max-width: $breakpoint-medium) {
   .header {
-    min-height: 0 !important;
-    height: $header-height;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: relative;
+    padding-bottom: 2em;
+    overflow: hidden;
   }
 
   .main {
     @include box-sizing(border-box);
-    padding-top: $header-height;
   }
 }
 
@@ -98,17 +96,19 @@ html {
 
   @media only screen and (max-width: $breakpoint-medium) {
     position: absolute;
-    width: 4em;
-    top: 1em;
-    right: 1em;
+    width: 10em;
+    top: 2em;
+    right: 2em;
+    bottom: 2em;
   }
 
   @media only screen and (max-width: $breakpoint-small) {
-    width: 2em;
-    left: 2em;
-    bottom: 1em;
-    top: auto;
-    right: auto;
+    top: -2em;
+    bottom: -2em;
+    right: -1em;
+    opacity: .75;
+    z-index: -1;
+    width: 15em;
   }
 }
 

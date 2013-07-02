@@ -44,10 +44,10 @@ describe AttendeesController do
         flash[:error].should == "Email address is invalid"
       end
 
-      it "renders the proper template" do
-        post :create, attendee: attendee_params
-        response.should render_template("pages/index")
-      end
+      # it "renders the proper template" do
+      #   post :create, attendee: attendee_params
+      #   response.should render_template("pages/index")
+      # end
     end
   end
 end

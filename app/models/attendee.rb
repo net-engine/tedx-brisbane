@@ -1,6 +1,6 @@
 class Attendee < ActiveRecord::Base
-  has_many :emails
-  has_many :payments
+  has_many :emails, dependent: :destroy
+  has_many :payments, dependent: :destroy
 
   validates :pay_token, :decline_token, :confirm_token, uniqueness: true
   validates :email_address,
@@ -56,8 +56,8 @@ class Attendee < ActiveRecord::Base
     save!
   end
 
-  def fullname
-    email_address
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   private
