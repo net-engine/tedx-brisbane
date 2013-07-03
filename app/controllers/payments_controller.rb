@@ -8,6 +8,7 @@ class PaymentsController < ApplicationController
   def confirm
     if result.success? && attendee_payment_created
       redirect_to('/', notice: I18n.t("controllers.payments.success"))
+      session[:pay_token] = nil
     else
       redirect_to(new_payment_path(pay_token), notice: I18n.t("controllers.payments.failure"))
     end
@@ -22,15 +23,19 @@ class PaymentsController < ApplicationController
   end
 
   def attendee_payment_created
-    if attendee.payments.create! amount: result.transaction.amount,
-                                 transaction_id: result.transaction.id,
-                                 masked_number: result.transaction.credit_card_details.last_4,
-                                 card_type: result.transaction.credit_card_details.card_type
-      attendee.update_attributes first_name: result.transaction.customer_details.first_name,
-                                 last_name: result.transaction.customer_details.last_name
-      attendee.pay!
-      attendee.emails.create(event: 'pay').deliver
+    Attendee.transaction do
+      if attendee.payments.create! amount: result.transaction.amount,
+                                   transaction_id: result.transaction.id,
+                                   masked_number: result.transaction.credit_card_details.last_4,
+                                   card_type: result.transaction.credit_card_details.card_type
+        attendee.update_attributes first_name: result.transaction.customer_details.first_name,
+                                   last_name: result.transaction.customer_details.last_name
+        attendee.pay!
+        attendee.emails.create(event: 'pay').deliver
+      end
     end
+  rescue
+    false
   end
 
   def result
@@ -56,7 +61,7 @@ class PaymentsController < ApplicationController
   end
 
   def pay_token
-    params[:token] || result.transaction.custom_fields[:attendee_pay_token]
+    session[:pay_token] ||= params[:token]
   end
 
   def amount
