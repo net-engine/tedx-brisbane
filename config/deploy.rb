@@ -24,7 +24,7 @@ set :sidekiq_role, :sidekiq
 
 set :default_environment, {
   'RBENV_ROOT' => '/home/ubuntu/.rbenv',
-  'PATH' => "/home/ubuntu/.rbenv/shims:/home/ubuntu/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/aws/ec2-ami-tools/bin"
+  'PATH' => "/var/www/unicorn/current/bin:/home/ubuntu/.rbenv/shims:/home/ubuntu/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/aws/ec2-ami-tools/bin"
 }
 
 after "deploy:setup", "db:setup", "setup:postgresql"
@@ -58,6 +58,21 @@ namespace :deploy do
         #{rake} RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} assets:precompile
       CMD
     end
+  end
+end
+
+namespace :sidekiq do
+  task :start do
+    run "/etc/init.d/sidekiq start"
+  end
+  task :restart do
+    run "/etc/init.d/sidekiq restart"
+  end
+  task :quiet do
+    sidekiq.stop
+  end
+  task :stop do
+    run "/etc/init.d/sidekiq stop"
   end
 end
 
