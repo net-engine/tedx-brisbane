@@ -1,0 +1,7 @@
+---
+:concurrency: 2
+:queues:
+  - [heartbeat, 20]
+  - [notifications, 15]
+  - [availabilities, 5]
+  - [emails, 1]
