@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe EmailLink do
+  before(:each) do
+    HOSTNAME.test = 'http://www.example.com'
+  end
+
   context "when initialized with an email" do
     let(:email) { build_stubbed(:email) }
 

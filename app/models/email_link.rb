@@ -22,26 +22,22 @@ class EmailLink
   end
 
   def for
-    Addressable::URI.escape("#{protocol}://#{host_name}/#{route}/#{token}")
+    Addressable::URI.escape("#{host_name}/#{route}/#{token}")
   end
 
   def confirm
-    Addressable::URI.escape("#{protocol}://#{host_name}/confirm/#{confirm_token}")
+    Addressable::URI.escape("#{host_name}/confirm/#{confirm_token}")
   end
 
   def pay
-    Addressable::URI.escape("#{protocol}://#{host_name}/pay/#{pay_token}")
+    Addressable::URI.escape("#{host_name}/pay/#{pay_token}")
   end
 
   def decline
-    Addressable::URI.escape("#{protocol}://#{host_name}/decline/#{decline_token}")
+    Addressable::URI.escape("#{host_name}/decline/#{decline_token}")
   end
 
   private
-  def protocol
-    Rails.env == 'production' ? 'https' : 'http'
-  end
-
   def host_name
     HOSTNAME.public_send(Rails.env)
   end
