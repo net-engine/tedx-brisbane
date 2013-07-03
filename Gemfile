@@ -33,6 +33,7 @@ gem 'slim', ">= 1.3.0"
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'turbolinks'
 gem "jquery-rails", "2.3.0"
+gem 'launchy'
 
 group :staging, :production do
   gem 'unicorn'
@@ -49,7 +50,6 @@ group :development, :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'guard-rspec'
-  gem 'launchy'
   gem 'pry'
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'rspec-rails'
