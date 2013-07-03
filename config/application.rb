@@ -11,9 +11,16 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+HOSTNAME = OpenStruct.new(
+  development: 'http://127.0.0.1:3000',
+  staging: 'http://tedx.netengine.com.au',
+  production: 'https://tedxbrisbane.com'
+)
+
 module TedxBrisbane
   class Application < Rails::Application
     config.autoload_paths += %W(#{config.root}/lib)
     config.active_record.observers = :attendee_observer
+    config.asset_host = HOSTNAME.public_send(Rails.env)
   end
 end
