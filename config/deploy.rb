@@ -1,5 +1,6 @@
 require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
+require 'sidekiq/capistrano'
 
 set :pg_user, "ubuntu"
 set :db_name, "tedx_brisbane"
@@ -19,6 +20,7 @@ set :git_shallow_clone, 1
 set :copy_strategy, :export
 set :deploy_to, '/var/www/unicorn'
 set :keep_releases, 5
+set :sidekiq_role, :sidekiq
 
 set :default_environment, {
   'RBENV_ROOT' => '/home/ubuntu/.rbenv',
