@@ -1,7 +1,23 @@
-%p
-  %strong{style: 'font-size: 1.5em;'}= "Your payment was successful."
+%p Hi there,
+
+%p Thank you for your payment!
 
 %p
-  = "Thanks, #{attendee.first_name}. We'll send a reminder closer to the event."
+  %strong A couple of important reminders for the day:
+
+%ul{style: "list-style-type: square; list-style-position: outside; padding: 0 0 0 1em;"}
+  %li{style: "margin: 0 0 .5em;"} Registration opens at 7:45 am and closes at 8:45 am, so please ensure you have picked up your personalised name tag by this time.
+
+  %li{style: "margin: 0 0 .5em;"} Conference starts at 8:55 am sharp.
+
+  %li{style: "margin: 0 0 .5em;"} TEDxBrisbane is a full day event, concluding with drinks from 5:30–7:30 pm. Lunch will be served in the Ideas worth Spreading Tent.
+
+  %li{style: "margin: 0 0 .5em;"} No video or flash photography is permitted in the theatres.
+
+  %li{style: "margin: 0 0 .5em;"} In attending TEDxBrisbane 2013, you may be filmed or photographed. If you have a problem with this, please inform the photographer.
+
+  %li{style: "margin: 0 0 .5em;"} Twitter hashtag is #TEDxBrisbane.
+
+%p We look forward to sharing an amazing experience with you.
 
 = render 'emails/email_footer'

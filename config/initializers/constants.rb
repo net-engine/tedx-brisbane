@@ -3,5 +3,5 @@ MANDRILL = OpenStruct.new(
 )
 
 TICKET = OpenStruct.new(
-  price_in_dollars: 100
+  price_in_dollars: 95
 )

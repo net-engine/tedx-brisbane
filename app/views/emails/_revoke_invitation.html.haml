@@ -1,6 +1,9 @@
-%p Your invitation has been revoked
+%p= "Hi #{attendee.first_name},"
 
-%p
-  Click
-  = email_anchor 'here', EmailLink.decline(attendee)
-  to remove yourself from the queue (and stop receiving emails from TEDxBrisbane).
+%p Sorry.
+
+%p We are unable to offer you a place at this year's event due to space limitations at the venue.
+
+%p= "We do so wish you could join us but you will be able to watch the live stream on the day at #{email_anchor('www.tedxbrisbane.com', 'http://www.tedxbrisbane.com')}"
+
+%p We've also placed you on the waiting list and if a ticket becomes available, we will check in again and see if you are still keen to come along.
