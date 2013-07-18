@@ -114,11 +114,6 @@ describe EmailContent do
           }.to_not raise_error
         end
 
-        it "contains the decline link" do
-          html = EmailContent.new(attendee: attendee, email: email).content
-          html.should match(EmailLink.decline(attendee))
-        end
-
         it "contains the 'view this in a browser' link" do
           html = EmailContent.new(attendee: attendee, email: email).content
           html.should match(EmailLink.for(email))

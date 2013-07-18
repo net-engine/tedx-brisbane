@@ -12,6 +12,8 @@
 
 %p= email_button 'Buy ticket', EmailLink.pay(attendee)
 
+%p= "If you wish to cancel your registation, click #{email_anchor "here.", EmailLink.decline(attendee)}".html_safe
+
 %p We can't wait to see you.
 
 %p September is coming.
