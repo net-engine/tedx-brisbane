@@ -1,4 +1,6 @@
 class Attendee < ActiveRecord::Base
+  GENDERS = %w(M F)
+
   has_many :emails, dependent: :destroy
   has_many :payments, dependent: :destroy
 
@@ -7,7 +9,10 @@ class Attendee < ActiveRecord::Base
             presence: true,
             uniqueness: true,
             format: { with: /\A[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,4}\z/i }
-  validates :first_name, :last_name, presence: true
+
+  validates :first_name, :last_name, :gender, :age, :profession, :tweet_idea, presence: true
+  validates :gender, inclusion:   { in: GENDERS }, presence: true
+  validates :age,    inclusion:   { in: 5..150  }, presence: true
 
   before_create :build_tokens
 

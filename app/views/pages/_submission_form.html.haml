@@ -1,6 +1,6 @@
 %h1 Register your interest
 
-= form_for @attendee, remote: true do |f|
+= form_for attendee, remote: true do |f|
   %input{ name: 'authenticity_token', value: form_authenticity_token, type: 'hidden' }
 
   .box
@@ -15,6 +15,23 @@
         %li
           = f.label :email_address
           = f.email_field :email_address
+        %li
+          = f.label :gender
+          = f.select :gender, Attendee::GENDERS
+        %li
+          = f.label :age
+          = f.number_field :age, in: 5..150
+        %li
+          = f.label :profession
+          = f.text_field :profession
+        %li
+          = f.label :tweet_idea
+          = f.text_area :tweet_idea, size: "3x50", maxlength: 140
+        %li
+          = f.label :scholarship
+          = f.check_box :scholarship
+
+
 
     %section#buttons
       %ol

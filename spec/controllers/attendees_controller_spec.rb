@@ -5,7 +5,8 @@ describe AttendeesController do
     context "when providing proper parameters" do
       let(:attendee_params) do
         {
-          first_name: "fn", last_name: "ln", email_address: "fn@ln.com.au"
+          first_name: "fn", last_name: "ln", email_address: "fn@ln.com.au",
+          gender: "M", age: 32, profession: "Architect", tweet_idea: "Heal the world.", scholarship: false
         }
       end
 
@@ -29,7 +30,8 @@ describe AttendeesController do
     context "when providing incorrect parameters" do
       let(:attendee_params) do
         {
-          first_name: "fn", last_name: "ln", email_address: "bad_email"
+          first_name: "fn", last_name: "ln", email_address: "bad_email",
+          gender: "M", age: 32, profession: "Architect", tweet_idea: "Heal the world.", scholarship: false
         }
       end
 

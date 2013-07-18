@@ -74,6 +74,16 @@ describe "The dashboard", js: true do
       find_by_id('attendee_last_name').value        == ""
       find_by_id('attendee_email_address').tag_name == "input"
       find_by_id('attendee_email_address').value    == ""
+      find_by_id('attendee_gender').tag_name        == "select"
+      find_by_id('attendee_gender').value           == "M"
+      find_by_id('attendee_age').tag_name           == "input"
+      find_by_id('attendee_age').value              == ""
+      find_by_id('attendee_profession').tag_name    == "input"
+      find_by_id('attendee_profession').value       == ""
+      find_by_id('attendee_tweet_idea').tag_name    == "textarea"
+      find_by_id('attendee_tweet_idea').value       == ""
+      find_by_id('attendee_scholarship').tag_name   == "input"
+      find_by_id('attendee_scholarship').value      == ""
     end
 
     context "when submiting the form with proper value" do
@@ -84,6 +94,9 @@ describe "The dashboard", js: true do
         fill_in "attendee_first_name",    with: "Dan"
         fill_in "attendee_last_name",     with: "Sowter"
         fill_in "attendee_email_address", with: "dan@netengine.com.au"
+        fill_in "attendee_age",           with: "32"
+        fill_in "attendee_profession",    with: "Architect"
+        fill_in "attendee_tweet_idea",    with: "Heal Rowan. He's sick ATM."
         click_on "submit"
       end
 
@@ -94,6 +107,9 @@ describe "The dashboard", js: true do
           find(".first_name").should have_content("Dan")
           find(".last_name").should have_content("Sowter")
           find(".email_address").should have_content("dan@netengine.com.au")
+          find(".age").should have_content("32")
+          find(".profession").should have_content("Architect")
+          find(".tweet_idea").should have_content("Heal Rowan. He's sick ATM.")
         end
       end
 
