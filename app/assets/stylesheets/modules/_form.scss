@@ -41,15 +41,38 @@
 
 
 form {
+  ol {
+    margin: 0 -1em;
+  }
+
   li {
+    position: relative;
+    clear: both;
     margin: 0 0 1em;
+    padding: 0 1em;
+    @extend .clearfix;
+
+    &.half-width {
+      float: left;
+      clear: none;
+      width: 50%;
+      @include box-sizing(border-box);
+    }
   }
 }
 
 input, textarea, select { font-size: $font-size; }
 
-input[type='text'], input[type='email'], textarea {
+input[type='text'], input[type='email'], input[type='number'], textarea {
   @extend %input;
+}
+
+textarea {
+  height: auto;
+  line-height: 1.5em;
+  min-height: $padding * 2;
+  max-height: $padding * 8;
+  resize: vertical;
 }
 
 label, dt {
@@ -69,9 +92,50 @@ legend {
   margin: 0 0 1em;
 }
 
+select {
+  display: block;
+  width: 100%;
+  height: $padding;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  background: whitesmoke;
+}
+
+.checbox_field {
+  line-height: 1.35em;
+
+  input[type='checkbox'] {
+    float: left;
+    width: 1em;
+    height: 1em;
+    margin: .2em 0;
+    padding: 0;
+  }
+
+  label {
+    font-size: .95em;
+    text-transform: none;
+    font-weight: normal;
+    margin-left: 1.5em;
+  }
+}
+
 #buttons {
   @extend %buttons;
 
   input, a { margin-right: .5em; }
 }
 
+
+#attendee_tweet_idea { padding-bottom: 1.5em; }
+
+.char-count {
+  position: absolute;
+  bottom: 0;
+  right: 1em;
+  margin: .5em;
+  line-height: 1em;
+  color: #888;
+
+  &.limit { color: hsl(0, 100%, 65%); }
+}

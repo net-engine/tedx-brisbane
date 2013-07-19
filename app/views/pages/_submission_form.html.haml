@@ -6,30 +6,32 @@
   .box
     %section#inputs
       %ol
-        %li
+        %li.half-width
           = f.label :first_name
           = f.text_field :first_name
-        %li
+        %li.half-width
           = f.label :last_name
           = f.text_field :last_name
         %li
           = f.label :email_address
           = f.email_field :email_address
-        %li
+        %li.half-width
           = f.label :gender
           = f.select :gender, Attendee::GENDERS
-        %li
+        %li.half-width
           = f.label :age
           = f.number_field :age, in: 5..150
         %li
           = f.label :profession
           = f.text_field :profession
         %li
-          = f.label :tweet_idea
-          = f.text_area :tweet_idea, size: "3x50", maxlength: 140
-        %li
-          = f.label :scholarship
+          = f.label :tweet_idea, "What is your idea worth tweeting?"
+          = f.text_area :tweet_idea, maxlength: 140
+          #char_count.char-count 140
+
+        %li.checbox_field
           = f.check_box :scholarship
+          = f.label :scholarship, "We will be offering a limited number of scholarship places for people where circumstances prevent them from securing a ticket. If you want to be considered for a scholarship place please tick here."
 
 
 

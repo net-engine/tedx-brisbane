@@ -46,6 +46,8 @@ html {
 }
 
 .main {
+  overflow-x: hidden;
+  overflow-y: scroll;
   width: (100% / 3 * 2);
 }
 
@@ -165,7 +167,7 @@ html {
     height: 16em;
 
     li {
-      
+
       label {
         white-space: nowrap;
         position: absolute;
