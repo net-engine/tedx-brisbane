@@ -150,6 +150,21 @@ describe EmailContent do
         end
       end
 
+      context "when the event is 'decline'" do
+        let(:event) { 'decline_from_user' }
+
+        it "returns html" do
+          expect {
+            EmailContent.new(attendee: attendee, email: email).content
+          }.to_not raise_error
+        end
+
+        it "contains the 'view this in a browser' link" do
+          html = EmailContent.new(attendee: attendee, email: email).content
+          html.should match(EmailLink.for(email))
+        end
+      end
+
       context "when the event is 'remind'" do
         let(:event) { 'remind' }
 
