@@ -1,14 +1,11 @@
-%p= "Hi #{attendee.first_name},"
+Hi #{attendee.first_name},
 
 %p You have have received a complimentary ticket to TEDxBrisbane 2013.
 
-= render 'emails/blurb'
+%p= render 'emails/blurb'
 
-%p
-  We'll send a reminder closer to the event.
+%p We'll send a reminder closer to the event.
 
-%p
-  If you wish to decline this invitation, click
-  = email_anchor "here.", EmailLink.decline(attendee)
+%p= "If you are not able to make it, please #{email_anchor "click here", EmailLink.decline(attendee)}. This is really important as we need to know whether to get your lunch ready.".html_safe
 
 = render 'emails/email_footer'
