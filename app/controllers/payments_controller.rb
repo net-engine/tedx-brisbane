@@ -2,7 +2,10 @@ class PaymentsController < ApplicationController
   before_action :verify_attendee, only: :new
 
   def new
-    render :new, locals: { attendee: attendee, tr_data: tr_data }
+    @attendee         = attendee
+    @tr_data          = tr_data
+    @tr_data_student  = tr_data(true)
+    render :new
   end
 
   def confirm
@@ -31,6 +34,7 @@ class PaymentsController < ApplicationController
         attendee.update_attributes first_name: result.transaction.customer_details.first_name,
                                    last_name: result.transaction.customer_details.last_name
         attendee.pay!
+        attendee.update_student_attribute(result.transaction.amount)
         attendee.emails.create(event: 'pay').deliver
       end
     end
@@ -42,11 +46,11 @@ class PaymentsController < ApplicationController
     @result ||= Braintree::TransparentRedirect.confirm(request.query_string)
   end
 
-  def tr_data
+  def tr_data(student = false)
     Braintree::TransparentRedirect.transaction_data(
           redirect_url: confirm_payment_url,
           transaction: { type: "sale",
-                         amount: amount,
+                         amount: amount(student),
                          customer: { email: attendee.email_address },
                          custom_fields: { attendee_pay_token: params[:token] },
                          options: { submit_for_settlement: true }})
@@ -64,7 +68,7 @@ class PaymentsController < ApplicationController
     session[:pay_token] ||= params[:token]
   end
 
-  def amount
-    TICKET.price_in_dollars
+  def amount(student)
+    student ? TICKET.price_in_dollars_for_student : TICKET.price_in_dollars
   end
 end

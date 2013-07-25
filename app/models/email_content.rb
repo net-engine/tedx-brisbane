@@ -24,7 +24,7 @@ class EmailContent
   private
 
   def recognised_events
-    %w(register invite provide_complimentary_ticket revoke_invitation pay decline remind confirm)
+    %w(register invite provide_complimentary_ticket revoke_invitation pay decline decline_from_user remind confirm)
   end
 
   def render_html

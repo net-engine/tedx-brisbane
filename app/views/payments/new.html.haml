@@ -1,4 +1,6 @@
-%h1= "Purchasing a ticket for #{attendee.email_address}"
+%h1= "Purchasing a ticket for #{@attendee.email_address}"
+= hidden_field_tag :tr_data_normal,  @tr_data
+= hidden_field_tag :tr_data_student, @tr_data_student
 
 = form_for :transaction, url: Braintree::TransparentRedirect.url, html: { autocomplete: "off" } do |f|
 
@@ -11,15 +13,24 @@
 
         = f.fields_for :customer do |c|
 
-          %li
+          %li.half-width
             = c.label :first_name, "First Name"
-            = c.text_field :first_name, value: attendee.first_name
+            = c.text_field :first_name, value: @attendee.first_name
 
-          %li
+          %li.half-width
             = c.label :last_name, "Last Name"
-            = c.text_field :last_name, value: attendee.last_name
+            = c.text_field :last_name, value: @attendee.last_name
 
+        %li
+          = label_tag :student_amount,"Tickets cost: "
+          = select_tag :student_amount, options_for_select([["$#{TICKET.price_in_dollars}", false],["$#{TICKET.price_in_dollars_for_student} for students", true]],
+                                                               ["$#{TICKET.price_in_dollars}", false])
       %ol
+
+        %legend.credit-cards
+          %label.credit-card= image_tag 'icons/mastercard.png'
+          %label.credit-card= image_tag 'icons/visa.png'
+
         %legend Credit Card
 
         = f.fields_for :credit_card do |c|
@@ -28,15 +39,15 @@
             = c.label :number, "Number"
             = c.text_field :number
 
-          %li
+          %li.half-width
             = c.label :expiration_date, "Expiration Date (MM/YY)"
             = c.text_field :expiration_date
 
-          %li
+          %li.half-width
             = c.label :cvv, "CVV"
             = c.text_field :cvv
 
-          = hidden_field_tag :tr_data, tr_data
+          = hidden_field_tag :tr_data, @tr_data
 
     %section#buttons
       %ol

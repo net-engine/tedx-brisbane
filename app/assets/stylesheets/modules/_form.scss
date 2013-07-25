@@ -30,6 +30,7 @@
 }
 
 %buttons {
+  clear: both;
   margin: 1.5em 0 0;
   padding: 1.5em 0 0;
   border-top: 2px dotted #ddd;
@@ -41,19 +42,63 @@
 
 
 form {
+  ol {
+    clear: both;
+    margin: 0 -1em;
+  }
+
   li {
+    position: relative;
+    clear: both;
     margin: 0 0 1em;
+    padding: 0 1em;
+    @extend .clearfix;
+
+    &.half-width {
+      float: left;
+      clear: none;
+      width: 50%;
+      @include box-sizing(border-box);
+
+      @media screen and (max-width: $breakpoint-small) {
+        float: none;
+        clear: both;
+        width: auto;
+      }
+    }
   }
 }
 
-input, textarea, select { font-size: $font-size; }
+input, textarea, select {
+  font-size: $font-size;
+  font-family: $font-family;
+}
 
-input[type='text'], input[type='email'], textarea {
+input[type='text'], input[type='email'], input[type='number'], textarea {
   @extend %input;
+}
+
+textarea {
+  height: auto;
+  line-height: 1.5em;
+  min-height: $padding * 2;
+  max-height: $padding * 8;
+  resize: vertical;
 }
 
 label, dt {
   @extend %label;
+}
+
+.student-helper-message {
+  margin: .75em 0 0;
+  background: lightgoldenrodyellow;
+  border: 1px solid palegoldenrod;
+  color: dimgrey;
+  padding: .25em .75em;
+  font-size: .75em;
+  font-weight: bold;
+  border-radius: 2px;
 }
 
 label.error {
@@ -66,7 +111,56 @@ label.error {
 legend {
   color: #888;
   font-weight: 700;
-  margin: 0 0 1em;
+  margin: 0 1em 1em;
+}
+
+select {
+  display: block;
+  width: 100%;
+  height: $padding;
+  border: 2px solid #ddd;
+  background: whitesmoke;
+
+  @media screen and (-webkit-min-device-pixel-ratio: 1) {
+    padding: 0 .5em;
+    border-radius: 2px;
+    background: whitesmoke image-url('select.png') no-repeat right;
+    -webkit-background-size: 1.5em;
+    background-size: 1.5em;
+    -webkit-background-clip: padding;
+    background-clip: padding-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+  }
+}
+
+.credit-cards {
+  float: right;
+
+  .credit-card {
+    float: left;
+    margin-left: .25em;
+  }
+}
+
+.checkbox_field {
+  line-height: 1.35em;
+
+  input[type='checkbox'] {
+    float: left;
+    width: 1em;
+    height: 1em;
+    margin: .2em 0;
+    padding: 0;
+  }
+
+  label {
+    font-size: .95em;
+    text-transform: none;
+    font-weight: normal;
+    margin-left: 1.5em;
+  }
 }
 
 #buttons {
@@ -75,3 +169,16 @@ legend {
   input, a { margin-right: .5em; }
 }
 
+
+#attendee_tweet_idea { padding-bottom: 1.5em; }
+
+.char-count {
+  position: absolute;
+  bottom: 0;
+  right: 1em;
+  margin: .5em;
+  line-height: 1em;
+  color: #888;
+
+  &.limit { color: hsl(0, 100%, 65%); }
+}

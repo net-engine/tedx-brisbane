@@ -26,7 +26,7 @@ class AttendeesController < ApplicationController
   private
 
   def attendee_params
-    params.require(:attendee).permit(:first_name, :last_name, :email_address)
+    params.require(:attendee).permit(:first_name, :last_name, :email_address, :gender, :age, :profession, :tweet_idea, :scholarship)
   end
 
 end
