@@ -28,7 +28,7 @@ html {
 .container {
   margin: auto;
   padding: $padding * 1.5;
-  max-width: $breakpoint-medium;
+  max-width: 700px;
 
   @media screen and (max-width: $breakpoint-small) {
     padding: $padding;
