@@ -11,6 +11,7 @@ ActiveAdmin.register Attendee do
     column :profession
     column :tweet_idea
     column :scholarship
+    column :student
     default_actions
   end
 
@@ -22,7 +23,7 @@ ActiveAdmin.register Attendee do
 
   controller do
     def permitted_params
-      params.permit(:attendee => [:email_address, :round, :first_name, :last_name, :gender, :age, :profession, :tweet_idea, :scholarship])
+      params.permit(:attendee => [:email_address, :round, :first_name, :last_name, :gender, :age, :profession, :tweet_idea, :scholarship, :student])
     end
   end
 

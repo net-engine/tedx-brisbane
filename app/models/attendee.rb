@@ -65,6 +65,17 @@ class Attendee < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def update_student_status(amount)
+    case amount.to_i
+    when TICKET.price_in_dollars
+      update_column(:student, false)
+    when TICKET.price_in_dollars_for_student
+      update_column(:student, true)
+    else
+      raise 'Invalid amount'
+    end
+  end
+
   private
 
   def build_tokens
