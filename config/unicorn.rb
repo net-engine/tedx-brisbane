@@ -12,7 +12,7 @@
 # more will usually help for _short_ waits on databases/caches.
 rails_env = ENV['RAILS_ENV'] || 'production'
 
-worker_processes (rails_env == 'production' ? 16 : 1)
+worker_processes (rails_env == 'production' ? 4 : 1)
 
 
 # Since Unicorn is never exposed to outside clients, it does not need to
