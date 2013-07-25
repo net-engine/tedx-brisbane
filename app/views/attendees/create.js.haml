@@ -1,5 +1,6 @@
 - if @attendee.valid?
   $('body').append("<div class='flash flash-notice'>Thanks for registering!</div>");
   $('#new_attendee #inputs input').val('');
+  $("#new_attendee #inputs textarea").val('');
 - else
   $('body').append("<div class='flash flash-error'>#{@attendee.errors.full_messages.join(', ')}</div>");

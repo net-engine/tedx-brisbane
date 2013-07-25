@@ -44,6 +44,29 @@ describe "The payment page", js: true do
         attendee.first_name.should == "Douglas"
         attendee.last_name.should == "Adams"
         attendee.state.should == "paid"
+        attendee.student.should == false
+        EmailDeliveryWorker.jobs.size.should == 1
+      end
+    end
+
+    context "when submitting the form with a valid credit card while being a student" do
+      it "succeeds" do
+        visit(url)
+        select("$#{TICKET.price_in_dollars_for_student} for students", :from => 'student_amount')
+        fill_in "transaction_customer_first_name", with: 'Douglas'
+        fill_in "transaction_customer_last_name", with: 'Adams'
+        fill_in "transaction_credit_card_number", with: cc.number
+        fill_in "transaction_credit_card_expiration_date", with: cc.expiry
+        fill_in "transaction_credit_card_cvv", with: cc.cvv
+        click_on "Submit"
+
+        page.should have_content("Thank you, your payment was successful.")
+        attendee.reload
+        attendee.payments.count.should == 1
+        attendee.first_name.should == "Douglas"
+        attendee.last_name.should == "Adams"
+        attendee.state.should == "paid"
+        attendee.student.should == true
         EmailDeliveryWorker.jobs.size.should == 1
       end
     end

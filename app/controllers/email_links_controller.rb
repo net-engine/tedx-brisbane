@@ -11,7 +11,7 @@ class EmailLinksController < ApplicationController
   def decline
     begin
       attendee.decline!
-      attendee.emails.create(event: 'decline').deliver
+      attendee.emails.create(event: 'decline_from_user').deliver
     rescue StateMachine::InvalidTransition
     end
     redirect_to '/', notice: message("decline")
