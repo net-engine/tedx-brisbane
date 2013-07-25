@@ -10,13 +10,21 @@ describe "Creating a new attendee via the API" do
             "email_address": "example@testingguy.com",
             "hidden_horrible_param": "doug",
             "first_name": "example",
-            "last_name":  "testingguy"
+            "last_name":  "testingguy",
+            "gender": "M",
+            "age":  32,
+            "profession":  "Architect",
+            "tweet_idea":  "Heal the world. Make it a better place."
           },
           {
             "email_address": "otherguy@testing.com",
             "hidden_horrible_param": "doug",
             "first_name": "otherguy",
-            "last_name":  "testing"
+            "last_name":  "testing",
+            "gender": "M",
+            "age":  32,
+            "profession":  "Architect",
+            "tweet_idea":  "Heal the world. Make it a better place."
           }
         ]
       }
@@ -39,7 +47,12 @@ describe "Creating a new attendee via the API" do
                 "state": "awaiting_invitation",
                 "round": 1,
                 "first_name": "example",
-                "last_name": "testingguy"
+                "last_name": "testingguy",
+                "gender": "M",
+                "age":  32,
+                "profession":  "Architect",
+                "tweet_idea":  "Heal the world. Make it a better place.",
+                "scholarship": false
               },
               {
                 "id": #{Attendee.where(email_address: "otherguy@testing.com").first.try(:id) || 0},
@@ -47,7 +60,12 @@ describe "Creating a new attendee via the API" do
                 "state": "awaiting_invitation",
                 "round": 1,
                 "first_name": "otherguy",
-                "last_name":  "testing"
+                "last_name":  "testing",
+                "gender": "M",
+                "age":  32,
+                "profession":  "Architect",
+                "tweet_idea":  "Heal the world. Make it a better place.",
+                "scholarship": false
               }
             ]
           }

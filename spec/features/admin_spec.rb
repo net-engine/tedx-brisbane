@@ -31,6 +31,10 @@ describe "The admin interface", js: true do
     fill_in 'attendee_first_name',    with: 'some'
     fill_in 'attendee_last_name',     with: 'guy'
     fill_in 'attendee_email_address', with: 'some_guy@example.com'
+    fill_in 'attendee_age',           with: '32'
+    fill_in 'attendee_gender',        with: 'M'
+    fill_in 'attendee_profession',    with: 'Architect'
+    fill_in 'attendee_tweet_idea',    with: 'TEDx rocks'
     click_on 'Create Attendee'
 
     page.should have_content("Attendee was successfully created")
