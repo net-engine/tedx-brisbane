@@ -30,6 +30,7 @@
 }
 
 %buttons {
+  clear: both;
   margin: 1.5em 0 0;
   padding: 1.5em 0 0;
   border-top: 2px dotted #ddd;
@@ -42,6 +43,7 @@
 
 form {
   ol {
+    clear: both;
     margin: 0 -1em;
   }
 
@@ -57,11 +59,20 @@ form {
       clear: none;
       width: 50%;
       @include box-sizing(border-box);
+
+      @media screen and (max-width: $breakpoint-small) {
+        float: none;
+        clear: both;
+        width: auto;
+      }
     }
   }
 }
 
-input, textarea, select { font-size: $font-size; }
+input, textarea, select {
+  font-size: $font-size;
+  font-family: $font-family;
+}
 
 input[type='text'], input[type='email'], input[type='number'], textarea {
   @extend %input;
@@ -79,6 +90,17 @@ label, dt {
   @extend %label;
 }
 
+.student-helper-message {
+  margin: .75em 0 0;
+  background: lightgoldenrodyellow;
+  border: 1px solid palegoldenrod;
+  color: dimgrey;
+  padding: .25em .75em;
+  font-size: .75em;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
 label.error {
   background: lightgoldenrodyellow;
   color: lighten($black, 15%);
@@ -89,19 +111,40 @@ label.error {
 legend {
   color: #888;
   font-weight: 700;
-  margin: 0 0 1em;
+  margin: 0 1em 1em;
 }
 
 select {
   display: block;
   width: 100%;
   height: $padding;
-  border: 1px solid #ccc;
-  border-radius: 0;
+  border: 2px solid #ddd;
   background: whitesmoke;
+
+  @media screen and (-webkit-min-device-pixel-ratio: 1) {
+    padding: 0 .5em;
+    border-radius: 2px;
+    background: whitesmoke image-url('select.png') no-repeat right;
+    -webkit-background-size: 1.5em;
+    background-size: 1.5em;
+    -webkit-background-clip: padding;
+    background-clip: padding-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+  }
 }
 
-.checbox_field {
+.credit-cards {
+  float: right;
+
+  .credit-card {
+    float: left;
+    margin-left: .25em;
+  }
+}
+
+.checkbox_field {
   line-height: 1.35em;
 
   input[type='checkbox'] {

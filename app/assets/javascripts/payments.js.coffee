@@ -16,8 +16,10 @@ class PaymentStudentHandler
   updateTrData : ->
     if @isStudent()
       @$trData.val(@trDataStudent)
+      @$studentSelect.after('<p class="student-helper-message">Students must present photo ID.</p>')
     else
       @$trData.val(@trDataNormal)
+      $('.student-helper-message').remove()
 
 
 $ ->
