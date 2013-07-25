@@ -65,7 +65,7 @@ class Attendee < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def update_student_status(amount)
+  def update_student_attribute(amount)
     case amount.to_i
     when TICKET.price_in_dollars
       update_column(:student, false)

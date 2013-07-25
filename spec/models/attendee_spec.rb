@@ -83,6 +83,25 @@ describe Attendee do
     end
   end
 
+  describe "#update_student_attribute" do
+    let(:attendee) { create(:attendee, first_name: "Donald", last_name: "Duck") }
+
+    it "sets the student status to true when called with the student price" do
+      attendee.update_student_attribute(TICKET.price_in_dollars_for_student)
+      attendee.reload.student.should == true
+    end
+
+    it "sets the student status to false when called with the standard price" do
+      attendee.update_student_attribute(TICKET.price_in_dollars)
+      attendee.reload.student.should == false
+    end
+
+    it "raises an error if called with an unexpected value" do
+      expect{ attendee.update_student_attribute(-1) }.to raise_error
+      attendee.reload.student.should == nil
+    end
+  end
+
 
   describe "states" do
     context "when the Attendee is created" do
