@@ -21,6 +21,5 @@ module TedxBrisbane
   class Application < Rails::Application
     config.autoload_paths += %W(#{config.root}/lib)
     config.active_record.observers = :attendee_observer
-    config.asset_host = HOSTNAME.public_send(Rails.env)
   end
 end
