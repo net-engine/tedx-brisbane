@@ -26,3 +26,15 @@ $ ->
   if ($("#new_attendee").length > 0)
     form = new SubmissionFormHandler($("#new_attendee"))
     form.validate()
+
+
+
+$(document).on 'submit', '#new_attendee', (e) ->
+  e.preventDefault()
+
+  $('.submit-container').spin('small', 'white')
+  $('#submit').val('')
+
+$(document).ajaxStop ->
+  $('.submit-container').spin(false)
+  $('#submit').val('Register')

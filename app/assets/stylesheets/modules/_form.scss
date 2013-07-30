@@ -166,7 +166,11 @@ select {
 #buttons {
   @extend %buttons;
 
-  input, a { margin-right: .5em; }
+  input, a {
+    margin-right: .5em;
+    display: inline-block;
+    vertical-align: middle;
+  }
 }
 
 
