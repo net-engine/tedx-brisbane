@@ -38,5 +38,6 @@
     %section#buttons
       %ol
         %li
-          = f.submit "Register!", class: 'btn', id: :submit
+          .submit-container
+            = f.submit "Register", class: 'btn btn-large', id: :submit
           = link_to 'Cancel', "/"

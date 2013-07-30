@@ -17,8 +17,18 @@
   }
 }
 
-.btn-primary {
-  margin: 3em 0;
+.btn-primary, .btn-large {
   padding: .5em 1.5em;
+  font-size: 1.25em;
+}
+
+.btn-primary {
   font-size: 1.5em;
+  margin: 3em 0;
+}
+
+.submit-container {
+  display: inline-block;
+
+  .btn { width: 7.5em; }
 }

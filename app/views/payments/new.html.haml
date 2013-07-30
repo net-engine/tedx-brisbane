@@ -2,7 +2,7 @@
 = hidden_field_tag :tr_data_normal,  @tr_data
 = hidden_field_tag :tr_data_student, @tr_data_student
 
-= form_for :transaction, url: Braintree::TransparentRedirect.url, html: { autocomplete: "off" } do |f|
+= form_for :transaction, url: Braintree::TransparentRedirect.url, html: { id: "new_payment", autocomplete: "off" } do |f|
 
   .box
 
@@ -52,5 +52,6 @@
     %section#buttons
       %ol
         %li
-          = f.submit "Submit", class: 'btn'
+          .submit-container
+            = f.submit "Submit", class: 'btn btn-large'
           = link_to 'Cancel', root_path

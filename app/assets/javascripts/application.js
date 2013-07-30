@@ -15,4 +15,5 @@
 //= require handlebars
 //= require pusher.min
 //= require jquery.validate
+//= require spin
 //= require_tree .
