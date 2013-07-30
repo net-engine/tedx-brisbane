@@ -26,3 +26,7 @@ $ ->
   if $('#student_amount').length > 0
     psh = new PaymentStudentHandler()
     psh.bindChanges()
+
+$(document).on 'submit', '#new_payment', (e) ->
+  $('.submit-container').spin('small', 'white')
+  $('.submit-container .btn').val('')
