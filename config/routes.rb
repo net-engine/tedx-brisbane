@@ -8,7 +8,7 @@ TedxBrisbane::Application.routes.draw do
   get "/pay/:token", to: "email_links#pay"
 
   get "/payment/:token", to: "payments#new", as: "new_payment"
-  get "/payments/confirm" => "payments#confirm", as: "confirm_payment"
+  post "/payments/:token/confirm" => "payments#confirm", as: "confirm_payment"
 
   get "/emails/:token" => "emails#content", as: "show_email"
 

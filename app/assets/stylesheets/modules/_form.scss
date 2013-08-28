@@ -138,7 +138,7 @@ select {
 .credit-cards {
   float: right;
 
-  .credit-card {
+  .credit-card, input {
     float: left;
     margin-left: .25em;
   }

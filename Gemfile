@@ -34,6 +34,7 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'turbolinks'
 gem "jquery-rails", "2.3.0"
 gem 'launchy'
+gem 'activemerchant-payway'
 
 group :staging, :production do
   gem 'unicorn'
