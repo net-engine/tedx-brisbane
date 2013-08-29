@@ -1,6 +1,6 @@
 class PaywayConnector
-  def self.make_payment! attendee, cc_params
-    pc       = PaywayConnector.new(attendee, cc_params)
+  def self.make_payment! attendee, transaction_params
+    pc       = PaywayConnector.new(attendee, transaction_params)
     response = pc.pay!
     pc.register_payment(response)
   end
@@ -9,7 +9,7 @@ class PaywayConnector
     @attendee   = check_and_return_attendee(attendee)
     @amount     = check_and_return_amount(params)
     @cc_details = check_and_return_cc_details(params)
-    @options  = {
+    @options    = {
       order_number: attendee.pay_token
     }
   end
@@ -49,7 +49,7 @@ class PaywayConnector
     number     = params[:transaction][:credit_card][:number].to_i  rescue nil
     month      = params[:transaction][:credit_card][:expiration_date].split('/', 2).first.to_i rescue nil
     year       = params[:transaction][:credit_card][:expiration_date].split('/', 2).last.to_i rescue  nil
-    cvv        = params[:transaction][:credit_card][:cvv]  rescue nil
+    cvv        = params[:transaction][:credit_card][:cvv].to_i  rescue nil
     brand      = params[:transaction][:credit_card][:type] rescue nil
 
     raise Exceptions::MissingCCField     unless first_name && last_name && number && month && year && cvv && brand
