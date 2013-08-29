@@ -24,10 +24,8 @@ class PaywayConnector
   def register_payment(response)
     if @attendee.payments.create! amount: response.amount,
                                  transaction_id: response.transaction_id,
-                                 masked_number: @cc_details[:number][-4..-1],
+                                 masked_number: @cc_details[:number].last(4),
                                  card_type: @cc_details[:brand]
-      attendee.update_attributes first_name: @cc_details[:first_name],
-                                 last_name: @cc_details[:last_name]
       attendee.pay!
       attendee.update_student_attribute(response.transaction_amount)
       attendee.emails.create(event: 'pay').deliver
