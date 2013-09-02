@@ -55,6 +55,7 @@ group :development, :test do
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'rspec-rails'
   gem 'konacha'
+  gem 'thin'
 end
 
 group :test do
