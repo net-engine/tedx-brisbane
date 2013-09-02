@@ -9,8 +9,8 @@ TICKET = OpenStruct.new(
 
 
 PAYWAY = OpenStruct.new(
-  username: 'abcdefgh',
-  password: '12345678',
-  merchant: 'TEST',
-  pem_file: 'config/payway.pem'
+  username: ENV['TEDX_PAYWAY_USERNAME'],
+  password: ENV['TEDX_PAYWAY_PASSWORD'],
+  merchant: ENV['TEDX_PAYWAY_MERCHANT'],
+  pem_file: ENV['TEDX_PAYWAY_PEM_FILE']
 )
