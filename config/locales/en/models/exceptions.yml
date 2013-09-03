@@ -1,0 +1,7 @@
+en:
+  models:
+    exceptions:
+      invalid_attendee: "You do not appear to be entitled to make this payment"
+      missing_cc_field: "Some fields appeared to be missing. Please be sure to fill all your credit card information."
+      unsupported_cc_brand: "Please use one of the supported credit card brand."
+      declined_transaction: "Your transaction was declined for the following reason: %{third_party_response}"
