@@ -15,7 +15,7 @@ describe PaywayConnector do
               type: "master",
               number: "1234567890",
               expiration_date: "12/13",
-              cvv: "123"
+              cvv: "023"
             }
         },
         student_amount: false
@@ -53,16 +53,16 @@ describe PaywayConnector do
       pc.attendee.should   == attendee
       pc.amount.should     == TICKET.price_in_dollars
       pc.cc_details.should == {
-        number:              1234567890,
+        number:              '1234567890',
         month:               12,
-        year:                13,
+        year:                '2013',
         first_name:          "firstname",
         last_name:           "lastname",
-        verification_value:  123,
+        verification_value:  '023',
         brand:               "master"
       }
       pc.options.should == {
-        order_number: attendee.pay_token
+        order_number: attendee.id
       }
     end
   end
