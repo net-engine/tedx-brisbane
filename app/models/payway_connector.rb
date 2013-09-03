@@ -70,7 +70,7 @@ class PaywayConnector
   end
 
   def gateway
-    @gateway ||= ActiveMerchant::Billing::PayWayGateway.new(
+    @gateway ||= ::ActiveMerchant::Billing::PayWayGateway.new(
       username: PAYWAY.username,
       password: PAYWAY.password,
       merchant: PAYWAY.merchant,
@@ -79,7 +79,7 @@ class PaywayConnector
   end
 
   def cc
-    @cc ||= ActiveMerchant::Billing::CreditCard.new(@cc_details)
+    @cc ||= ::ActiveMerchant::Billing::CreditCard.new(@cc_details)
   end
 
 end
