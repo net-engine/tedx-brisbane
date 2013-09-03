@@ -1,3 +1,5 @@
+require 'activemerchant'
+
 class PaywayConnector
   def self.make_payment!(attendee, transaction_params)
     pc       = PaywayConnector.new(attendee, transaction_params)

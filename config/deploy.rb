@@ -44,7 +44,7 @@ namespace :deploy do
   end
 
   task :restart, :roles => :app, :except => { :no_release => true } do
-    sudo "/etc/init.d/unicorn restart"
+    deploy.upgrade
   end
 
   task :upgrade, :roles => :app, :except => { :no_release => true } do
