@@ -28,7 +28,7 @@ set :default_environment, {
 }
 
 after "deploy:setup", "db:setup", "setup:postgresql"
-after "deploy:update_code", "db:symlink"
+after "deploy:update_code", "db:symlink", "payway:symlink"
 after "db:init", "db:migrate", "db:seed"
 
 load 'deploy/assets'
@@ -73,6 +73,13 @@ namespace :sidekiq do
   end
   task :stop do
     run "/etc/init.d/sidekiq stop"
+  end
+end
+
+namespace :payway do
+  task :symlink do
+    desc "Make symlink for the payway yml"
+    run "ln -nfs #{shared_path}/config/payway.yml #{latest_release}/config/payway.yml"
   end
 end
 
