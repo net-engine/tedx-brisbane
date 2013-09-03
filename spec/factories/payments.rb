@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :payment do
     attendee_id 1
     amount "9.99"
-    transaction_id "MyString"
+    receipt_number "MyString"
     masked_number "MyString"
     card_type "MyString"
   end

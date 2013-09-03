@@ -34,6 +34,7 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'turbolinks'
 gem "jquery-rails", "2.3.0"
 gem 'launchy'
+gem 'activemerchant-payway'
 
 group :staging, :production do
   gem 'unicorn'
@@ -54,6 +55,7 @@ group :development, :test do
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'rspec-rails'
   gem 'konacha'
+  gem 'thin'
 end
 
 group :test do

@@ -20,6 +20,7 @@ HOSTNAME = OpenStruct.new(
 module TedxBrisbane
   class Application < Rails::Application
     config.autoload_paths += %W(#{config.root}/lib)
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.active_record.observers = :attendee_observer
     config.asset_host = HOSTNAME.public_send(Rails.env)
   end

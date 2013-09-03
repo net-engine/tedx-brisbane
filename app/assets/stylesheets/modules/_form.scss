@@ -136,12 +136,19 @@ select {
 }
 
 .credit-cards {
-  float: right;
+  position: relative;
+  float: left;
 
-  .credit-card {
+  .credit-card, input {
     float: left;
     margin-left: .25em;
   }
+}
+
+input[type="radio"] + label.error {
+  position: absolute;
+  left: 102%;
+  min-width: 23em;
 }
 
 .checkbox_field {
