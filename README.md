@@ -15,3 +15,9 @@ Generally, the system will allow people to learn about the event, and register t
 ### Development
 - rails controller for emails (display this in a browser etc)
 - update active_admin for rails 4 (currently quite hacky)
+
+## Sidekiq
+
+Even in developement emails are sent through a background job, you'll need redis and start
+the server with `bundle exec sidekiq -C config/sidekiq.yml`
+
