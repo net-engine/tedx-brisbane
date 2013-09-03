@@ -17,7 +17,8 @@ class PaywayConnector
   end
 
   def pay!
-    response       = gateway.purchase(@amount, cc, @options)
+    amount_in_cents = @amount * 100
+    response       = gateway.purchase(amount_in_cents, cc, @options)
     response_title = response.message.split(' - ', 2).first rescue ""
     raise Exceptions::DeclinedTransaction.new(msg_params: { third_party_response: response_title}) unless response_title == 'Approved'
     return response
