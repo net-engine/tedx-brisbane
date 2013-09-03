@@ -50,9 +50,9 @@ describe PaywayConnector do
     it "should set the proper instance variables when the provided data is correct" do
       attendee.invite!
       pc = PaywayConnector.new(attendee, valid_transaction_params)
-      pc.instance_variable_get(:@attendee).should   == attendee
-      pc.instance_variable_get(:@amount).should     == TICKET.price_in_dollars
-      pc.instance_variable_get(:@cc_details).should == {
+      pc.attendee.should   == attendee
+      pc.amount.should     == TICKET.price_in_dollars
+      pc.cc_details.should == {
         number:              1234567890,
         month:               12,
         year:                13,
@@ -61,7 +61,7 @@ describe PaywayConnector do
         verification_value:  123,
         brand:               "master"
       }
-      pc.instance_variable_get(:@options).should == {
+      pc.options.should == {
         order_number: attendee.pay_token
       }
     end

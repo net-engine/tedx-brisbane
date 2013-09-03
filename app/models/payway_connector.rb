@@ -1,16 +1,18 @@
 class PaywayConnector
-  def self.make_payment! attendee, transaction_params
+  def self.make_payment!(attendee, transaction_params)
     pc       = PaywayConnector.new(attendee, transaction_params)
     response = pc.pay!
     pc.register_payment(response)
   end
+
+  attr_reader :attendee, :amount, :cc_details, :options
 
   def initialize(attendee, params)
     @attendee   = check_and_return_attendee(attendee)
     @amount     = check_and_return_amount(params)
     @cc_details = check_and_return_cc_details(params)
     @options    = {
-      order_number: attendee.pay_token
+      order_number: attendee.id
     }
   end
 
@@ -22,10 +24,11 @@ class PaywayConnector
   end
 
   def register_payment(response)
-    if @attendee.payments.create! amount: response.amount,
-                                 transaction_id: response.transaction_id,
-                                 masked_number: @cc_details[:number].last(4),
-                                 card_type: @cc_details[:brand]
+    debugger
+    if @attendee.payments.create!(amount: self.amount,
+                                  receipt_number: response.receipt_no,
+                                  masked_number: @cc_details[:number].last(4),
+                                  card_type: @cc_details[:brand])
       attendee.pay!
       attendee.update_student_attribute(response.transaction_amount)
       attendee.emails.create(event: 'pay').deliver
@@ -45,14 +48,14 @@ class PaywayConnector
 
   def check_and_return_cc_details(params)
     first_name = params[:transaction][:customer][:first_name] rescue nil
-    last_name  = params[:transaction][:customer][:last_name]  rescue nil
-    number     = params[:transaction][:credit_card][:number].to_i  rescue nil
+    last_name  = params[:transaction][:customer][:last_name] rescue nil
+    number     = params[:transaction][:credit_card][:number] rescue nil
     month      = params[:transaction][:credit_card][:expiration_date].split('/', 2).first.to_i rescue nil
-    year       = params[:transaction][:credit_card][:expiration_date].split('/', 2).last.to_i rescue  nil
-    cvv        = params[:transaction][:credit_card][:cvv].to_i  rescue nil
+    year       = "20" + params[:transaction][:credit_card][:expiration_date].split('/', 2).last rescue nil
+    cvv        = params[:transaction][:credit_card][:cvv] rescue nil
     brand      = params[:transaction][:credit_card][:type] rescue nil
 
-    raise Exceptions::MissingCCField     unless first_name && last_name && number && month && year && cvv && brand
+    raise Exceptions::MissingCCField unless first_name && last_name && number && month && year && cvv && brand
     raise Exceptions::UnsupportedCCBrand unless ['visa', 'master'].include? brand
 
     return {
