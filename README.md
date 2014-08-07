@@ -9,7 +9,7 @@ Generally, the system will allow people to learn about the event, and register t
 
 ## Event Configuration
 
-Check out `Event` in `config/initializers/constants.rb`
+Check out `Event` in `config/initializers/constants.rb` and `config/en.yml`
 
 ## Roadmap
 ### Design

@@ -1,4 +1,7 @@
 en:
+  about_p1: "TEDxBrisbane is an event The event is Sunday, 5 October 2014. 9am until 9.30pm. (Including after party)"
+  about_p2: "The location this year will be at the Brisbane Powerhouse.  119 Lamington St, New Farm QLD 4005"
+
   api:
     error:
       not_found: 'Not found'
