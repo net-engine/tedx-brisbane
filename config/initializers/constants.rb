@@ -4,7 +4,8 @@ MANDRILL = OpenStruct.new(
 
 Event = OpenStruct.new(
   price_in_dollars:            135,
-  price_in_dollars_for_student: 85
+  price_in_dollars_for_student: 85,
+  date:                         Date.parse("5 October 2014")
 )
 
 PAYWAY = OpenStruct.new(
