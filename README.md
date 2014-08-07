@@ -7,6 +7,10 @@ We're building an [application](https://github.com/net-engine/tedx-brisbane) for
 
 Generally, the system will allow people to learn about the event, and register their interest in attending. An admin will be able to invite people in batches, at which time they can purchase a ticket. This invitation should expire, so that another batch of people may be invited. This may go through multiple rounds of invitations.
 
+## Event Configuration
+
+Check out `Event` in `config/initializers/constants.rb`
+
 ## Roadmap
 ### Design
 - add static content to public page

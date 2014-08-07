@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def adult_price
+    number_to_currency(Event.price_in_dollars)
+  end
+
+  def student_price
+    number_to_currency(Event.price_in_dollars_for_student)
+  end
+
   def email_anchor(title, url)
     email_link(title, url, "color: #FF2B06;", 'email-anchor')
   end

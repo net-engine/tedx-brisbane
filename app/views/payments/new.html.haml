@@ -21,8 +21,8 @@
 
         %li
           = label_tag :student_amount,"Tickets cost: "
-          = select_tag :student_amount, options_for_select([["$#{TICKET.price_in_dollars}", false],["$#{TICKET.price_in_dollars_for_student} for students", true]],
-                                                               ["$#{TICKET.price_in_dollars}", false])
+          = select_tag :student_amount, options_for_select([["$#{Event.price_in_dollars}", false],["$#{Event.price_in_dollars_for_student} for students", true]],
+                                                               ["$#{Event.price_in_dollars}", false])
       %ol
 
         %legend Credit Card

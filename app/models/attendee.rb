@@ -67,9 +67,9 @@ class Attendee < ActiveRecord::Base
 
   def update_student_attribute(amount)
     case amount.to_i
-    when TICKET.price_in_dollars
+    when Event.price_in_dollars
       update_column(:student, false)
-    when TICKET.price_in_dollars_for_student
+    when Event.price_in_dollars_for_student
       update_column(:student, true)
     else
       raise 'Invalid amount'

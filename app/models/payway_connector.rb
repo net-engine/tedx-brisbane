@@ -45,7 +45,7 @@ class PaywayConnector
   end
 
   def check_and_return_amount(params)
-    params[:student_amount] == "true" ? TICKET.price_in_dollars_for_student : TICKET.price_in_dollars
+    params[:student_amount] == "true" ? Event.price_in_dollars_for_student : Event.price_in_dollars
   end
 
   def check_and_return_cc_details(params)
