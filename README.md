@@ -16,6 +16,9 @@ Generally, the system will allow people to learn about the event, and register t
 - rails controller for emails (display this in a browser etc)
 - update active_admin for rails 4 (currently quite hacky)
 
+### Bundling
+If you're having troubles bundling checkout the work in progress branch `updating_gems_to_allow_bundle`
+
 ## Sidekiq
 
 Even in developement emails are sent through a background job, you'll need redis and start
