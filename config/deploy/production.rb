@@ -1,4 +1,4 @@
-set :branch, "production"
+set :branch, "with_assets"
 set :rails_env, "production"
 set :application, "tedx-brisbane-#{rails_env}"
 
