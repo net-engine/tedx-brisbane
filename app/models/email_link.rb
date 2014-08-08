@@ -22,19 +22,19 @@ class EmailLink
   end
 
   def for
-    "#{host_name}/#{route}/#{token}".parameterize
+    Addressable::URI.escape("#{host_name}/#{route}/#{token}")
   end
 
   def confirm
-    "#{host_name}/confirm/#{confirm_token}".parameterize
+    Addressable::URI.escape("#{host_name}/confirm/#{confirm_token}")
   end
 
   def pay
-    "#{host_name}/pay/#{pay_token}".parameterize
+    Addressable::URI.escape("#{host_name}/pay/#{pay_token}")
   end
 
   def decline
-    "#{host_name}/decline/#{decline_token}".parameterize
+    Addressable::URI.escape("#{host_name}/decline/#{decline_token}")
   end
 
   private

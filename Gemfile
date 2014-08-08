@@ -34,6 +34,8 @@ gem 'slim', ">= 1.3.0"
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem "jquery-rails", "2.3.0"
 gem 'activemerchant-payway'
+gem 'addressable'
+gem 'launchy'
 
 group :staging, :production do
   gem 'unicorn'
@@ -46,7 +48,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'launchy'
   gem 'awesome_print'
   gem 'coveralls', require: false
   gem 'faker'

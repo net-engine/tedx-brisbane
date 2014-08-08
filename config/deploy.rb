@@ -48,7 +48,7 @@ namespace :deploy do
   end
 
   task :upgrade, :roles => :app, :except => { :no_release => true } do
-    sudo "/etc/init.d/unicorn upgrade"
+    sudo "service unicorn upgrade"
   end
 
   namespace :assets do
