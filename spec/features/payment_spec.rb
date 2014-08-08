@@ -59,7 +59,7 @@ describe "The payment page", js: true do
 =begin
       Waiting for Payway information
         visit(url)
-        select("$#{TICKET.price_in_dollars_for_student} for students", :from => 'student_amount')
+        select("$#{Event.price_in_dollars_for_student} for students", :from => 'student_amount')
         fill_in "transaction_customer_first_name", with: 'Douglas'
         fill_in "transaction_customer_last_name", with: 'Adams'
         fill_in "transaction_credit_card_number", with: cc.number
@@ -81,7 +81,7 @@ describe "The payment page", js: true do
 
     context "when submitting the form with an invalid credit card" do
       before(:each) do
-        TICKET.stub(:price_in_dollars).and_return(2999)
+        Event.stub(:price_in_dollars).and_return(2999)
       end
 
       it "fails" do

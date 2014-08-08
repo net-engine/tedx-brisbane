@@ -87,12 +87,12 @@ describe Attendee do
     let(:attendee) { create(:attendee, first_name: "Donald", last_name: "Duck") }
 
     it "sets the student status to true when called with the student price" do
-      attendee.update_student_attribute(TICKET.price_in_dollars_for_student)
+      attendee.update_student_attribute(Event.price_in_dollars_for_student)
       attendee.reload.student.should == true
     end
 
     it "sets the student status to false when called with the standard price" do
-      attendee.update_student_attribute(TICKET.price_in_dollars)
+      attendee.update_student_attribute(Event.price_in_dollars)
       attendee.reload.student.should == false
     end
 
