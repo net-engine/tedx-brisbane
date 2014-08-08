@@ -12,7 +12,7 @@ ActiveAdmin.register Attendee do
     column :tweet_idea
     column :scholarship
     column :student
-    default_actions
+    actions
   end
 
   filter :state, :as => :select, collection: proc { Attendee.new.state_paths.to_states }
