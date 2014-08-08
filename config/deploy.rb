@@ -1,6 +1,6 @@
 require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
-require 'sidekiq/capistrano'
+require 'capistrano/sidekiq'
 
 set :pg_user, "ubuntu"
 set :db_name, "tedx_brisbane"

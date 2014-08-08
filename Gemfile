@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '4.0.0'
 
@@ -40,7 +40,8 @@ group :staging, :production do
 end
 
 group :development do
-  gem 'capistrano'
+  gem 'capistrano', '< 3'
+  gem "capistrano-sidekiq"
   gem 'capistrano-ext'
 end
 
