@@ -53,6 +53,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'pry-meta'
   gem 'rb-fsevent', '~> 0.9.1'
+  gem 'rspec', '< 3' # we're using the old syntax
   gem 'rspec-rails'
   gem 'konacha'
   gem 'thin'
