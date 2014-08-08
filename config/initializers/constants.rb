@@ -8,6 +8,8 @@ Event = OpenStruct.new(
   date:                         Date.parse("5 October 2014")
 )
 
+# See HOSTNAME in application.rb
+
 PAYWAY = OpenStruct.new(
   YAML.load_file("#{Rails.root}/config/payway.yml")
 )
