@@ -13,6 +13,10 @@ Generally, the system will allow people to learn about the event, and register t
 * Update text for the event in `config/en.yml`
 * Update server ips in `config/deploy/production/{{env}}`
 
+## Deploy
+
+    rake assets:precompile # TMP
+    bundle exec cap production deploy
 
 ## Roadmap
 ### Design

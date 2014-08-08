@@ -24,7 +24,6 @@ spec/views
 capybara*
 .sass-cache
 *.orig
-public/assets
 .rvmrc
 bin
 public/uploads
