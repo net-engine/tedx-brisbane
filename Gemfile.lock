@@ -392,7 +392,6 @@ DEPENDENCIES
   active_model_serializers
   activeadmin!
   activemerchant-payway
-  addressable
   awesome_print
   bcrypt-ruby
   braintree
