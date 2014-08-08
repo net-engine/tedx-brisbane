@@ -1,4 +1,4 @@
-set :branch, "production"
+set :branch, "2014"
 set :rails_env, "production"
 set :application, "tedx-brisbane-#{rails_env}"
 
