@@ -31,8 +31,8 @@ after "deploy:setup", "db:setup", "setup:postgresql"
 after "deploy:update_code", "db:symlink", "payway:symlink"
 after "db:init", "db:migrate", "db:seed"
 
-load 'deploy/assets'
-set :normalize_asset_timestamps, false
+# load 'deploy/assets'
+# set :normalize_asset_timestamps, false
 
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do
@@ -52,12 +52,12 @@ namespace :deploy do
   end
 
   namespace :assets do
-    task :precompile, :roles => assets_role, :except => { :no_release => true } do
-      run <<-CMD.compact
-        cd -- #{latest_release.shellescape} &&
-        #{rake} RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} assets:precompile
-      CMD
-    end
+    # task :precompile, :roles => assets_role, :except => { :no_release => true } do
+    #   run <<-CMD.compact
+    #     cd -- #{latest_release.shellescape} &&
+    #     #{rake} RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} assets:precompile
+    #   CMD
+    # end
   end
 end
 
