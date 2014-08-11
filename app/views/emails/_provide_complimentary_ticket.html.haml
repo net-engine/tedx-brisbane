@@ -23,7 +23,8 @@ Hi #{attendee.first_name},
 
 %p
   If you are not able to make it, please
-  = email_anchor "click here.", EmailLink.decline(attendee).
+  = email_anchor "click here.", EmailLink.decline(attendee)
+  \.
   This is really important as we need to know whether to get your lunch ready.
 
 =# %p= render 'emails/blurb'

@@ -18,7 +18,7 @@ describe "The dashboard", js: true do
       find_by_id('attendee_profession').value       == ""
       find_by_id('attendee_tweet_idea').tag_name    == "textarea"
       find_by_id('attendee_tweet_idea').value       == ""
-      find_by_id('attendee_scholarship').tag_name   == "input"
+      # find_by_id('attendee_scholarship').tag_name   == "input" # disabled on client's request
       find_by_id('attendee_scholarship').value      == ""
     end
 
