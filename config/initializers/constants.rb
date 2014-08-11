@@ -12,7 +12,7 @@ Event = OpenStruct.new(
   drink_time_range:             "from 5:30–7:30 pm",
   location:                     "Brisbane Powerhouse",
   address:                      "119 Lamington St, New Farm QLD 4005",
-  header_title:                 "5 &middot; 09 &middot; 14 @ Powerhouse",
+  header_title:                 "5 &middot; 10 &middot; 14 @ Powerhouse",
   registration_open_and_close_time: "open at 7.45am and close at 8.45am"
 )
 

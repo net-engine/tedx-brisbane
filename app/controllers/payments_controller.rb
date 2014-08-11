@@ -2,8 +2,7 @@ class PaymentsController < ApplicationController
   before_action :verify_attendee
 
   def new
-    @attendee         = attendee
-    @token            = params[:token]
+    @token = params[:token]
   end
 
   def confirm
@@ -17,13 +16,13 @@ class PaymentsController < ApplicationController
 
   def verify_attendee
     unless attendee && attendee.received_invitation?
-      redirect_to('/', notice: I18n.t("controllers.payments.invalid")) and return
+      redirect_to('/', notice: I18n.t("controllers.payments.invalid"))
     end
   end
 
 
   def attendee
-    Attendee.where(pay_token: decoded_token).first
+    @attendee ||= Attendee.where(pay_token: decoded_token).first
   end
 
   def decoded_token
