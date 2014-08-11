@@ -2,7 +2,7 @@
 
 %p
   TEDxBrisbane is a full day of ideas, conversation and community to take place on
-  = Event.starts_on
+  = Event.starts_on.to_s :long
   from #{Event.starts_at} until #{Event.ends_at}. (Including after party)
 
 %p The location this year will be at the #{Event.location}. #{Event.address}
