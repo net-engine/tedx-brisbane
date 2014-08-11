@@ -50,18 +50,18 @@ end
 group :development, :test do
   gem 'awesome_print'
   gem 'coveralls', require: false
-  gem 'faker'
-  gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'pry-meta'
   gem 'rb-fsevent', '~> 0.9.1'
-  gem 'rspec', '< 3' # we're using the old syntax
-  gem 'rspec-rails'
   gem 'konacha'
   gem 'thin'
 end
 
 group :test do
+  gem 'faker'
+  gem 'factory_girl_rails'
+  gem 'rspec', '< 3' # we're using the old syntax
+  gem 'rspec-rails'
   gem 'capybara'
   gem 'poltergeist'
   gem 'database_cleaner'
