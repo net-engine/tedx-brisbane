@@ -2,7 +2,7 @@
 $flash-bg-color: lighten($black, 15%);
 
 .flash {
-  color: white;
+  color: $white;
   position: fixed;
   top: 50%;
   left: 50%;

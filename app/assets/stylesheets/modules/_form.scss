@@ -77,6 +77,14 @@ input, textarea, select {
 input[type='text'], input[type='email'], input[type='number'], textarea {
   @extend %input;
 }
+form {
+  input[type='text'],
+  input[type='email'],
+  input[type='number'],
+  textarea {
+    @extend %input;
+  }
+}
 
 textarea {
   height: auto;
