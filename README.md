@@ -14,6 +14,7 @@ Generally, the system will allow people to learn about the event, and register t
 * Update text for emails in `view/emails/_*.haml`
 * Update server ips in `config/deploy/production/{{env}}`
 * Update `db/database.yml` and create a new database
+* Use `config/seed.rb` for admins
 
 
 ## Roadmap
