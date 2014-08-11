@@ -11,6 +11,7 @@ Generally, the system will allow people to learn about the event, and register t
 
 * Update data for `Event` in `config/initializers/constants.rb`
 * Update text for the event in `config/en.yml`
+* Update text for emails in `view/emails/_*.haml`
 * Update server ips in `config/deploy/production/{{env}}`
 
 

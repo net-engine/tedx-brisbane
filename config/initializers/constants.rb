@@ -5,7 +5,16 @@ MANDRILL = OpenStruct.new(
 Event = OpenStruct.new(
   price_in_dollars:            135,
   price_in_dollars_for_student: 85,
-  date:                         Date.parse("5 October 2014")
+  starts_on:                    Date.parse("5 October 2014"),
+  doors_open_at:                "8.55am",
+  starts_at:                    "9am",
+  ends_at:                      "9.30pm",
+  drink_time_range:             "from 5:30–7:30 pm",
+  location:                     "Brisbane Powerhouse",
+  address:                      "119 Lamington St, New Farm QLD 4005",
+  header_title:                 "5 &middot; 09 &middot; 14 @ Powerhouse",
+  registration_open_and_close_time: "open at 7.45am and close at 8.45am",
+  conference_starts_at:         "8:55 am",
 )
 
 # See HOSTNAME in application.rb

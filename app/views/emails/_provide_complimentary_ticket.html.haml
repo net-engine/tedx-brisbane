@@ -1,11 +1,31 @@
 Hi #{attendee.first_name},
 
-%p You have have received a complimentary ticket to TEDxBrisbane 2013.
+%p
+  You have received a complimentary ticket to TEDxBrisbane #{Event.date.year},
+  to take place at the #{Event.location} on #{Event.date}.
 
-%p= render 'emails/blurb'
+%p
+  This year's TEDxBrisbane is a full day event concluding with drinks in the evening
+  from #{Event.starts_at} to #{Event.ends_at}. Lunch will be served in the
+  %em Ideas Worth Spreading
+  tent.
 
-%p We'll send a reminder closer to the event.
+%p
+  TEDxBrisbane will fill the #{Event.location} with an eclectic mix of thinkers,
+  dreamers and doers for a full day of inspiration and adventure.
 
-%p= "If you are not able to make it, please #{email_anchor "click here", EmailLink.decline(attendee)}. This is really important as we need to know whether to get your lunch ready.".html_safe
+%p
+  The day starts at #{Event.doors_open_at} sharp, so please ensure you allow enough time to collect your personalized nametag.
+  Registrations will #{Event.registration_open_and_close_time}.
+
+%p
+  If you are not able to make it, please click here. This is really important as we need to know whether to get your lunch ready.
+
+%p
+  If you are not able to make it, please
+  = email_anchor "click here.", EmailLink.decline(attendee).
+  This is really important as we need to know whether to get your lunch ready.
+
+=# %p= render 'emails/blurb'
 
 = render 'emails/email_footer'

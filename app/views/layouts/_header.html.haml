@@ -1,7 +1,7 @@
 
 = link_to image_tag('logo.png'), "http://www.tedxbrisbane.com/home", class: 'logo', title: 'TEDxBrisbane'
 
-%label#date.date{ data: { date: Event.date.to_s(:db) } }!= I18n.t('header.time_and_location')
+%label#date.date{ data: { date: Event.starts_on.to_s(:db) } }!= Event.header_title
 
 
 = link_to image_tag('map.png'), 'http://a.tiles.mapbox.com/v3/netengine.map-vfsy08ln.html#17.00/-27.469045/153.054324,17', class: 'map', target: "_blank"

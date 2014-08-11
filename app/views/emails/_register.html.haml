@@ -1,17 +1,31 @@
 %p= "Dear #{attendee.first_name},"
 
-%p You have successfully registered your interest for TEDxBrisbane 2013!
+%p You have successfully registered your interest for TEDxBrisbane #{Event.date.year}!
 
-%p This year's TEDxBrisbane is a full day event concluding with drinks in the evening from 5.30 to 7.30pm. Lunch will be served in the <em>Ideas Worth Spreading</em> tent.
+%p
+  This year's TEDxBrisbane is a full day event concluding with drinks in the
+  evening from #{Event.starts_at} to #{Event.ends_at}. Lunch will be served in the
+  %em Ideas Worth Spreading
+  tent.
 
-%p As with previous years, TEDxBrisbane fills the State Library with an eclectic mix of thinkers, dreamers and doers for a full day of inspiration and adventure.
+%p
+  TEDxBrisbane will fill the #{Event.location} with an eclectic mix of thinkers,
+  dreamers and doers for a full day of inspiration and adventure.
+
 
 = email_divider
 
-%p Tickets for the event are $95.00 for adults and $50.00 for students/concession.  Whilst we would love to have everyone along, our venue can only fit so many and there are a lot more applications than tickets, so we are sorry in advance if we can't offer you a spot.
+%p
+  Tickets for the event are #{Event.price_in_dollars} for adults and
+  = Event.price_in_dollars_for_student
+  for students/concession. Whilst we would love to have everyone along, our venue
+  can only fit so many and there are a lot more applications than tickets, so we
+  are sorry in advance if we can't offer you a spot.
+
 
 %p
-  Thanks again you for your interest. If you receive an invitation for the event, we'll send you another email.  If you wish to cancel your registation, click
+  Thanks again you for your interest. If you receive an invitation for the event,
+  we'll send you another email. If you wish to cancel your registration, click
   = email_anchor "here.", EmailLink.decline(attendee)
 
 = render 'emails/email_footer'
