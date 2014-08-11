@@ -5,7 +5,7 @@ MANDRILL = OpenStruct.new(
 Event = OpenStruct.new(
   price_in_dollars:            135,
   price_in_dollars_for_student: 85,
-  starts_on:                    Date.parse("5 October 2014"),
+  date:                    Date.parse("5 October 2014"),
   doors_open_at:                "8.55am",
   starts_at:                    "9am",
   ends_at:                      "9.30pm",
