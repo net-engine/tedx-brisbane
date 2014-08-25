@@ -1,0 +1,4 @@
+username: '1324'
+password: '1324'
+merchant: '1324'
+pem_file: 'config/ccapi.pem'

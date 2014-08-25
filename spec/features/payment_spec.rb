@@ -8,7 +8,8 @@ describe "The payment page", js: true do
       end
     end
     let(:url) { new_payment_path(Base64.urlsafe_encode64(attendee.pay_token)) }
-    let(:cc) { OpenStruct.new(number: '4111111111111111', expiry: '01/2020', cvv: '123') }
+    # https://www.payway.com.au/downloads/WBC/PayWay_API_Developers_Guide.pdf
+    let(:cc) { OpenStruct.new(number: '4564710000000004', expiry: '02/2019', cvv: '847') }
 
     it "doesn't redirect away from payments" do
       visit(url)

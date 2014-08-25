@@ -34,3 +34,13 @@ If you're having troubles bundling checkout the work in progress branch `updatin
 Even in developement emails are sent through a background job, you'll need redis and start
 the server with `bundle exec sidekiq -C config/sidekiq.yml`
 
+## Westpack
+
+* [Go to the Westpac site](https://www.payway.com.au/cards/APISecurityView)
+* Setup Api (if missing ask the client to setup api access)
+* Setup Api - Downloads: get the certificate `.pem` (PHP)
+* Setup Api - Security: Add prod and local ip and the production one
+* Setup Api - Security: Get the customer credentials
+* Administration - Merchant: Get the merchant ID
+* Update `config/payway.yml` (DON'T COMMIT, copy on the server)
+* [Check test ccs here](https://www.payway.com.au/downloads/WBC/PayWay_API_Developers_Guide.pdf)
