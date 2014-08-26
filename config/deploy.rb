@@ -79,8 +79,8 @@ end
 namespace :payway do
   task :symlink do
     desc "Make symlink for the payway yml"
-    run "rm #{latest_release}/config/payway.yml"
     run "ln -nfs #{shared_path}/config/payway.yml #{latest_release}/config/payway.yml"
+    run "ln -nfs #{shared_path}/config/ccapi.pem #{latest_release}/config/ccapi.pem"
   end
 end
 
