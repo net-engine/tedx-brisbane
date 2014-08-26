@@ -19,7 +19,7 @@ describe "The dashboard", js: true do
       find_by_id('attendee_tweet_idea').tag_name    == "textarea"
       find_by_id('attendee_tweet_idea').value       == ""
       # find_by_id('attendee_scholarship').tag_name   == "input" # disabled on client's request
-      find_by_id('attendee_scholarship').value      == ""
+      # find_by_id('attendee_scholarship').value      == ""
     end
 
     context "when submiting the form with proper value" do
@@ -38,14 +38,14 @@ describe "The dashboard", js: true do
 
       it "creates an attendee when submiting the form with proper value" do
         sign_in_as_admin
-
+        sleep 1
         within "#attendee_1" do
-          find(".first_name").should have_content("Dan")
-          find(".last_name").should have_content("Sowter")
-          find(".email_address").should have_content("dan@netengine.com.au")
-          find(".age").should have_content("32")
-          find(".profession").should have_content("Architect")
-          find(".tweet_idea").should have_content("Heal Rowan. He's sick ATM.")
+          find(".col-first_name").should have_content("Dan")
+          find(".col-last_name").should have_content("Sowter")
+          find(".col-email_address").should have_content("dan@netengine.com.au")
+          find(".col-age").should have_content("32")
+          find(".col-profession").should have_content("Architect")
+          find(".col-tweet_idea").should have_content("Heal Rowan. He's sick ATM.")
         end
       end
 
