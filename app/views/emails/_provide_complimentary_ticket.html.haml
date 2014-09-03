@@ -19,9 +19,6 @@ Hi #{attendee.first_name},
   Registrations will #{Event.registration_open_and_close_time}.
 
 %p
-  If you are not able to make it, please click here. This is really important as we need to know whether to get your lunch ready.
-
-%p
   If you are not able to make it, please
   = email_anchor "click here.", EmailLink.decline(attendee)
   \.
