@@ -1,6 +1,6 @@
 %p= "Hi #{attendee.first_name},"
 
-%p TEDxBrisbane 2013 is happening soon. Click the button below to confirm your attendance at the event.
+%p TEDxBrisbane #{Event.date.year} is happening soon. Click the button below to confirm your attendance at the event.
 
 %p= email_button "Confirm", EmailLink.confirm(attendee)
 
