@@ -46,3 +46,8 @@ the server with `bundle exec sidekiq -C config/sidekiq.yml`
 * [Check test ccs here](https://www.payway.com.au/downloads/WBC/PayWay_API_Developers_Guide.pdf)
 * Setup API - Go live
 
+## Mandrill
+
+Just change the env key `ENV['TEDX_MANDRILL_API_KEY']`
+
+
