@@ -8,7 +8,8 @@ describe "The payment page", js: true do
       end
     end
     let(:url) { new_payment_path(Base64.urlsafe_encode64(attendee.pay_token)) }
-    let(:cc) { OpenStruct.new(number: '4111111111111111', expiry: '01/2020', cvv: '123') }
+    # https://www.payway.com.au/downloads/WBC/PayWay_API_Developers_Guide.pdf
+    let(:cc) { OpenStruct.new(number: '4564710000000004', expiry: '02/2019', cvv: '847') }
 
     it "doesn't redirect away from payments" do
       visit(url)
@@ -59,7 +60,7 @@ describe "The payment page", js: true do
 =begin
       Waiting for Payway information
         visit(url)
-        select("$#{TICKET.price_in_dollars_for_student} for students", :from => 'student_amount')
+        select("$#{Event.price_in_dollars_for_student} for students", :from => 'student_amount')
         fill_in "transaction_customer_first_name", with: 'Douglas'
         fill_in "transaction_customer_last_name", with: 'Adams'
         fill_in "transaction_credit_card_number", with: cc.number
@@ -81,7 +82,7 @@ describe "The payment page", js: true do
 
     context "when submitting the form with an invalid credit card" do
       before(:each) do
-        TICKET.stub(:price_in_dollars).and_return(2999)
+        Event.stub(:price_in_dollars).and_return(2999)
       end
 
       it "fails" do

@@ -1,6 +1,6 @@
 require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
-require 'sidekiq/capistrano'
+require 'capistrano/sidekiq'
 
 set :pg_user, "ubuntu"
 set :db_name, "tedx_brisbane"
@@ -48,7 +48,7 @@ namespace :deploy do
   end
 
   task :upgrade, :roles => :app, :except => { :no_release => true } do
-    sudo "/etc/init.d/unicorn upgrade"
+    sudo "service unicorn upgrade"
   end
 
   namespace :assets do
@@ -79,8 +79,8 @@ end
 namespace :payway do
   task :symlink do
     desc "Make symlink for the payway yml"
-    run "rm #{latest_release}/config/payway.yml"
     run "ln -nfs #{shared_path}/config/payway.yml #{latest_release}/config/payway.yml"
+    run "ln -nfs #{shared_path}/config/ccapi.pem #{latest_release}/config/ccapi.pem"
   end
 end
 

@@ -26,6 +26,7 @@ class AttendeesController < ApplicationController
   private
 
   def attendee_params
+    params[:tweet_idea] = params[:tweet_idea].to_s.truncate(140)
     params.require(:attendee).permit(:first_name, :last_name, :email_address, :gender, :age, :profession, :tweet_idea, :scholarship)
   end
 

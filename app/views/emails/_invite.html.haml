@@ -1,22 +1,28 @@
-%p= "Hi #{attendee.first_name},"
+%p Hi #{attendee.first_name},
 
-%p We are very happy to extend you an invitation to this year's TEDxBrisbane to be held at the State Library of Queensland on Saturday, 21 September.
+%p
+  We are very happy to extend you an invitation to this year's TEDxBrisbane to
+  be held at the #{Event.location} on #{Event.date.to_s :long}.
 
-%p It is set to be a day filled with inspiration from some of our best thinkers and doers.
+%p It is set to be a day filled with inspiration from some of our best thinkers, dreamers and doers.
 
-%p= "Lunch will be served by our very good friends at #{email_anchor('Street Food Australia', 'http://www.streetfoodaustralia.com.au')} and the evening will conclude with drinks on the Maiwar Green, including hand crafted ales from the fantastic folk at #{email_anchor('Green Beacon Brewing Co.', 'http://www.greenbeacon.com.au')} and a light show put on by the Brisbane Festival. (We can't take credit for organising that one!)".html_safe
+%p
+  Lunch will be served by our very good friends at
+  = email_anchor('Street Food Australia', 'http://www.streetfoodaustralia.com.au')
+  and the evening will conclude with drinks and celebration, in the midst of the
+  spectacular architecture and scenery of our venue, the #{Event.location}.
+
 
 %p Please note that the event was significantly over subscribed and in order to confirm your place, you will need to arrange payment within the next 5 days, or your ticket will be reallocated.
+%p To pay for your ticket, click the button below.  Please note tickets are strictly non-refundable, except where the event is cancelled or postponed.
 
-%p To pay for your ticket, click the button below.
 
 %p= email_button 'Buy ticket', EmailLink.pay(attendee)
 
-%p= "If you wish to cancel your registation, click #{email_anchor "here.", EmailLink.decline(attendee)}".html_safe
+%p
+  If you wish to cancel your registation, click
+  = email_anchor "here.", EmailLink.decline(attendee)
 
 %p We can't wait to see you.
 
-%p September is coming.
-
 = render 'emails/email_footer'
-

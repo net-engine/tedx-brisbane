@@ -13,8 +13,8 @@ Bundler.require(:default, Rails.env)
 
 HOSTNAME = OpenStruct.new(
   development: 'http://127.0.0.1:3000',
-  staging: 'http://tedx.netengine.com.au',
-  production: 'https://register.tedxbrisbane.com'
+  staging:     'https://tedxbrisbane.netengine.com.au',
+  production:  'https://tedxbrisbane.netengine.com.au' # https://register.tedxbrisbane.com
 )
 
 module TedxBrisbane

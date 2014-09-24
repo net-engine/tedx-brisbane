@@ -15,7 +15,6 @@ tags
 *~
 rerun.txt
 .bundle
-db/schema.rb
 specifications
 cache
 gems
@@ -31,6 +30,8 @@ public/uploads
 dump.rdb
 zeus.json
 config/database.yml
+config/payway.yml
+*.pem
 images/*
 logfile
 .vagrant/*

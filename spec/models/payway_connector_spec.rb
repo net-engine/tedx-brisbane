@@ -51,7 +51,7 @@ describe PaywayConnector do
       attendee.invite!
       pc = PaywayConnector.new(attendee, valid_transaction_params)
       pc.attendee.should   == attendee
-      pc.amount.should     == TICKET.price_in_dollars
+      pc.amount.should     == Event.price_in_dollars
       pc.cc_details.should == {
         number:              '1234567890',
         month:               12,

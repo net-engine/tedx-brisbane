@@ -6,15 +6,27 @@
   %strong A couple of important reminders for the day:
 
 %ul{style: "list-style-type: square; list-style-position: outside; padding: 0 0 0 1em;"}
-  %li{style: "margin: 0 0 .5em;"} Registration opens at 7:45 am and closes at 8:45 am, so please ensure you have picked up your personalised name tag by this time.
+  %li{style: "margin: 0 0 .5em;"} Registration #{Event.registration_open_and_close_time}, so please ensure you have picked up your personalised name tag by this time.
 
-  %li{style: "margin: 0 0 .5em;"} Conference starts at 8:55 am sharp.
+  %li{style: "margin: 0 0 .5em;"} Conference starts at #{Event.doors_open_at} sharp.
 
-  %li{style: "margin: 0 0 .5em;"} TEDxBrisbane is a full day event, concluding with drinks from 5:30–7:30 pm. Lunch will be served in the Ideas worth Spreading Tent.
+  %li{style: "margin: 0 0 .5em;"} TEDxBrisbane is a full day event, concluding with drinks from #{Event.drink_time_range}. Lunch will be served in the Ideas worth Spreading Tent.
 
   %li{style: "margin: 0 0 .5em;"} No video or flash photography is permitted in the theatres.
 
-  %li{style: "margin: 0 0 .5em;"} In attending TEDxBrisbane 2013, you may be filmed or photographed. If you have a problem with this, please inform the photographer.
+  %li{style: "margin: 0 0 .5em;"} If you wish to dine at the #{Event.location} after the event – we suggest you make a reservation, as it will be a busy day.
+
+  %li{style: "margin: 0 0 .5em;"} In attending TEDxBrisbane #{Event.date.year}, you may be filmed or photographed. If you have a problem with this, please inform the photographer.
+
+  %li{style: "margin: 0 0 .5em;"} In attending TEDxBrisbane #{Event.date.year}, you are bound by all the conditions of entry to the #{Event.location}.
+
+  %li{style: "margin: 0 0 .5em;"}
+    Your ticketing information (name & email address) will be shared with our venue partner, the Brisbane Powerhouse.  The Brisbane Powerhouse Privacy Policy can be accessed on the following webpage:
+    %a{ href: 'http://brisbanepowerhouse.org/privacy/' } brisbanepowerhouse.org/privacy
+
+  %li{style: "margin: 0 0 .5em;"}
+    If you wish to keep up to date with venue information and Brisbane Powerhouse Ideas Program, please subscribe to the Powermail newsletter
+    %a{ href: 'http://brisbanepowerhouse.org/subscribe' } (here)
 
   %li{style: "margin: 0 0 .5em;"} Twitter hashtag is #TEDxBrisbane.
 

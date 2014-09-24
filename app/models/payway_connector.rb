@@ -21,6 +21,7 @@ class PaywayConnector
   def pay!
     amount_in_cents = @amount * 100
     response       = gateway.purchase(amount_in_cents, cc, @options)
+    Rails.logger.warn("Merchant: '#{PAYWAY.merchant}', Username: #{PAYWAY.username}: Transaction Failed: #{response.inspect}") unless response.success?
     response_title = response.message.split(' - ', 2).first rescue ""
     raise Exceptions::DeclinedTransaction.new(msg_params: { third_party_response: response_title}) unless response_title == 'Approved'
     return response
@@ -45,7 +46,7 @@ class PaywayConnector
   end
 
   def check_and_return_amount(params)
-    params[:student_amount] == "true" ? TICKET.price_in_dollars_for_student : TICKET.price_in_dollars
+    params[:student_amount] == "true" ? Event.price_in_dollars_for_student : Event.price_in_dollars
   end
 
   def check_and_return_cc_details(params)

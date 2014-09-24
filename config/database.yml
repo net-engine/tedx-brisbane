@@ -19,4 +19,4 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: tedx-brisbane_production
+  database: tedx-brisbane_production_2014

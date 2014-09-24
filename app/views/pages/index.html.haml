@@ -1,10 +1,21 @@
 %h1 About TEDx Brisbane
 
-%p This year's TEDxBrisbane is a full day event concluding with drinks in the evening from 5.30 to 7.30pm. Lunch will be served in the <em>Ideas Worth Spreading</em> tent.
+%p
+  TEDxBrisbane is a full day of ideas, conversation and community to take place on
+  = Event.date.to_s :long
+  from #{Event.starts_at} until #{Event.ends_at}. (Including after party)
 
-%p As with previous years, TEDxBrisbane fills the State Library with an eclectic mix of thinkers, dreamers and doers for a full day of inspiration and adventure.
+%p The location this year will be at the #{Event.location}. #{Event.address}
 
-%p Tickets for the event are $95.00 for adults and $50.00 for students/concession.  Whilst we would love to have everyone along, our venue can only fit so many and there are a lot more applications than tickets, so we are sorry in advance if we can't offer you a spot.
+%p
+  Tickets for the event are #{adult_price} for adults and #{student_price} for
+  students/concession. Whilst we would love to have everyone along, our venue can
+  only fit so many and there are a lot more applications than tickets, so we are
+  sorry in advance if we can't offer you a spot.  If your registration is successful,
+  you will be sent an invitation to attend in a few weeks, that will contain the link
+  to pay, and to secure your ticket.  It is very important that payment is made
+  within three business days following receipt so we have time to offer the ticket
+  to someone else, if you can no longer make it.
 
 
 = render "pages/submission_form", attendee: @attendee
