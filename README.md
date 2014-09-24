@@ -49,5 +49,3 @@ the server with `bundle exec sidekiq -C config/sidekiq.yml`
 ## Mandrill
 
 Just change the env key `ENV['TEDX_MANDRILL_API_KEY']`
-
-
