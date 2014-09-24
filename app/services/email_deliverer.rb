@@ -13,8 +13,8 @@ class EmailDeliverer
 
   def deliver
     response = self.class.post(url, options)
-    if response['error'].present?
-      Rails.logger.fatal("Email id #{email.id} could not be delivered\n#{response.with_indifferent_access}")
+    if response.parsed_response.to_a.first.to_h['status'] != 'sent'
+      Rails.logger.fatal("Email id #{email.id} could not be delivered\n#{response.inspect}")
     end
   end
 
